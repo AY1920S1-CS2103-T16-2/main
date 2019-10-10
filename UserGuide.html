@@ -50,7 +50,7 @@
 </div>
 </li>
 <li>
-<p>Download the latest modulo.jar here.</p>
+<p>Download the latest <code>modulo.jar</code> here.</p>
 </li>
 <li>
 <p>Copy the <code>.jar</code> file to a folder you wish to set as your working directory for the application.</p>
@@ -65,20 +65,20 @@
 </li>
 <li>
 <p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
+e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will show a list of commands which <em>Modulo</em> supports.</p>
 </li>
 <li>
 <p>Some example commands you can try:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
+<p><code>add CS2100 Assignment 1 t\21 August 2019 #High-Priority</code> : adds a task with description <code>CS2100 Assignment 1</code> to the <em>Modulo</em>.</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><code>add CS2103 1920S1</code>: adds module <code>CS2103</code> to academic year and semester <code>1920S1</code></p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
+<p><code>add [qns] <em>What can one catch that is not thrown?</em> [type] <em>normal</em> [ans] <em>A cold</em> [cat] CS2131</code>: adds a new quiz question to category <code>CS2131</code></p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -130,14 +130,17 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect3">
 <h4 id="return-to-the-homepage"><a class="link" href="#return-to-the-homepage">3.1.2. Return to the homepage</a></h4>
 <div class="paragraph">
+<p>Homepage, in this case, is the <em>Calendar</em> section.</p>
+</div>
+<div class="paragraph">
 <p>Format: home</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="switch-to-another-feature-s-tab"><a class="link" href="#switch-to-another-feature-s-tab">3.1.3. Switch to another feature’s tab</a></h4>
 <div class="paragraph">
-<p>Format: <code>checkout FEATURE_NAME</code>
-Example: <code>checkout module</code></p>
+<p>Format: <code>switch FEATURE_NAME</code>
+Example: <code>switch module</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -538,12 +541,144 @@ Format: <code>cancel</code></p>
 </div>
 <div class="sect2">
 <h3 id="finances"><a class="link" href="#finances">3.5. Finances</a></h3>
-
+<div class="paragraph">
+<p>To enter the Finances section, please enter the command: <code>switch finances</code></p>
+</div>
+<div class="paragraph">
+<p>All amounts are taken to be in SGD and recorded as if with dollar signs and numerals. For example, 110 cents should be written as <code>1.10</code> or <code>1.1</code>.</p>
+</div>
+<div class="paragraph">
+<p>If dates are to be specified, only dates of format <code>DDMMYYYY</code> will be recognised.</p>
+</div>
+<div class="sect3">
+<h4 id="add-an-expenditure-code-add-spend-code"><a class="link" href="#add-an-expenditure-code-add-spend-code">3.5.1. Add an expenditure: <code>add spend</code></a></h4>
+<div class="paragraph">
+<p>Record down an entry of spending. By default, the date of spending will be set to the day the entry was added. Otherwise, this can be specified through an optional parameter. Other details regarding the expenditure can also be included.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>add spend</strong> AMOUNT [day\DAY_OF_SPENDING] [item\DESCRIPTION] [cat\CATEGORY(s)] [place\PLACE] [met\PAYMENT_METHOD]</code><br>
+e.g. <code>add spend 2.80 item\Yong Tau Foo cat\Food School place\Frontier met\cash</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-an-income-code-add-income-code"><a class="link" href="#add-an-income-code-add-income-code">3.5.2. Add an income: <code>add income</code></a></h4>
+<div class="paragraph">
+<p>Record down an entry of incoming money. Source of income can also be specified.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>add income</strong> AMOUNT [day\DAY_OF_SPENDING] [item\DESCRIPTION] [cat\CATEGORY(S)] [from\ORIGIN] [met\PAYMENT_METHOD]</code><br>
+e.g. <code>add income 800 item\student assistant from\NUS met\bank transfer</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-category-code-add-cat-code"><a class="link" href="#add-category-code-add-cat-code">3.5.3. Add category: <code>add cat</code></a></h4>
+<div class="paragraph">
+<p>Add a new category to list of exisiting categories. Note that category name is not case-sensitive.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>add cat</strong> NEW_CATEGORY</code><br>
+e.g. <code>add cat Hobby</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-an-entry-of-borrowed-money-code-borrow-code"><a class="link" href="#add-an-entry-of-borrowed-money-code-borrow-code">3.5.4. Add an entry of borrowed money: <code>borrow</code></a></h4>
+<div class="paragraph">
+<p>Record down an entry of money borrowed from someone but not yet repaid. By default, the date the money was borrowed is set to the day the entry was recorded.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>borrow</strong> AMOUNT from\PERSON_BORROWED_FROM [day\DATE_BORROWED]</code><br>
+e.g. <code>borrow 1.20 from\mom</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-an-entry-of-lent-money-code-lent-code"><a class="link" href="#add-an-entry-of-lent-money-code-lent-code">3.5.5. Add an entry of lent money: <code>lent</code></a></h4>
+<div class="paragraph">
+<p>Record down an entry of money lent to someone.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>lent</strong> AMOUNT to\PERSON_LENT_TO</code> [day\DATE_LENT]`<br>
+e.g. <code>lent 5 to\sister</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="list-out-finances-code-list-code"><a class="link" href="#list-out-finances-code-list-code">3.5.6. List out finances: <code>list</code></a></h4>
+<div class="paragraph">
+<p>List out all entries in recorded down. By default, all entries will be ordered chronologically, according to the day the entry is linked to (e.g. the day of spending etc). Entries are indexed chronologically as well.</p>
+</div>
+<div class="paragraph">
+<p>To sort or filter, and do more advance searches through the list, additional parameters can be specified.</p>
+</div>
+<div class="paragraph">
+<p>Attributes that can be <strong>sorted by</strong> are: <code>day</code>, <code>amt</code><br>
+Attributes that can <strong>filtered by</strong> are: <code>spend</code>, <code>income</code>, <code>borrow</code>, <code>lent</code></p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>list</strong> [sort\SORT_TYPE(s)] [filter\FILTER_TYPE(s)]</code>[find\KEYWORD(S)] [cat\ CATEGORY(s)]<br>
+e.g. <code>list filter\spend cat\food</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="list-out-categories"><a class="link" href="#list-out-categories">3.5.7. List out categories</a></h4>
+<div class="paragraph">
+<p>List out available categories.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>list cat</strong></code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-an-entry-code-edit-code"><a class="link" href="#edit-an-entry-code-edit-code">3.5.8. Edit an entry: <code>edit</code></a></h4>
+<div class="paragraph">
+<p>Edit an entry previously entered by index of entry in listed listed out by <code>list</code>. Note that the newly-entered information will overwrite the details at the attribute. For example, if there were categories <code>food</code> and <code>hobby</code> linked to the entry at index 5 of the list, command <code>edit 5 cat\pet</code> will delete the previous two categories and replace them with a single category <code>pet.</code></p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>edit</strong> INDEX [amt\NEW_AMOUNT] [item\NEW_DESCRIPTION] [cat\NEW_CATEGORY] [place\NEW_PLACE] [met\NEW_METHOD]</code><br>
+e.g. <code>edit 2 amt\5.1</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-entry-entries-code-delete-code"><a class="link" href="#delete-entry-entries-code-delete-code">3.5.9. Delete entry/entries: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Delete an entry or multiple entries by their index in the list. Note: the indices do not have to be ordered.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>delete</strong> INDEX [MORE_INDEXES]</code><br>
+e.g. <code>delete 5 4 1</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-summary-of-finances-code-stats-code"><a class="link" href="#show-summary-of-finances-code-stats-code">3.5.10. Show summary of finances: <code>stats</code></a></h4>
+<div class="paragraph">
+<p>Shows an overview of the state of expenses and incomes.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>stats</strong></code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="set-a-budget-code-add-budget-code"><a class="link" href="#set-a-budget-code-add-budget-code">3.5.11. Set a budget: <code>add budget</code></a></h4>
+<div class="paragraph">
+<p>Set a budget, which by default is for the current month. This can be further specified for a specified time period (i.e. duration) or category of spending. A reminder is shown when this budget is about to be exceeded or has exceeded.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>add budget</strong> AMOUNT [dur\NUM_DAYS] [cat\CATEGORY]</code><br>
+e.g. <code>add budget 30 dur\7 cat\food</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="export-summary-of-finances-code-export-code"><a class="link" href="#export-summary-of-finances-code-export-code">3.5.12. Export summary of finances: <code>export</code></a></h4>
+<div class="paragraph">
+<p>Exports a file and saves it to hard disk.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>export</strong></code></p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.6. Saving the data</a></h3>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+<p><em>Modulo</em> data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
@@ -554,7 +689,7 @@ There is no need to save manually.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous <em>Modulo</em> folder.</p>
 </div>
 </div>
 </div>
@@ -591,4 +726,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-09 15:36:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-10 04:40:26 UTC</div></div></div></body></html>
