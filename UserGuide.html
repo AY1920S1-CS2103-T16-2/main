@@ -460,23 +460,15 @@ Usage:<br>
 <div class="sect3">
 <h4 id="edit-details-of-a-module-code-edit-code-2"><a class="link" href="#edit-details-of-a-module-code-edit-code-2">3.4.4. Edit details of a module : <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Specify which question you want to edit and modify it from the list of questions.</p>
+<p>Specify which question you want to edit and modify it from the question list.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 1: Specify</strong><br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>edit <strong>[CATEGORY] [NUMBER]</strong></code><br>
-Usage:<br>
+<p>Usage:<br>
 - <strong>[CATEGORY]</strong> is the category of the question that you want to edit, case-insensitive. For the question that is uncategorized category, put <code>uncategorized</code>.<br>
 - <strong>[NUMBER]</strong> is the index/row from that category that you want to edit.<br></p>
 </div>
 <div class="paragraph">
-<p>e.g. <code><strong>edit</strong> CS2103 1</code><br></p>
-</div>
-<div class="paragraph">
-<p><strong>Step 2: Modify</strong><br>
-The details/instructions of the new questions include:<br>
+<p>The details/instructions of the new questions include:<br>
 - <code>[qns]</code> Indicate that the next several phrases will be the new question.<br>
 - <code>[ans]</code> Indicate that the next several phrases will be the answer to the new question.<br>
 - <code>[cat]</code> Indicate that the next several phrases will be the category of the new question.<br>
@@ -490,19 +482,15 @@ The details/instructions of the new questions include:<br>
 - <strong><code>[type]</code> the command after this format should only be: <code>high</code>, <code>normal</code>, <code>low</code>.</strong><br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>modify [qns]</strong> <em>your_new_question</em> <strong>[ans]</strong> <em>your_new_answer</em> <strong>[cat]</strong> <em>your_new_category</em> <strong>[type]</strong> <em>your_new_priority</em></code><br></p>
+<p>Format: <code><strong>edit *[CATEGORY] [NUMBER] [qns]</strong> <em>your_new_question</em> <strong>[ans]</strong> <em>your_new_answer</em> <strong>[cat]</strong> <em>your_new_category</em> <strong>[type]</strong> <em>your_new_priority</em></code><br></p>
 </div>
 <div class="paragraph">
 <p>Example 1:<br>
-<strong>modify [qns]</strong> <em>How many mammals are there in the universe?</em> <strong>[type]</strong> low<br></p>
-</div>
-<div class="paragraph">
-<p>Example 2:<br>
-<strong>cancel</strong></p>
+<strong>edit CS2103 1 [qns]</strong> <em>How many mammals are there in the universe?</em> <strong>[type]</strong> low<br></p>
 </div>
 <div class="paragraph">
 <p>Remark:<br>
-<strong>add [qns]</strong> <em>What is [qns]always comi[qns]ng, but never arrives?</em> <strong>[ans]</strong> <em>Tom[ans]orrow</em><br></p>
+<strong>edit CS2103 1 [qns]</strong> <em>What is [qns]always comi[qns]ng, but never arrives?</em> <strong>[ans]</strong> <em>Tom[ans]orrow</em><br></p>
 </div>
 <div class="paragraph">
 <p>Modulo will detect the new question as: <em>What is [qns]always comi[qns]ng, but never arrives?</em> and the answer as: <em>Tom[ans]orrow</em><br>
@@ -726,4 +714,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-14 10:46:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-16 07:51:44 UTC</div></div></div></body></html>
