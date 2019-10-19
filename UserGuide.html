@@ -530,32 +530,32 @@ Format: <code>cancel</code></p>
 <div class="sect2">
 <h3 id="finances"><a class="link" href="#finances">3.5. Finances</a></h3>
 <div class="paragraph">
-<p>To enter the Finances section, please enter the command: <code>switch finances</code></p>
+<p>To enter the Finances section, please enter the command: <code>switch finance</code></p>
 </div>
 <div class="paragraph">
 <p>All amounts are taken to be in SGD and recorded as if with dollar signs and numerals. For example, 110 cents should be written as <code>1.10</code> or <code>1.1</code>.</p>
 </div>
 <div class="paragraph">
-<p>If dates are to be specified, only dates of format <code>DDMMYYYY</code> will be recognised.</p>
+<p>If dates are to be specified, only dates of format <code>DD-MM-YYYY</code> will be recognised.</p>
 </div>
 <div class="sect3">
-<h4 id="add-an-expenditure-code-add-spend-code"><a class="link" href="#add-an-expenditure-code-add-spend-code">3.5.1. Add an expenditure: <code>add spend</code></a></h4>
+<h4 id="add-an-expenditure-code-spend-code"><a class="link" href="#add-an-expenditure-code-spend-code">3.5.1. Add an expenditure: <code>spend</code></a></h4>
 <div class="paragraph">
 <p>Record down an entry of spending. By default, the date of spending will be set to the day the entry was added. Otherwise, this can be specified through an optional parameter. Other details regarding the expenditure can also be included.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>add spend</strong> AMOUNT [day\DAY_OF_SPENDING] [item\DESCRIPTION] [cat\CATEGORY(s)] [place\PLACE] [met\PAYMENT_METHOD]</code><br>
-e.g. <code>add spend 2.80 item\Yong Tau Foo cat\Food School place\Frontier met\cash</code></p>
+<p>Format: <code><strong>spend</strong> amt\AMOUNT [day\DAY_OF_SPENDING] [item\DESCRIPTION] [cat\CATEGORY(s)] [place\PLACE] [met\TRANSACTION_METHOD]</code><br>
+e.g. <code>spend 2.80 item\Yong Tau Foo cat\Food School place\Frontier met\cash</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-an-income-code-add-income-code"><a class="link" href="#add-an-income-code-add-income-code">3.5.2. Add an income: <code>add income</code></a></h4>
+<h4 id="add-an-income-code-income-code"><a class="link" href="#add-an-income-code-income-code">3.5.2. Add an income: <code>income</code></a></h4>
 <div class="paragraph">
 <p>Record down an entry of incoming money. Source of income can also be specified.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>add income</strong> AMOUNT [day\DAY_OF_SPENDING] [item\DESCRIPTION] [cat\CATEGORY(S)] [from\ORIGIN] [met\PAYMENT_METHOD]</code><br>
-e.g. <code>add income 800 item\student assistant from\NUS met\bank transfer</code></p>
+<p>Format: <code><strong>income</strong> AMOUNT [day\DAY_OF_SPENDING] [item\DESCRIPTION] [cat\CATEGORY(S)] [from\ORIGIN] [met\TRANSACTION_METHOD]</code><br>
+e.g. <code>income amt\800 item\student assistant from\NUS met\bank transfer</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -579,13 +579,13 @@ e.g. <code>borrow 1.20 from\mom</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-an-entry-of-lent-money-code-lent-code"><a class="link" href="#add-an-entry-of-lent-money-code-lent-code">3.5.5. Add an entry of lent money: <code>lent</code></a></h4>
+<h4 id="add-an-entry-of-lent-money-code-lend-code"><a class="link" href="#add-an-entry-of-lent-money-code-lend-code">3.5.5. Add an entry of lent money: <code>lend</code></a></h4>
 <div class="paragraph">
 <p>Record down an entry of money lent to someone.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>lent</strong> AMOUNT to\PERSON_LENT_TO</code> [day\DATE_LENT]`<br>
-e.g. <code>lent 5 to\sister</code></p>
+<p>Format: <code><strong>lend</strong> AMOUNT to\PERSON_LENT_TO</code> [day\DATE_LENT]`<br>
+e.g. <code>lend 5 to\sister</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -644,13 +644,13 @@ e.g. <code>delete 5 4 1</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="set-a-budget-code-add-budget-code"><a class="link" href="#set-a-budget-code-add-budget-code">3.5.11. Set a budget: <code>add budget</code></a></h4>
+<h4 id="set-a-budget-code-budget-code"><a class="link" href="#set-a-budget-code-budget-code">3.5.11. Set a budget: <code>budget</code></a></h4>
 <div class="paragraph">
 <p>Set a budget, which by default is for the current month. This can be further specified for a specified time period (i.e. duration) or category of spending. A reminder is shown when this budget is about to be exceeded or has exceeded.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>add budget</strong> AMOUNT [dur\NUM_DAYS] [cat\CATEGORY]</code><br>
-e.g. <code>add budget 30 dur\7 cat\food</code></p>
+<p>Format: <code><strong>budget</strong> amt\AMOUNT [dur\NUM_DAYS] [cat\CATEGORY]</code><br>
+e.g. <code>budget amt\30 dur\7 cat\food</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -714,4 +714,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-17 16:36:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-19 11:16:33 UTC</div></div></div></body></html>
