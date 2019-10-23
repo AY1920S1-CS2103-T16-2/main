@@ -154,112 +154,105 @@ Format: <code>exit</code></p>
 <div class="sect2">
 <h3 id="calendar"><a class="link" href="#calendar">3.2. Calendar</a></h3>
 <div class="paragraph">
-<p>Calendar consists of <code>planner</code> and <code>timetable</code>. In <code>planner</code>, the user can view and manage tasks while the
-<code>timetable</code> is used to view and manage the user&#8217;s current modules.<br>
-To enter the Calendar section please enter the command: <code>switch cal</code>.</p>
+<p>Calendar displays a weekly list of tasks and modules which the user has added. To enter the Calendar section
+please enter the command: <code>switch calendar</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="switch-type-code-switch-code"><a class="link" href="#switch-type-code-switch-code">3.2.1. Switch type: <code>switch</code></a></h4>
+<h4 id="add-a-new-task-code-add-code"><a class="link" href="#add-a-new-task-code-add-code">3.2.1. Add a new task: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Change the type into either <code>planner</code> or <code>timetable</code> view.</p>
+<p>Adds a new <code>Task</code>. <code>TaskTitle</code> and <code>TaskDay</code> are compulsory while the other fields are optional.
+The fields consist of:<br>
+- <code>TaskTitle</code> The name of the task. Prefix: <code>&lt;title&gt;</code><br>
+- <code>TaskDay</code> The time when the user plan to do the task. Prefix: <code>&lt;day&gt;</code>.<br>
+- <code>TaskDescription</code> Additional description of the <code>Task</code>. Prefix: <code>&lt;desc&gt;</code>.<br>
+- <code>TaskDeadline</code> When the task is due. Prefix: <code>&lt;deadline&gt;</code>.<br>
+- <code>TaskTime</code> Where time when the task occurs, in HH:mm 24-hour format. Prefix: <code>&lt;time&gt;</code>.<br>
+- <code>TAG</code> Tag that can be used to sort the tasks. Prefix: <code>&lt;tag&gt;</code>.
+More than one <code>TAG</code> can be added to each task, e.g. <code>&lt;tag&gt; High-Priority &lt;tag&gt;Math</code></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>switch VIEW_TYPE</code><br>
-e.g. <code>switch timetable</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="add-a-new-task-code-add-code"><a class="link" href="#add-a-new-task-code-add-code">3.2.2. Add a new task: <code>add</code></a></h4>
-<div class="paragraph">
-<p>Adds a new task. The <code>TASK_TITLE</code> should be specified first. Both <code>TASK_TITLE</code> and <code>TIME</code> are compulsory while the
-other fields are optional. The fields consist of:<br>
-- <code>TASK_TITLE</code> The name of the task. No prefix needed.<br>
-- <code>TIME</code> The time when the user plan to do the task. Prefix: <code>t\</code>.<br>
-- <code>DEADLINE</code> When the task is due. Prefix: <code>d\</code>.<br>
-- <code>PLACE</code> Where the task took place Prefix: <code>p\</code>.<br>
-- <code>TAG</code> Tag that can be used to sort the tasks. Prefix: <code>#</code>. More than one <code>TAG</code> can be added to each task, e.g. <code>#High-Priority #Math</code></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>add TASK_TITLE t\TIME d\DEADLINE p\PLACE #TAG</code><br>
-e.g. <code>add CS2100 Assignment 1 t\21 August 2019 #High-Priority</code></p>
+<p>Format: <code>add &lt;title&gt;TITLE &lt;day&gt;DAY &lt;desc&gt;DESCRIPTION &lt;deadline&gt;DEADLINE &lt;time&gt;TIME [&lt;tag&gt;TAG]</code><br>
+e.g. <code>add &lt;title&gt;CS2109 Lab 10 &lt;day&gt;tuesday &lt;desc&gt;Submit code through LumiNUS &lt;deadline&gt;21-10-2019
+&lt;time&gt;13:00 &lt;tag&gt;IMPORTANT</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-existing-task-code-edit-code"><a class="link" href="#edit-existing-task-code-edit-code">3.2.3. Edit existing task: <code>edit</code></a></h4>
+<h4 id="edit-existing-task-code-edit-code"><a class="link" href="#edit-existing-task-code-edit-code">3.2.2. Edit existing task: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Edit one or multiple fields of an existing task.</p>
+<p>Edit one or multiple fields of an existing task. <code>INDEX</code> should be a positive integer.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>edit TASK_TITLE T\NEW_TASK_TITLE t\NEW_TIME p\NEW_PLACE #NEW_TAG</code><br>
-e.g. <code>edit CS2100 Assignment T\CS2102 Assignment t\22 August 2019</code></p>
+<p>Format: <code>edit  INDEX [&lt;title&gt;TITLE] [&lt;day&gt;DAY] [&lt;desc&gt;DESCRIPTION] [&lt;deadline&gt;DEADLINE] [&lt;time&gt;TIME] [&lt;tag&gt;TAG]</code><br>
+e.g. <code>1 &lt;title&gt;CS2108 Assignment &lt;day&gt;friday</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-existing-task-code-delete-code"><a class="link" href="#delete-existing-task-code-delete-code">3.2.4. Delete existing task: <code>delete</code></a></h4>
+<h4 id="delete-existing-task-code-delete-code"><a class="link" href="#delete-existing-task-code-delete-code">3.2.3. Delete existing task: <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Delete an exisiting task.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete TASK_TITLE</code><br>
-e.g.   <code>delete CS2102 Assignment</code></p>
+<p>Format: <code>delete INDEX</code><br>
+e.g.   <code>delete 1</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sort-tasks-code-sort-code"><a class="link" href="#sort-tasks-code-sort-code">3.2.5. Sort tasks: <code>sort</code></a></h4>
+<h4 id="sort-tasks-code-sort-code"><a class="link" href="#sort-tasks-code-sort-code">3.2.4. Sort tasks: <code>sort</code></a></h4>
 <div class="paragraph">
-<p>Change the order of the tasks; either sorted by <code>time</code> or <code>priority</code>. The default sorting method is by <code>time</code>.</p>
+<p>Change the order of the tasks. Use <code>sort timeadded</code> to sort the tasks according to when the Task was added to the
+calendar and use <code>sort deadline</code> to sort the task according to <code>TaskDeadline</code> with the <code>Task</code> with the earliest
+deadline to be listed first. The default sorting method is by time added.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>sort  SORT_TYPE</code><br>
-e.g. <code>sort time</code></p>
+e.g. <code>sort deadline</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="change-week-code-next-code-and-code-previous-code"><a class="link" href="#change-week-code-next-code-and-code-previous-code">3.2.6. Change week: <code>next</code> and <code>previous</code></a></h4>
+<h4 id="change-week-code-next-code-and-code-previous-code"><a class="link" href="#change-week-code-next-code-and-code-previous-code">3.2.5. Change week: <code>next</code> and <code>previous</code></a></h4>
 <div class="paragraph">
-<p>Go to either the <code>next</code> or <code>previous</code> week. This can only be done when the <code>VIEW_TYPE</code> is <code>planner</code>.</p>
+<p>Go to either the <code>next</code> or <code>previous</code> week.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>next</code> or <code>previous</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-module-code-add-code"><a class="link" href="#add-module-code-add-code">3.2.7. Add module: <code>add</code></a></h4>
+<h4 id="add-module-code-addmod-code"><a class="link" href="#add-module-code-addmod-code">3.2.6. Add module: <code>addmod</code></a></h4>
 <div class="paragraph">
 <p>Add module with the specified <code>MODULE_CODE</code> to the timetable. After entering the command, user will be prompted to input
 additional information about its lecture, tutorial, recitation, and lab slots.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add MODULE_CODE</code><br>
-e.g. <code>add CS2103</code></p>
+<p>Format: <code>addmod MODULE_CODE</code><br>
+e.g. <code>addmod CS2103</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-module-code-edit-code"><a class="link" href="#edit-module-code-edit-code">3.2.8. Edit module: <code>edit</code></a></h4>
+<h4 id="edit-module-code-editmod-code"><a class="link" href="#edit-module-code-editmod-code">3.2.7. Edit module: <code>editmod</code></a></h4>
 <div class="paragraph">
 <p>Update an existing module. After entering the command, user will be prompted to input additional information depending
 on the <code>TYPE</code>.<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>edit  MODULE_CODE TYPE</code>
-e.g. <code>edit CS2103 lecture</code></p>
+<p>Format: <code>editmod  MODULE_CODE TYPE</code>
+e.g. <code>editmod CS2103 lecture</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-module-from-timetable-code-delete-code"><a class="link" href="#delete-module-from-timetable-code-delete-code">3.2.9. Delete module from timetable: <code>delete</code></a></h4>
+<h4 id="delete-module-from-timetable-code-deletemod-code"><a class="link" href="#delete-module-from-timetable-code-deletemod-code">3.2.8. Delete module from timetable: <code>deletemod</code></a></h4>
 <div class="paragraph">
 <p>Delete an existing module.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete MODULE_CODE</code><br>
-e.g. <code>delete CS2103</code></p>
+<p>Format: <code>deletemod MODULE_CODE</code><br>
+e.g. <code>deletemod CS2103</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="reset-planner-timetable-code-reset-code"><a class="link" href="#reset-planner-timetable-code-reset-code">3.2.10. Reset planner/timetable: <code>reset</code></a></h4>
+<h4 id="clear-data-code-clear-code"><a class="link" href="#clear-data-code-clear-code">3.2.9. Clear data: <code>clear</code></a></h4>
 <div class="paragraph">
-<p>Remove all existing tasks/modules. If the current view is <code>planner</code>, this action would not affect the <code>timetable</code> and
-vice versa.</p>
+<p>Delete all information of the tasks and modules of the current week (the week that is currently displayed).</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>reset</code></p>
@@ -714,4 +707,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 15:17:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 15:26:22 UTC</div></div></div></body></html>
