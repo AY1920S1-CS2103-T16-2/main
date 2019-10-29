@@ -26,7 +26,7 @@
 <li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
 <li><a href="#logging">3.3. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
-<li><a href="#proposed-calendar-week-change">3.5. [Proposed] Calendar week change</a></li>
+<li><a href="#calendar-week-change">3.5. Calendar week change</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -40,7 +40,6 @@
 <li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-module">F.2. Deleting a module</a></li>
 </ul>
 </li>
 </ul>
@@ -211,9 +210,9 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
+<img src="images/CalendarSequenceDiagram.png" alt="CalendarSequenceDiagram">
 </div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>sort title</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -222,7 +221,7 @@ The following class plays an important role at the architecture level:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The lifeline for <code>DeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+The lifeline for <code>SortCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </td>
 </tr>
 </table>
@@ -577,37 +576,22 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-calendar-week-change"><a class="link" href="#proposed-calendar-week-change">3.5. [Proposed] Calendar week change</a></h3>
+<h3 id="calendar-week-change"><a class="link" href="#calendar-week-change">3.5. Calendar week change</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation-2"><a class="link" href="#proposed-implementation-2">3.5.1. Proposed implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.5.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The calendar week change is enabled by creating multiple json files. Each file is used to save the user&#8217;s task data
-for one particular week. When user asks for the data to be cleared, the json storage file for that particular week would
-be deleted. One additional json file <code>timetable.json</code> is created to save the user&#8217;s module (lecture, tutorials, etc.) info as these are
-persistent data that would be displayed on each week&#8217;s calendar.</p>
+<p>Calendar week change is done by removing all tasks from the calendar and adding all the tasks that either have the new
+corresponding week number or is an instance of <code>ModuleTask</code>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.5.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-next-prev-executes"><a class="link" href="#aspect-how-next-prev-executes">Aspect: How next &amp; prev executes</a></h5>
+<h5 id="aspect-how-code-go-week_number-code-executes"><a class="link" href="#aspect-how-code-go-week_number-code-executes">Aspect: How <code>go WEEK_NUMBER</code> executes</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Read and load data from the next/previous week&#8217;s separate json storage file.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to clear data from a certain week.</p>
-</li>
-<li>
-<p>Cons: Need to switch storage file each time the user go to the next/previous week.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Save all data in a single json file.</p>
+<p><strong>Alternative 1 (current choice):</strong> Save all data in a single json file.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -615,6 +599,19 @@ persistent data that would be displayed on each week&#8217;s calendar.</p>
 </li>
 <li>
 <p>Cons: Unnecessary reading of data from other weeks. Need to add filter to get only the relevant data.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Read and load for each week from separate json storage file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to clear data from a certain week.</p>
+</li>
+<li>
+<p>Cons: Need to switch storage file each time the user go to the next/previous week.</p>
 </li>
 </ul>
 </div>
@@ -841,23 +838,20 @@ persistent data that would be displayed on each week&#8217;s calendar.</p>
 <div class="sect1">
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
-<h3 id="use-case-add-module" class="discrete">Use case: Add module</h3>
+<h3 id="use-case-add-a-module-task-to-calendar" class="discrete">Use case: Add a module task to calendar</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User request to add module</p>
+<p>User request to add a module task</p>
 </li>
 <li>
-<p>Modulo requests user to input the module&#8217;s time schedule</p>
+<p>Modulo checks the validity of the request</p>
 </li>
 <li>
-<p>User inputs the time schedule</p>
-</li>
-<li>
-<p>Module adds the new module to the user&#8217;s timetable</p>
+<p>Modulo adds the module task to the user&#8217;s calendar</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -875,56 +869,6 @@ persistent data that would be displayed on each week&#8217;s calendar.</p>
 <ul class="none">
 <li>
 <p>2a1. Modulo shows an error message.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-edit-lecture-time" class="discrete">Use case: Edit lecture time</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User request to edit the lecture time of a certain module</p>
-</li>
-<li>
-<p>Modulo asks the user to input the new timing</p>
-</li>
-<li>
-<p>User inputs the time</p>
-</li>
-<li>
-<p>Module edits the lecture time in the user&#8217;s timetable</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. The given time is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. Modulo shows an error message.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>4a. The module doesn&#8217;t exist</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>4a1. Modulo shows an error message.</p>
 </li>
 </ul>
 </div>
@@ -1010,27 +954,5 @@ Expected: Closes the app and GUI</p>
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-module"><a class="link" href="#deleting-a-module">F.2. Deleting a module</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Deleting a module&#8217;s lecture/tutorial/lab</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Test case: <code>deletemod CS2105 lecture</code><br>
-Expected: CS2105 lecture is deleted from the calendar. If there are more than 1 lecture slots, both slots would be deleted.</p>
-</li>
-<li>
-<p>Test case: <code>deletemod CS2105 lab</code> , CS2105 lab doesn&#8217;t exist in the calendar<br>
-Expected: Error details shown in the status message.</p>
-</li>
-</ol>
 </div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 13:38:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 14:33:48 UTC</div></div></div></body></html>

@@ -130,7 +130,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect3">
 <h4 id="return-to-the-homepage"><a class="link" href="#return-to-the-homepage">3.1.2. Return to the homepage</a></h4>
 <div class="paragraph">
-<p>Homepage, in this case, is the <em>Calendar</em> section.</p>
+<p>Homepage, in this case, is the Calendar section.</p>
 </div>
 <div class="paragraph">
 <p>Format: home</p>
@@ -158,38 +158,68 @@ Format: <code>exit</code></p>
 please enter the command: <code>switch calendar</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="add-a-new-task-code-add-code"><a class="link" href="#add-a-new-task-code-add-code">3.2.1. Add a new task: <code>add</code></a></h4>
+<h4 id="add-a-new-todo-task-code-add-code"><a class="link" href="#add-a-new-todo-task-code-add-code">3.2.1. Add a new ToDo Task: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Adds a new <code>Task</code>. <code>TaskTitle</code> and <code>TaskDay</code> are compulsory while the other fields are optional.
-The fields consist of:<br>
+<p>Adds a new <code>ToDoTask</code> to the calendar. This <code>ToDoTask</code> only exist in the week that is currently displayed.
+All fields except for <code>TAG</code> are compulsory fields. You could not add a new task if in the current week there already
+exists another task with the same title, day, and deadline.</p>
+</div>
+<div class="paragraph">
+<p>The fields of <code>ToDoTask</code> consist of:<br>
 - <code>TaskTitle</code> The name of the task. Prefix: <code>&lt;title&gt;</code><br>
 - <code>TaskDay</code> The time when the user plan to do the task. Prefix: <code>&lt;day&gt;</code>.<br>
 - <code>TaskDescription</code> Additional description of the <code>Task</code>. Prefix: <code>&lt;desc&gt;</code>.<br>
-- <code>TaskDeadline</code> When the task is due. Prefix: <code>&lt;deadline&gt;</code>.<br>
-- <code>TaskTime</code> Where time when the task occurs, in HH:mm 24-hour format. Prefix: <code>&lt;time&gt;</code>.<br>
+- <code>TaskDeadline</code> The date when the task is due in dd-mm-yyyy format. Only valid dates are accepted
+(e.g. the date 31-02-2019 does not exist and hence is not accepted). Prefix: <code>&lt;deadline&gt;</code>.<br>
+- <code>TaskTime</code> Where time when the task occurs, in HH:mm 24-hour format from 00:00 to 23:59. Prefix: <code>&lt;time&gt;</code>.<br>
 - <code>TAG</code> Tag that can be used to sort the tasks. Prefix: <code>&lt;tag&gt;</code>.
 More than one <code>TAG</code> can be added to each task, e.g. <code>&lt;tag&gt; High-Priority &lt;tag&gt;Math</code></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>add &lt;title&gt;TITLE &lt;day&gt;DAY &lt;desc&gt;DESCRIPTION &lt;deadline&gt;DEADLINE &lt;time&gt;TIME [&lt;tag&gt;TAG]</code><br>
-e.g. <code>add &lt;title&gt;CS2109 Lab 10 &lt;day&gt;tuesday &lt;desc&gt;Submit code through LumiNUS &lt;deadline&gt;21-10-2019
+e.g. <code>add &lt;title&gt;CS2109 Assignment &lt;day&gt;tuesday &lt;desc&gt;Submit code through LumiNUS &lt;deadline&gt;21-10-2019
 &lt;time&gt;13:00 &lt;tag&gt;IMPORTANT</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the calendar list gets too long, you can scroll individual days to see the tasks that are not currently on screen.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-existing-task-code-edit-code"><a class="link" href="#edit-existing-task-code-edit-code">3.2.2. Edit existing task: <code>edit</code></a></h4>
+<h4 id="add-a-new-module-task-code-addmod-code"><a class="link" href="#add-a-new-module-task-code-addmod-code">3.2.2. Add a new Module Task: <code>addmod</code></a></h4>
 <div class="paragraph">
-<p>Edit one or multiple fields of an existing task. <code>INDEX</code> should be a positive integer.</p>
+<p>Adds a new <code>ModuleTask</code> to the calendar. <code>ModuleTask</code> are the same as <code>ToDoTask</code> except it doesn&#8217;t need a
+deadline and it would be automatically added to each week. <code>ModuleTask</code> is not affected by the command <code>clearweek</code>.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>edit  INDEX [&lt;title&gt;TITLE] [&lt;day&gt;DAY] [&lt;desc&gt;DESCRIPTION] [&lt;deadline&gt;DEADLINE] [&lt;time&gt;TIME] [&lt;tag&gt;TAG]</code><br>
+<p>Format: <code>addmod &lt;title&gt;TITLE &lt;day&gt;DAY &lt;desc&gt;DESCRIPTION &lt;time&gt;TIME [&lt;tag&gt;TAG]</code><br>
+e.g. <code>addmod &lt;title&gt;CS2109 Lecture &lt;day&gt;tuesday &lt;desc&gt;Submit code through LumiNUS &lt;time&gt;13:00</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-existing-task-code-edit-code"><a class="link" href="#edit-existing-task-code-edit-code">3.2.3. Edit existing task: <code>edit</code></a></h4>
+<div class="paragraph">
+<p>Edit one or multiple fields of an existing task. <code>INDEX</code> should be a positive integer and a task with the number <code>INDEX</code>
+should already exist on the current week&#8217;s calendar. Editing the deadline is only available for <code>ToDoTask</code>.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit  INDEX &lt;title&gt;TITLE &lt;day&gt;DAY &lt;desc&gt;DESCRIPTION &lt;deadline&gt;DEADLINE &lt;time&gt;TIME &lt;tag&gt;TAG</code><br>
 e.g. <code>1 &lt;title&gt;CS2108 Assignment &lt;day&gt;friday</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-existing-task-code-delete-code"><a class="link" href="#delete-existing-task-code-delete-code">3.2.3. Delete existing task: <code>delete</code></a></h4>
+<h4 id="delete-existing-task-code-delete-code"><a class="link" href="#delete-existing-task-code-delete-code">3.2.4. Delete existing task: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Delete an exisiting task.</p>
+<p>Delete an existing task. <code>INDEX</code> should be a positive integer and a task with the number <code>INDEX</code>
+should already exist on the current week&#8217;s calendar.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>delete INDEX</code><br>
@@ -197,11 +227,17 @@ e.g.   <code>delete 1</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sort-tasks-code-sort-code"><a class="link" href="#sort-tasks-code-sort-code">3.2.4. Sort tasks: <code>sort</code></a></h4>
+<h4 id="sort-tasks-code-sort-code"><a class="link" href="#sort-tasks-code-sort-code">3.2.5. Sort tasks: <code>sort</code></a></h4>
 <div class="paragraph">
-<p>Change the order of the tasks. Use <code>sort timeadded</code> to sort the tasks according to when the Task was added to the
-calendar and use <code>sort deadline</code> to sort the task according to <code>TaskDeadline</code> with the <code>Task</code> with the earliest
-deadline to be listed first. The default sorting method is by time added.</p>
+<p>Sort the tasks according to the specified <code>SORT_TYPE</code>.
+There are three <code>SORT_TYPE</code>:<br>
+- <code>sort time</code> will sort the tasks according to the their time in ascending order<br>
+- <code>sort deadline</code> will sort the tasks according to their deadline in ascending order<br>
+- <code>sort title</code> will sort the tasks according to their title in ascending alphabetical order<br></p>
+</div>
+<div class="paragraph">
+<p>When the application is launched for the first time, the tasks are sorted according to <code>time</code>. Subsequently, it will
+use the sorting type that is last used in the previous session.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>sort  SORT_TYPE</code><br>
@@ -209,53 +245,31 @@ e.g. <code>sort deadline</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="change-week-code-next-code-and-code-previous-code"><a class="link" href="#change-week-code-next-code-and-code-previous-code">3.2.5. Change week: <code>next</code> and <code>previous</code></a></h4>
+<h4 id="change-week-code-go-code"><a class="link" href="#change-week-code-go-code">3.2.6. Change week: <code>go</code></a></h4>
 <div class="paragraph">
-<p>Go to either the <code>next</code> or <code>previous</code> week.</p>
+<p>Go to the specified week <code>WEEK_NUMBER</code>. The <code>WEEK_NUMBER</code> must between 0 to 14 inclusive.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>next</code> or <code>previous</code></p>
+<p>Format: <code>go WEEK_NUMBER</code>
+e.g. <code>go 2</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-module-code-addmod-code"><a class="link" href="#add-module-code-addmod-code">3.2.6. Add module: <code>addmod</code></a></h4>
+<h4 id="clear-week-data-code-clearweek-code"><a class="link" href="#clear-week-data-code-clearweek-code">3.2.7. Clear week data: <code>clearweek</code></a></h4>
 <div class="paragraph">
-<p>Add module with the specified <code>MODULE_CODE</code> to the timetable. After entering the command, user will be prompted to input
-additional information about its lecture, tutorial, recitation, and lab slots.</p>
+<p>Delete all <code>ToDoTask</code> of the current week.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>addmod MODULE_CODE</code><br>
-e.g. <code>addmod CS2103</code></p>
+<p>Format: <code>clearweek</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-module-code-editmod-code"><a class="link" href="#edit-module-code-editmod-code">3.2.7. Edit module: <code>editmod</code></a></h4>
+<h4 id="clear-all-data-code-clear-code"><a class="link" href="#clear-all-data-code-clear-code">3.2.8. Clear all data: <code>clear</code></a></h4>
 <div class="paragraph">
-<p>Update an existing module. After entering the command, user will be prompted to input additional information depending
-on the <code>TYPE</code>.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>editmod  MODULE_CODE TYPE</code>
-e.g. <code>editmod CS2103 lecture</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="delete-module-from-timetable-code-deletemod-code"><a class="link" href="#delete-module-from-timetable-code-deletemod-code">3.2.8. Delete module from timetable: <code>deletemod</code></a></h4>
-<div class="paragraph">
-<p>Delete an existing module.</p>
+<p>Delete all all <code>ToDoTask</code> and <code>ModuleTask</code> from all weeks.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>deletemod MODULE_CODE</code><br>
-e.g. <code>deletemod CS2103</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="clear-data-code-clear-code"><a class="link" href="#clear-data-code-clear-code">3.2.9. Clear data: <code>clear</code></a></h4>
-<div class="paragraph">
-<p>Delete all information of the tasks and modules of the current week (the week that is currently displayed).</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>reset</code></p>
+<p>Format: <code>clear</code></p>
 </div>
 </div>
 </div>
@@ -707,4 +721,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 13:38:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 14:33:48 UTC</div></div></div></body></html>
