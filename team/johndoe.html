@@ -152,35 +152,91 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">[Proposed] Undo/Redo feature</a></h3>
+<h3 id="quiz-feature"><a class="link" href="#quiz-feature">Quiz feature</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">Proposed Implementation</a></h4>
+<h4 id="create-question-feature"><a class="link" href="#create-question-feature">Create question feature</a></h4>
+<div class="sect4">
+<h5 id="implementation"><a class="link" href="#implementation">Implementation</a></h5>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
+<p>To use this feature, the user will need to switch to the quiz mode and add the question they want with
+several requirements on the syntax stated in the UserGuide.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario on how to add a question properly and the mechanism that behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application and switch to the <strong>quiz</strong> mode by executing <code>switch quiz</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code><strong>add &lt;qns&gt;</strong> <em>What is always coming, but never arrives?</em> <strong>&lt;ans&gt;</strong> <em>Today</em> <strong>&lt;cat&gt;</strong> <em>CS2131</em> <strong>&lt;type&gt;</strong> <em>high</em></code>
+command to add a question with the question name: <em>What is always coming, but never arrives?</em>, answer: <em>Tomorrow</em>, category: CS2131 and type: <em>high</em> in the quiz book.
+The <code>add</code> command calls <code>Model#addQuestion()</code>, causing the modified state of the quiz book, after the command executes, to be saved in the <code>quizBookStateList</code> and shown in the UI.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. If the user realized that they have typed the wrong answer for a particular question, then the user can executes
+<code><strong>edit CS2131, 1 &lt;ans&gt;</strong> <em>Tomorrow</em></code> command to replace the previous answer with the new answer with the given category and index prepend behind. The <code>edit</code> command calls <code>Model#setQuestion()</code>,
+causing the modified state of the quiz book, after the command executes, to be saved in the <code>quizBookStateList</code> and updated in the UI.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. [Addtional] The user can execute <code><strong>comment 1 &lt;val&gt;</strong> <em>The explanation is in pg 194 textbook</em></code> if he/she now decide to add a comment or explanation of a quiz question at index 1.
+The <code>comment</code> command calls <code>Model#setQuestion()</code> to parse in an additional parameter of comment into the entity of the question. It will then be saved in the
+<code>quizBookStateList</code> and shown in the UI.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Users can also utilize the undo/redo command when they realize that they have execute a command that they shouldn&#8217;t do (Will be explained in [3.5.2]).
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes the basic question creation process:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/QuizCreationActivityDiagram.png" alt="QuizCreationActivityDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p><br></p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h4>
+<div class="sect4">
+<h5 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h5>
+<div class="paragraph">
+<p>The undo/redo mechanism is facilitated by <code>VersionedQuizBook</code>.
+It extends <code>QuizBook</code> with an undo/redo history, stored internally as an <code>quizBookStateList</code> and <code>currentStatePointer</code>.
 Additionally, it implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
+<p><code>VersionedQuizBook#commit()</code>&#8201;&#8212;&#8201;Saves the current quiz book state in its history.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
+<p><code>VersionedQuizBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous quiz book state from its history.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
+<p><code>VersionedQuizBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone quiz book state from its history.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
+<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitQuizBook()</code>, <code>Model#undoQuizBook()</code> and <code>Model#redoQuizBook()</code> respectively.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedQuizBook</code> will be initialized with the initial quiz book state, and the <code>currentStatePointer</code> pointing to that single quiz book state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -188,7 +244,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
+<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the quiz book. The <code>delete</code> command calls <code>Model#commitQuizBook()</code>, causing the modified state of the quiz book after the <code>delete 5</code> command executes to be saved in the <code>quizBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted quiz book state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -196,7 +252,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
+<p>Step 3. The user executes <code>comment 1 &lt;val&gt; NewComment</code> to add a new person. The <code>add</code> command also calls <code>Model#commitQuizBook()</code>, causing another modified quiz book state to be saved into the <code>quizBookStateList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -210,13 +266,13 @@ Additionally, it implements the following operations:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
+If a command fails its execution, it will not call <code>Model#commitQuizBook()</code>, so the quiz book state will not be saved into the <code>quizBookStateList</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
+<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoQuizBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous quiz book state, and restores the quiz book to that state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -230,7 +286,7 @@ If a command fails its execution, it will not call <code>Model#commitAddressBook
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
+If the <code>currentStatePointer</code> is at index 0, pointing to the initial quiz book state, then there are no previous quiz book states to restore. The <code>undo</code> command uses <code>Model#canUndoQuizBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
 </td>
 </tr>
 </table>
@@ -256,7 +312,7 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 </table>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoQuizBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the quiz book to that state.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -265,13 +321,13 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size() - 1</code>, pointing to the latest quiz book state, then there are no undone quiz book states to restore. The <code>redo</code> command uses <code>Model#canRedoQuizBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
+<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the quiz book, such as <code>list</code>, will usually not call <code>Model#commitQuizBook()</code>, <code>Model#undoQuizBook()</code> or <code>Model#redoQuizBook()</code>. Thus, the <code>quizBookStateList</code> remains unchanged.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -279,7 +335,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitQuizBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>quizBookStateList</code>, all quiz book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -295,14 +351,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h6>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
+<p><strong>Alternative 1 (current choice):</strong> Saves the entire quiz book.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -330,19 +386,19 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </ul>
 </div>
 </div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<div class="sect5">
+<h6 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h6>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of quiz book states.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
+<p>Pros: Easy for new developers to understand.</p>
 </li>
 <li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
+<p>Cons: May suffer from performance issues on the memory (When a new command is executed, we must remember to update the list from <code>VersionedQuizBook</code>.)</p>
 </li>
 </ul>
 </div>
@@ -365,6 +421,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
 <div class="paragraph">
@@ -381,4 +438,4 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 14:33:48 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 13:59:11 UTC</div></div></div></body></html>
