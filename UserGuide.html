@@ -64,21 +64,17 @@
 </div>
 </li>
 <li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will show a list of commands which <em>Modulo</em> supports.</p>
-</li>
-<li>
-<p>Some example commands you can try:</p>
+<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add CS2100 Assignment 1 t\21 August 2019 #High-Priority</code> : adds a task with description <code>CS2100 Assignment 1</code> to the <em>Modulo</em>.</p>
+<p><code>add &lt;title&gt;CS2109 Assignment &lt;day&gt;tuesday &lt;desc&gt;Submit code through LumiNUS &lt;deadline&gt;21-10-2019 &lt;time&gt;13:00</code>: adds a to-do task to <em>Modulo</em></p>
 </li>
 <li>
 <p><code>add CS2103 1920S1</code>: adds module <code>CS2103</code> to academic year and semester <code>1920S1</code></p>
 </li>
 <li>
-<p><code>add [qns] <em>What can one catch that is not thrown?</em> [type] <em>normal</em> [ans] <em>A cold</em> [cat] CS2131</code>: adds a new quiz question to category <code>CS2131</code></p>
+<p><code>add &lt;qns&gt; What can one catch that is not thrown? &lt;type&gt; normal &lt;ans&gt; A cold &lt;cat&gt; CS2131</code>: adds a new quiz question to category <code>CS2131</code></p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -104,16 +100,16 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add &lt;n&gt;NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add &lt;n&gt;John Doe</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>&lt;n&gt;NAME [&lt;t&gt;TAG]</code> can be used as <code>&lt;n&gt;John Doe &lt;t&gt;friend</code> or as <code>&lt;n&gt;John Doe</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[&lt;t&gt;TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>&lt;t&gt;friend</code>, <code>&lt;t&gt;friend &lt;t&gt;family</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters can be in any order e.g. if the command specifies <code>&lt;n&gt;NAME &lt;p&gt;PHONE_NUMBER</code>, <code>&lt;p&gt;PHONE_NUMBER &lt;n&gt;NAME</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
@@ -139,8 +135,11 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect3">
 <h4 id="switch-to-another-feature-s-tab"><a class="link" href="#switch-to-another-feature-s-tab">3.1.3. Switch to another feature’s tab</a></h4>
 <div class="paragraph">
+<p>There are 4 features in <em>Modulo</em>: Calendar, Cap (i.e. Modules), Quiz and Finance.<br></p>
+</div>
+<div class="paragraph">
 <p>Format: <code>switch FEATURE_NAME</code>
-Example: <code>switch module</code></p>
+Example: <code>switch quiz</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -658,10 +657,13 @@ Example: showAnswer no<br>
 <div class="paragraph">
 <p>If dates are to be specified, only dates of format <code>DD-MM-YYYY</code> will be recognised.</p>
 </div>
+<div class="paragraph">
+<p>Note that category names should be without whitespaces (e.g. <code>catFood</code>, <strong>not</strong> <code>cat food</code>).</p>
+</div>
 <div class="sect3">
 <h4 id="add-an-expenditure-code-spend-code"><a class="link" href="#add-an-expenditure-code-spend-code">3.5.1. Add an expenditure: <code>spend</code></a></h4>
 <div class="paragraph">
-<p>Record down an entry of spending. By default, the date of spending will be set to the day the entry was added. Otherwise, this can be specified through an optional parameter. Other details regarding the expenditure can also be included.</p>
+<p>Record down an entry of spending with relevant information associated with it. Place of spending should also be specified.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code><strong>spend</strong> &lt;amt&gt;AMOUNT &lt;day&gt;TRANSACTION_DATE &lt;item&gt;DESCRIPTION &lt;met&gt;TRANSACTION_METHOD &lt;place&gt;PLACE [&lt;cat&gt;CATEGORY]&#8230;&#8203;</code><br>
@@ -671,7 +673,7 @@ e.g. <code>spend &lt;amt&gt;2.80 &lt;day&gt;15-10-2019 &lt;item&gt;Yong Tau Foo 
 <div class="sect3">
 <h4 id="add-an-income-code-income-code"><a class="link" href="#add-an-income-code-income-code">3.5.2. Add an income: <code>income</code></a></h4>
 <div class="paragraph">
-<p>Record down an entry of incoming money. Source of income can also be specified.</p>
+<p>Record down an entry of incoming money. Source of income should be specified.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code><strong>income</strong> &lt;amt&gt;AMOUNT &lt;day&gt;TRANSACTION_DATE &lt;item&gt;DESCRIPTION &lt;met&gt;TRANSACTION_METHOD &lt;from&gt;SOURCE_OF_INCOME [&lt;cat&gt;CATEGORY]&#8230;&#8203;</code><br>
@@ -679,107 +681,108 @@ e.g. <code>income &lt;amt&gt;300 &lt;day&gt;09-08-2019 &lt;item&gt;GST Voucher &
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-category-code-add-cat-code-to-be-implemented"><a class="link" href="#add-category-code-add-cat-code-to-be-implemented">3.5.3. Add category: <code>add cat</code> [To be implemented]</a></h4>
+<h4 id="add-an-entry-of-borrowed-money-code-borrow-code"><a class="link" href="#add-an-entry-of-borrowed-money-code-borrow-code">3.5.3. Add an entry of borrowed money: <code>borrow</code></a></h4>
 <div class="paragraph">
-<p>Add a new category to list of exisiting categories. Note that category name is not case-sensitive.</p>
+<p>Record down an entry of money borrowed from someone but not yet repaid.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>add cat</strong> NEW_CATEGORY</code><br>
-e.g. <code>add cat Hobby</code></p>
+<p>Format: <code><strong>borrow</strong> &lt;amt&gt;AMOUNT &lt;day&gt;DATE_BORROWED &lt;item&gt;DESCRIPTION &lt;met&gt;TRANSACTION_METHOD &lt;from&gt;PERSON_BORROWED_FROM [&lt;cat&gt;CATEGORY]&#8230;&#8203;</code><br></p>
+</div>
+<div class="paragraph">
+<p>e.g. <code>borrow &lt;amt&gt;2 &lt;day&gt;09-08-2019 &lt;item&gt;Dilys egg tarts &lt;met&gt;Cash &lt;from&gt;Classmate</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-an-entry-of-borrowed-money-code-borrow-code"><a class="link" href="#add-an-entry-of-borrowed-money-code-borrow-code">3.5.4. Add an entry of borrowed money: <code>borrow</code></a></h4>
+<h4 id="add-an-entry-of-lent-money-code-lend-code"><a class="link" href="#add-an-entry-of-lent-money-code-lend-code">3.5.4. Add an entry of lent money: <code>lend</code></a></h4>
 <div class="paragraph">
-<p>Record down an entry of money borrowed from someone but not yet repaid. By default, the date the money was borrowed is set to the day the entry was recorded.</p>
+<p>Record down an entry of money lent to someone but not yet repaid.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>borrow</strong> &lt;amt&gt;AMOUNT &lt;day&gt;DATE_BORROWED &lt;item&gt;DESCRIPTION &lt;met&gt;TRANSACTION_METHOD &lt;from&gt;PERSON_BORROWED_FROM &lt;deadline&gt;DATE_TO_RETURN_BY [&lt;cat&gt;CATEGORY]&#8230;&#8203;</code><br>
-e.g. <code>borrow &lt;amt&gt;2 &lt;day&gt;09-08-2019 &lt;item&gt;Dilys egg tarts &lt;met&gt;Cash &lt;from&gt;Classmate &lt;deadline&gt;31-12-2019</code></p>
+<p>Format: <code><strong>lend</strong> &lt;amt&gt;AMOUNT &lt;day&gt;DATE_LENT &lt;item&gt;DESCRIPTION &lt;met&gt;TRANSACTION_METHOD &lt;to&gt;PERSON_LENT_TO [&lt;cat&gt;CATEGORY]&#8230;&#8203;</code><br>
+e.g. `lend &lt;amt&gt;1 &lt;day&gt;08-08-2019 &lt;item&gt;HL Choco milk &lt;met&gt;Cash &lt;to&gt;Brother `</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-an-entry-of-lent-money-code-lend-code"><a class="link" href="#add-an-entry-of-lent-money-code-lend-code">3.5.5. Add an entry of lent money: <code>lend</code></a></h4>
+<h4 id="mark-a-borrow-or-lend-entry-as-repaid-code-repaid-code"><a class="link" href="#mark-a-borrow-or-lend-entry-as-repaid-code-repaid-code">3.5.5. Mark a Borrow or Lend entry as repaid: <code>repaid</code></a></h4>
 <div class="paragraph">
-<p>Record down an entry of money lent to someone.</p>
+<p>Indicate that borrowed money or money lent has been returned. Note that index of log entry in list has to be of type 'borrow' or 'lend' to be successfully marked as repaid, all other log entries (i.e. 'spend', 'income') will be considered invalid.<br>
+Once the log entry has been marked as repaid, it cannot be undone.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>lend</strong>  &lt;amt&gt;AMOUNT &lt;day&gt;DATE_LENT &lt;item&gt;DESCRIPTION &lt;met&gt;TRANSACTION_METHOD &lt;to&gt;PERSON_LENT_TO &lt;deadline&gt;DATE_TO_REMIND [&lt;cat&gt;CATEGORY]&#8230;&#8203;</code><br>
-e.g. <code>lend &lt;amt&gt;1 &lt;day&gt;08-08-2019 &lt;item&gt;HL Choco milk &lt;met&gt;Cash &lt;to&gt;Brother &lt;deadline&gt;12-12-2019</code></p>
+<p>Format: <code><strong>repaid</strong> INDEX</code><br>
+e.g. <code>repaid 3</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-out-finances-code-list-code-to-be-implemented"><a class="link" href="#list-out-finances-code-list-code-to-be-implemented">3.5.6. List out finances: <code>list</code> [To be implemented]</a></h4>
+<h4 id="list-out-finances-code-list-code"><a class="link" href="#list-out-finances-code-list-code">3.5.6. List out finances: <code>list</code></a></h4>
 <div class="paragraph">
-<p>List out all entries in recorded down. By default, all entries will be ordered chronologically, according to the day the entry is linked to (e.g. the day of spending etc). Entries are indexed chronologically as well.</p>
+<p>List out all entries in recorded down. All entries will be ordered chronologically, with the latest entry at the top (i.e. indexed 1).</p>
 </div>
 <div class="paragraph">
-<p>To sort or filter, and do more advance searches through the list, additional parameters can be specified.</p>
-</div>
-<div class="paragraph">
-<p>Attributes that can be <strong>sorted by</strong> are: <code>day</code>, <code>amt</code><br>
-Attributes that can <strong>filtered by</strong> are: <code>spend</code>, <code>income</code>, <code>borrow</code>, <code>lend</code></p>
-</div>
-<div class="paragraph">
-<p>Format: <code><strong>list</strong> [&lt;sort&gt;SORT_TYPE(s)] [&lt;filter&gt;FILTER_TYPE(s)]</code>[&lt;find&gt;KEYWORD(S)] [&lt;cat&gt; CATEGORY(s)]<br>
-e.g. <code>list &lt;filter&gt;spend &lt;cat&gt;food</code></p>
+<p>Format: <code><strong>list</strong></code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-out-categories-to-be-implemented"><a class="link" href="#list-out-categories-to-be-implemented">3.5.7. List out categories [To be implemented]</a></h4>
+<h4 id="edit-an-entry-code-edit-code"><a class="link" href="#edit-an-entry-code-edit-code">3.5.7. Edit an entry: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>List out available categories.</p>
+<p>Edit an entry previously entered by index of entry in listed listed out by <code>list</code>. Index provided should be valid, within range of the list and positive. There is not need to re-enter all details of the log entry to edit it - just specify the field to be edited. Any irrelevant fields to the log entry (e.g. 'Borrow' entries do not have a <code>&lt;place&gt;</code> field) will be ignored.<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>list cat</strong></code></p>
+<p>Note that the newly-entered information will overwrite the details at the attribute. For example, if there were categories <code>food</code> and <code>hobby</code> linked to the entry at index 5 of the list, command <code>edit 5 &lt;cat&gt;pet</code> will delete the previous two categories and replace them with a single category <code>pet.</code><br></p>
+</div>
+<div class="paragraph">
+<p>Repaid status and date repaid for 'Borrow' and 'Lend' entries cannot be edited.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>edit</strong> INDEX [&lt;amt&gt;AMOUNT] [&lt;day&gt;DAY] [&lt;item&gt;DESCRIPTION] [&lt;met&gt;TRANSACTION_METHOD] [&lt;cat&gt;CATEGORY ]</code><br>
+* Additional field available for 'Spend' entries: <code>[&lt;place&gt;PLACE]</code><br>
+* Additional field available for 'Income' and 'Borrow' entries: <code>[&lt;from&gt;SOURCE/PERSON_BORROWED_FROM]</code><br>
+* Additonal field available for 'Lend' entries: <code>[&lt;to&gt;PERSON_LENT_TO]</code><br>
+e.g. <code>edit 1 &lt;day&gt;12-02-2019 &lt;cat&gt;Gift</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-an-entry-code-edit-code-to-be-implemented"><a class="link" href="#edit-an-entry-code-edit-code-to-be-implemented">3.5.8. Edit an entry: <code>edit</code> [To be implemented]</a></h4>
+<h4 id="delete-entry-entries-code-delete-code"><a class="link" href="#delete-entry-entries-code-delete-code">3.5.8. Delete entry/entries: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Edit an entry previously entered by index of entry in listed listed out by <code>list</code>. Note that the newly-entered information will overwrite the details at the attribute. For example, if there were categories <code>food</code> and <code>hobby</code> linked to the entry at index 5 of the list, command <code>edit 5 cat\pet</code> will delete the previous two categories and replace them with a single category <code>pet.</code></p>
+<p>Delete an entry by its index in the list.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>edit</strong> INDEX [amt\NEW_AMOUNT] [item\NEW_DESCRIPTION] [cat\NEW_CATEGORY] [place\NEW_PLACE] [met\NEW_METHOD]</code><br>
-e.g. <code>edit 2 amt\5.1</code></p>
+<p>Format: <code><strong>delete</strong> INDEX</code><br>
+e.g. <code>delete 5</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-entry-entries-code-delete-code-to-be-implemented"><a class="link" href="#delete-entry-entries-code-delete-code-to-be-implemented">3.5.9. Delete entry/entries: <code>delete</code> [To be implemented]</a></h4>
+<h4 id="search-and-filter-list-of-log-entries-code-find-code"><a class="link" href="#search-and-filter-list-of-log-entries-code-find-code">3.5.9. Search and filter list of log entries: <code>find</code></a></h4>
 <div class="paragraph">
-<p>Delete an entry or multiple entries by their index in the list. Note: the indices do not have to be ordered.</p>
+<p>Search through the list of log entries by keyword. This will search through every entry&#8217;s item description, place (for 'Spend' entries), transaction method, source of income (for 'Income' entries), person borrowed from (for 'Borrow' entries) and person lent to (for 'Lend' entries). Note that only item description will allow for partial word matching (i.e. <code>cook</code> in <code>cookie</code> is valid), the rest will search for a full word match. This search is case-insensitive.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>delete</strong> INDEX [MORE_INDEXES]</code><br>
-e.g. <code>delete 5 4 1</code></p>
+<p>Filter the list of log entries by their log entry type (i.e. spend, income, borrow, lend).</p>
+</div>
+<div class="paragraph">
+<p>At least one field has to be specified.</p>
+</div>
+<div class="paragraph">
+<p>To return to the default full list of log entries, use the <code>list</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>find</strong> [&lt;type&gt; spend/income/borrow/lend] [&lt;keyword&gt; KEYWORD [MORE_KEYWORDS]&#8230;&#8203;] [&lt;cat&gt; CATEGORY_NAME [MORE_CATEGORY_NAMES]&#8230;&#8203;]</code><br>
+E.g. <code>find &lt;type&gt;lend</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="show-summary-of-finances-code-stats-code-to-be-implemented"><a class="link" href="#show-summary-of-finances-code-stats-code-to-be-implemented">3.5.10. Show summary of finances: <code>stats</code> [To be implemented]</a></h4>
+<h4 id="show-statistical-summaries-of-finances-code-stats-code"><a class="link" href="#show-statistical-summaries-of-finances-code-stats-code">3.5.10. Show statistical summaries of finances: <code>stats</code></a></h4>
 <div class="paragraph">
-<p>Shows an overview of the state of expenses and incomes.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code><strong>stats</strong></code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="set-a-budget-code-budget-code-to-be-implemented"><a class="link" href="#set-a-budget-code-budget-code-to-be-implemented">3.5.11. Set a budget: <code>budget</code> [To be implemented]</a></h4>
-<div class="paragraph">
-<p>Set a budget, which by default is for the current month. This can be further specified for a specified time period (i.e. duration) or category of spending. A reminder is shown when this budget is about to be exceeded or has exceeded.</p>
+<p>Shows an overview of the state of expenses and incomes. Log entries can be grouped by a specified attribute with either the frequency or total amount of each group shown in a graphical summary. These attributes include log entries of the same month, type, transaction method, category or place.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>budget</strong> &lt;amt&gt;AMOUNT [&lt;dur&gt;NUM_DAYS] [&lt;cat&gt;CATEGORY]</code><br>
-e.g. <code>budget &lt;amt&gt;30 &lt;dur&gt;7 &lt;cat&gt;food</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="export-summary-of-finances-code-export-code-to-be-implemented"><a class="link" href="#export-summary-of-finances-code-export-code-to-be-implemented">3.5.12. Export summary of finances: <code>export</code> [To be implemented]</a></h4>
-<div class="paragraph">
-<p>Exports a file and saves it to hard disk.</p>
+<p>Both <code>&lt;groupby&gt;</code> and <code>&lt;summarise&gt;</code> have to be present. Any combination of <code>ATTRIBUTE</code> and <code>STAT</code> should work.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>export</strong></code></p>
+<p>Format: <code><strong>stats</strong> &lt;groupby&gt;ATTRIBUTE &lt;summarise&gt;STAT</code><br>
+Possible <code>ATTRIBUTES</code> are: <code>month</code>, <code>entrytype</code>, <code>met</code>, <code>cat</code>, <code>place</code> (only shows <code>Spend</code> entries)<br>
+Possible <code>STATS</code> are: <code>freq</code> and <code>amt</code><br>
+E.g. <code>stats &lt;amt&gt; freq &lt;summarise&gt; entrytype</code></p>
 </div>
 </div>
 </div>
@@ -834,4 +837,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 13:59:11 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 15:21:37 UTC</div></div></div></body></html>

@@ -20,13 +20,12 @@
 <li><a href="#Design-Commons">2.6. Common classes</a></li>
 </ul>
 </li>
-<li><a href="#implementation">3. Implementation</a>
+<li><a href="#Implementation-Configuration">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#proposed-data-encryption">3.1. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.2. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.3. Configuration</a></li>
-<li><a href="#calendar-week-change">3.4. Calendar week change</a></li>
-<li><a href="#quiz-feature">3.5. Quiz feature</a></li>
+<li><a href="#logging">3.1. Logging</a></li>
+<li><a href="#configuration">3.2. Configuration</a></li>
+<li><a href="#calendar-week-change">3.3. Calendar week change</a></li>
+<li><a href="#quiz-feature">3.4. Quiz feature</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -89,7 +88,7 @@ The following class plays an important role at the architecture level:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The rest of the App consists of four components.</p>
+<p>The rest of the App covers the four features in <em>Modulo</em> (Calendar, Cap, Quiz, Finance). All the features have the very similar structure, each consisting of four components.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -127,11 +126,11 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
-<div class="title">Figure 2. Class Diagram of the Logic Component</div>
+<div class="title">Figure 2. Class Diagram of the Logic Component for the feature Cap</div>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code>.</p>
+<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code> when in the feature <em>Module</em>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -152,10 +151,10 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 4. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/ui/calendar/Ui.java"><code>Ui.java</code> (calendar)</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/ui/cap/Ui.java"><code>Ui.java</code> (cap)</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/ui/quiz/Ui.java"><code>Ui.java</code> (quiz)</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/ui/finance/Ui.java"><code>Ui.java</code> (finance)</a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>XYZListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class. Each feature in <em>Modulo</em> (represented generically in the class diagram with <code>XYZ</code>) has their own UI component, largely with the same structure but mainly differing in classes <code>XYZPanel</code> and <code>XYZCard</code> to better present the information associated with the feature.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -180,16 +179,22 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
-<div class="title">Figure 5. Structure of the Logic Component</div>
+<div class="title">Figure 5. Structure of the Logic Component for the feature <em>Cap</em></div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/logic/calendar/Logic.java"><code>Logic.java</code> (calendar)</a>,
+<a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/logic/cap/Logic.java"><code>Logic.java</code> (cap)</a>,
+<a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/logic/quiz/Logic.java"><code>Logic.java</code> (quiz)</a>,
+<a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/logic/finance/Logic.java"><code>Logic.java</code> (finance)</a></p>
+</div>
+<div class="paragraph">
+<p>The example below is in the context of the feature <em>Cap</em> but all four  features in <em>Modulo</em> have the same structure for their Logic components.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>CapLogParser</code> class to parse the user command.</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
@@ -206,13 +211,13 @@ The following class plays an important role at the architecture level:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call, in the context of another feature of the APP, <em>Calendar</em>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/CalendarSequenceDiagram.png" alt="CalendarSequenceDiagram">
 </div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>sort title</code> Command</div>
+<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>sort title</code> Command for the feature Calendar</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -235,8 +240,18 @@ The lifeline for <code>SortCommandParser</code> should end at the destroy marker
 </div>
 <div class="title">Figure 7. Structure of the Cap Model Component</div>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FinanceModelClassDiagram.png" alt="FinanceModelClassDiagram">
+</div>
+<div class="title">Figure 8. Structure of the Model Component for the feature Finance</div>
+</div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/model/calendar/CalendarModel.java"><code>CalendarModel.java</code> (calendar)</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/model/cap/Model.java"><code>Model.java</code> (cap)</a>,
+<a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/model/quiz/Model.java"><code>Model.java</code> (quiz)</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/model/finance/Model.java"><code>Model.java</code> (finance)</a></p>
+</div>
+<div class="paragraph">
+<p>Due to the different nature and behaviour of each feature in <em>Modulo</em> dealing with different kinds of information (e.g. tasks, modules, quiz questions, finance logs etc), <code>Model</code> components between the feature can look very different. However, they do share some similar structures as mentioned below.</p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -247,41 +262,27 @@ The lifeline for <code>SortCommandParser</code> should end at the destroy marker
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Address Book data.</p>
+<p>stores the data for the feature (e.g. Calendar Data, Cap Module Log, Quiz book, Finance Log).</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;{Object used in Feature}&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
-<br>
-<span class="image"><img src="images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram"></span>
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
+<img src="images/FinanceStorageClassDiagram.png" alt="FinanceStorageClassDiagram">
 </div>
-<div class="title">Figure 8. Structure of the Storage Component</div>
+<div class="title">Figure 9. Structure of the Storage Component for the feature <em>Finance</em></div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/storage/calendar/Storage.java"><code>Storage.java</code> (calendar)</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/storage/cap/Storage.java"><code>Storage.java</code> (cap)</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/storage/quiz/Storage.java"><code>Storage.java</code> (quiz)</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/storage/finance/Storage.java"><code>Storage.java</code> (finance)</a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -292,7 +293,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save the Address Book data in json format and read it back.</p>
+<p>can save the data used in each feature in json format and read it back.</p>
 </li>
 </ul>
 </div>
@@ -306,26 +307,20 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect1">
-<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<h2 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.1. [Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.2. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.1. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.3, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3, &#8220;Implementation&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -356,22 +351,22 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.3. Configuration</a></h3>
+<h3 id="configuration"><a class="link" href="#configuration">3.2. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="calendar-week-change"><a class="link" href="#calendar-week-change">3.4. Calendar week change</a></h3>
+<h3 id="calendar-week-change"><a class="link" href="#calendar-week-change">3.3. Calendar week change</a></h3>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.4.1. Implementation</a></h4>
+<h4 id="implementation"><a class="link" href="#implementation">3.3.1. Implementation</a></h4>
 <div class="paragraph">
 <p>Calendar week change is done by removing all tasks from the calendar and adding all the tasks that either have the new
 corresponding week number or is an instance of <code>ModuleTask</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-code-go-week_number-code-executes"><a class="link" href="#aspect-how-code-go-week_number-code-executes">Aspect: How <code>go WEEK_NUMBER</code> executes</a></h5>
 <div class="ulist">
@@ -408,11 +403,11 @@ corresponding week number or is an instance of <code>ModuleTask</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="quiz-feature"><a class="link" href="#quiz-feature">3.5. Quiz feature</a></h3>
+<h3 id="quiz-feature"><a class="link" href="#quiz-feature">3.4. Quiz feature</a></h3>
 <div class="sect3">
-<h4 id="create-question-feature"><a class="link" href="#create-question-feature">3.5.1. Create question feature</a></h4>
+<h4 id="create-question-feature"><a class="link" href="#create-question-feature">3.4.1. Create question feature</a></h4>
 <div class="sect4">
-<h5 id="implementation-3"><a class="link" href="#implementation-3">Implementation</a></h5>
+<h5 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h5>
 <div class="paragraph">
 <p>To use this feature, the user will need to switch to the quiz mode and add the question they want with
 several requirements on the syntax stated in the UserGuide.</p>
@@ -464,9 +459,9 @@ Users can also utilize the undo/redo command when they realize that they have ex
 </div>
 </div>
 <div class="sect3">
-<h4 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.5.2. Undo/Redo feature</a></h4>
+<h4 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.4.2. Undo/Redo feature</a></h4>
 <div class="sect4">
-<h5 id="implementation-4"><a class="link" href="#implementation-4">Implementation</a></h5>
+<h5 id="implementation-3"><a class="link" href="#implementation-3">Implementation</a></h5>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedQuizBook</code>.
 It extends <code>QuizBook</code> with an undo/redo history, stored internally as an <code>quizBookStateList</code> and <code>currentStatePointer</code>.
@@ -987,7 +982,7 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 Expected: Shows the GUI with an initial setup page.</p>
 </li>
 <li>
-<p>User types in <code>bye</code><br>
+<p>User types in <code>exit</code><br>
 Expected: Closes the app and GUI</p>
 </li>
 </ol>
@@ -1002,7 +997,7 @@ Expected: Closes the app and GUI</p>
 Expected: Shows the GUI with the timetable displayed.</p>
 </li>
 <li>
-<p>User types in <code>bye</code><br>
+<p>User types in <code>exit</code><br>
 Expected: Closes the app and GUI</p>
 </li>
 </ol>
@@ -1012,4 +1007,4 @@ Expected: Closes the app and GUI</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 13:59:11 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 15:21:37 UTC</div></div></div></body></html>
