@@ -405,7 +405,7 @@ be added with the following requirements.</p>
 </div>
 <div class="paragraph">
 <p><strong>The details instructions after the keyword of the question:</strong><br>
-- <strong><code>&lt;qns&gt;</code> are required. The word limit is 200. Minimum 3 letters.</strong>
+- <strong><code>&lt;qns&gt;</code> are required. The word limit is 200 and minimum 3 letters.</strong><br>
 - <strong><code>&lt;ans&gt;</code> are required. The word limit is 125.</strong><br>
 - <strong><code>&lt;cat&gt;</code> are required. The word limit is 50.</strong><br>
 - <strong><code>&lt;type&gt;</code> are optional. The format after this command should only be: <code>high</code>, <code>normal</code>, <code>low</code>.</strong><br>
@@ -423,19 +423,11 @@ be added with the following requirements.</p>
 <p><strong>Example 2</strong>:<br>
 <strong>add &lt;qns&gt;</strong> <em>What can one catch that is not thrown?</em> <strong>&lt;type&gt;</strong> <em>normal</em> <strong>&lt;ans&gt;</strong> <em>A cold</em> <strong>&lt;cat&gt;</strong> CS2131</p>
 </div>
-<div class="paragraph">
-<p><strong>Remark (please avoid this):</strong><br>
-<strong>add &lt;qns&gt;</strong> <em>What is &lt;qns&gt;always comi&lt;qns&gt;ng, but never arrives?</em> <strong>&lt;ans&gt;</strong> <em>Tom&lt;ans&gt;orrow</em><br></p>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Modulo will detect the question as:</strong><br>
-<em>What is &lt;qns&gt;always comi&lt;qns&gt;ng, but never arrives?</em><br></p>
-</li>
-<li>
-<p><strong>Modulo will detect the answer as:</strong><br>
- <em>Tom&lt;ans&gt;orrow</em><br>
+<p><strong>Remark (please avoid this):</strong><br>
+<strong>add &lt;qns&gt;</strong> <em>What is &lt;qns&gt;always comi&lt;qns&gt;ng, but never arrives?</em> <strong>&lt;ans&gt;</strong> <em>Tom&lt;ans&gt;orrow</em><br>
 <br></p>
 </li>
 </ul>
@@ -462,15 +454,6 @@ Usage: <strong>[NUMBER]</strong> is the index/row from that category that you wa
 <p>Specify which question you want to edit and modify it from the question list.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>edit [CATEGORY], [NUMBER] &lt;qns&gt;</strong> <em>your_new_question</em> <strong>&lt;ans&gt;</strong> <em>your_new_answer</em> <strong>&lt;cat&gt;</strong> <em>your_new_category</em>
-<strong>&lt;type&gt;</strong> <em>your_new_priority</em> <strong>&lt;tag&gt;</strong> <em>your_tag</em></code><br></p>
-</div>
-<div class="paragraph">
-<p>Usage:<br>
-- <strong>[CATEGORY]</strong> is the category of the question that you want to edit, case-insensitive.<br>
-- <strong>[NUMBER]</strong> is the index/row from that category that you want to edit.<br></p>
-</div>
-<div class="paragraph">
 <p>The details/instructions of the new questions include:<br>
 - <code>&lt;qns&gt;</code> Indicate that the next several phrases will be the name of the question.<br>
 - <code>&lt;ans&gt;</code> Indicate that the next several phrases will be the answer to the question.<br>
@@ -480,24 +463,30 @@ Usage: <strong>[NUMBER]</strong> is the index/row from that category that you wa
 </div>
 <div class="paragraph">
 <p><strong>Note that at least one of the following must be modified and replaced:</strong><br>
-- <strong><code>&lt;qns&gt;</code> word limit is 200.</strong>
+- <strong><code>&lt;qns&gt;</code> word limit is 200.</strong><br>
 - <strong><code>&lt;ans&gt;</code> word limit is 125.</strong><br>
 - <strong><code>&lt;cat&gt;</code> word limit is 50.</strong><br>
 - <strong><code>&lt;type&gt;</code> format after this command should only be: <code>high</code>, <code>normal</code>, <code>low</code>.</strong><br>
 - <strong><code>&lt;tag&gt;</code> are optional. To add numerous tags, please prepend &lt;tag&gt; keyword to differentiate one tag from another.</strong><br></p>
 </div>
 <div class="paragraph">
-<p>Example 1:<br>
-<strong>edit CS2103 1 &lt;qns&gt;</strong> <em>How many mammals are there in the universe?</em> <strong>&lt;type&gt;</strong> low<br></p>
+<p>Format: <code><strong>edit [CATEGORY], [NUMBER] &lt;qns&gt;</strong> <em>your_new_question</em> <strong>&lt;ans&gt;</strong> <em>your_new_answer</em> <strong>&lt;cat&gt;</strong> <em>your_new_category</em>
+<strong>&lt;type&gt;</strong> <em>your_new_priority</em> <strong>&lt;tag&gt;</strong> <em>your_tag</em></code><br></p>
 </div>
 <div class="paragraph">
-<p>Remark (Please avoid this):<br>
-<strong>edit CS2103 1 &lt;qns&gt;</strong> <em>What is &lt;qns&gt;always comi&lt;qns&gt;ng, but never arrives?</em> <strong>&lt;ans&gt;</strong> <em>Tom&lt;ans&gt;orrow</em><br></p>
+<p>Usage:<br>
+- <strong>[CATEGORY]</strong> is the category of the question that you want to edit, case-insensitive.<br>
+- <strong>[NUMBER]</strong> is the index/row from that category that you want to edit.<br></p>
+</div>
+<div class="paragraph">
+<p>Example 1:<br>
+<strong>edit CS2131, 1 &lt;qns&gt;</strong> <em>How many mammals are there in the universe?</em> <strong>&lt;type&gt;</strong> low<br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Modulo will detect the new question as: <em>What is &lt;qns&gt;always comi&lt;qns&gt;ng, but never arrives?</em> and the answer as: <em>Tom&lt;ans&gt;orrow</em><br>
+<p>Remark (Please avoid this):<br>
+<strong>edit CS2131, 1 &lt;qns&gt;</strong> <em>What is &lt;qns&gt;always comi&lt;qns&gt;ng, but never arrives?</em> <strong>&lt;ans&gt;</strong> <em>Tom&lt;ans&gt;orrow</em><br>
 <br></p>
 </li>
 </ul>
@@ -549,16 +538,16 @@ Usage: <strong>[NUMBER]</strong> is the index/row from that category that you wa
 </ul>
 </div>
 <div class="paragraph">
-<p>Example 1 (search for <em>CS2131</em> and <em>lecture</em> keyword from the whole question):<br>
-find &lt;key&gt; CS2131, lecture</p>
+<p>Example 1: find &lt;key&gt; CS2131, lecture<br>
+Explanation: search for <em>CS2131</em> and <em>lecture</em> keyword from the whole question</p>
 </div>
 <div class="paragraph">
-<p>Example 2 (search from the category and answer portion of each question that matches keyword <em>Tomorrow</em>):<br>
-find category, answer &lt;key&gt; Tomorrow</p>
+<p>Example 2: find category, answer &lt;key&gt; Tomorrow<br>
+Explanation: search from the category and answer portion of each question that matches keyword <em>Tomorrow</em></p>
 </div>
 <div class="paragraph">
-<p>Example 3 (search from the answer portion of each question that matches keyword that is similar to <em>Tomrrow</em>):<br>
-find -i answer &lt;key&gt; Tomrrow<br>
+<p>Example 3: find -i answer &lt;key&gt; Tomrrow<br>
+Explanation: search from the answer portion of each question that matches keyword that is similar to <em>Tomrrow</em>
 <br></p>
 </div>
 </div>
@@ -593,7 +582,7 @@ Example: comment 1 &lt;val&gt; The explanation is in pg 194 textbook.<br>
 provide the user the hint of the answer. By default the answer is shown.</p>
 </div>
 <div class="paragraph">
-<p>Format: `showAnswer [yes/no]
+<p>Format: <code>showAnswer [yes/no]</code><br>
 Example: showAnswer no<br>
 <br></p>
 </div>
@@ -837,4 +826,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 15:21:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 15:35:42 UTC</div></div></div></body></html>
