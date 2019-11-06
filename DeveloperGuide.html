@@ -61,7 +61,7 @@
 <div class="content">
 <img src="images/ArchitectureDiagram.png" alt="ArchitectureDiagram">
 </div>
-<div class="title">Figure 1. Architecture Diagram</div>
+<div class="title">Figure 1. Architecture Diagram for a feature</div>
 </div>
 <div class="paragraph">
 <p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
@@ -128,6 +128,10 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="title">Figure 2. Class Diagram of the Logic Component for the feature Cap</div>
 </div>
+<h4 id="rationale-for-having-multiple-code-ui-code-code-logic-code-code-model-code-code-storage-code-classes-in-em-modulo-em" class="discrete">Rationale for having multiple <code>UI</code>, <code>Logic</code>, <code>Model</code>, <code>Storage</code> classes in <em>Modulo</em></h4>
+<div class="paragraph">
+<p>The features in <em>Modulo</em> are quite distinct, and essentially do not share the commands and dalexibility of implementing each feature. The same command word <code>add</code> is now able to be executete the features to form <em>Modulo</em> with less overlaps when coding. Each time the user switches tover the previous feature&#8217;s classes.</p>
+</div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
 <p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code> when in the feature <em>Module</em>.</p>
@@ -136,7 +140,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/ArchitectureSequenceDiagram.png" alt="ArchitectureSequenceDiagram">
 </div>
-<div class="title">Figure 3. Component interactions for <code>delete 1</code> command</div>
+<div class="title">Figure 3. Component interactions for <code>delete 1</code> command in <em>Cap</em> feature</div>
 </div>
 <div class="paragraph">
 <p>The sections below give more details of each component.</p>
@@ -148,7 +152,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram">
 </div>
-<div class="title">Figure 4. Structure of the UI Component</div>
+<div class="title">Figure 4. Structure of the UI Component for each feature</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/ui/calendar/Ui.java"><code>Ui.java</code> (calendar)</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/ui/cap/Ui.java"><code>Ui.java</code> (cap)</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/ui/quiz/Ui.java"><code>Ui.java</code> (quiz)</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/ui/finance/Ui.java"><code>Ui.java</code> (finance)</a></p>
@@ -238,7 +242,7 @@ The lifeline for <code>SortCommandParser</code> should end at the destroy marker
 <div class="content">
 <img src="images/CapModelClassDiagram.png" alt="CapModelClassDiagram">
 </div>
-<div class="title">Figure 7. Structure of the Cap Model Component</div>
+<div class="title">Figure 7. Structure of the Model Component for the feature Cap</div>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -740,7 +744,7 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Value proposition</strong>: manage modules and tasks with more flexibility than a typical mouse/GUI driven app</p>
+<p><strong>Value proposition</strong>: manage modules, tasks, learning (through quizzes) and finances in a single application and with more flexibility than a typical mouse/GUI driven app</p>
 </div>
 </div>
 </div>
@@ -813,6 +817,18 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 <td class="tableblock halign-left valign-top"><p class="tableblock">competitive student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add some questions and answers that I have learnt today</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">read again and attempt them before exam</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student with basic finance literacy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep a record of my finances</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">understand my spending habits</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cash-strapped student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set a budget for the month</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">limit my spending</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -897,6 +913,18 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 <td class="tableblock halign-left valign-top"><p class="tableblock">calendar app user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sync my timetable to my own personal calendar</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">refer to my schedule</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student who often lends money to people</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of the people who have not returned my money</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">chase after them for their unpaid debt or refuse to lend to people who consistently borrow but don&#8217;t return</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student who prefers graphical representation to numbers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see plots and charts summarising my finances over time and in different categories</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">understand the overall status of my finances at a glance and see the trends and changes in my spending habit</p></td>
 </tr>
 </tbody>
 </table>
@@ -1022,4 +1050,4 @@ Expected: Closes the app and GUI</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 14:49:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 15:28:45 UTC</div></div></div></body></html>
