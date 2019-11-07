@@ -196,7 +196,7 @@ should already exist on the current week&#8217;s calendar. Editing the deadline 
 </div>
 <div class="paragraph">
 <p>Format: <code>edit  INDEX &lt;title&gt;TITLE &lt;day&gt;DAY &lt;desc&gt;DESCRIPTION &lt;deadline&gt;DEADLINE &lt;time&gt;TIME &lt;tag&gt;TAG</code><br>
-e.g. <code>1 &lt;title&gt;CS2108 Assignment &lt;day&gt;friday</code></p>
+e.g. <code>edit 1 &lt;title&gt;CS2108 Assignment &lt;day&gt;friday</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -211,7 +211,59 @@ e.g.   <code>delete 1</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sort-tasks-code-sort-code"><a class="link" href="#sort-tasks-code-sort-code">3.2.5. Sort tasks: <code>sort</code></a></h4>
+<h4 id="find-tasks-using-keyword-code-find-code"><a class="link" href="#find-tasks-using-keyword-code-find-code">3.2.5. Find tasks using keyword: <code>find</code></a></h4>
+<div class="paragraph">
+<p>Finds tasks which titles contain any of the given keywords.<br>
+Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>cs2100</code> will match <code>CS2100</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>CS2100 Lab</code> will match <code>Lab CS2100</code></p>
+</li>
+<li>
+<p>Only the title is searched.</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>CS210</code> will not match <code>CS2100</code></p>
+</li>
+<li>
+<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>CS2100 Lab</code> will return <code>CS2100 Tutorial</code>, <code>CS2105 Lab</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find CS2100</code><br>
+Returns <code>cs2100</code> and <code>CS2100 Lab</code></p>
+</li>
+<li>
+<p><code>find lab ger tutorial</code><br>
+Returns any tasks having titles <code>ger</code>, <code>lab</code>, or <code>tutorial</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-tasks-code-list-code"><a class="link" href="#listing-all-tasks-code-list-code">3.2.6. Listing all tasks : <code>list</code></a></h4>
+<div class="paragraph">
+<p>Shows a list of all task in the calendar.<br>
+Format: <code>list</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sort-tasks-code-sort-code"><a class="link" href="#sort-tasks-code-sort-code">3.2.7. Sort tasks: <code>sort</code></a></h4>
 <div class="paragraph">
 <p>Sort the tasks according to the specified <code>SORT_TYPE</code>.
 There are three <code>SORT_TYPE</code>:<br>
@@ -229,7 +281,7 @@ e.g. <code>sort deadline</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="change-week-code-go-code"><a class="link" href="#change-week-code-go-code">3.2.6. Change week: <code>go</code></a></h4>
+<h4 id="change-week-code-go-code"><a class="link" href="#change-week-code-go-code">3.2.8. Change week: <code>go</code></a></h4>
 <div class="paragraph">
 <p>Go to the specified week <code>WEEK_NUMBER</code>. The <code>WEEK_NUMBER</code> must between 0 to 14 inclusive.</p>
 </div>
@@ -239,7 +291,7 @@ e.g. <code>go 2</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="clear-week-data-code-clearweek-code"><a class="link" href="#clear-week-data-code-clearweek-code">3.2.7. Clear week data: <code>clearweek</code></a></h4>
+<h4 id="clear-week-data-code-clearweek-code"><a class="link" href="#clear-week-data-code-clearweek-code">3.2.9. Clear week data: <code>clearweek</code></a></h4>
 <div class="paragraph">
 <p>Delete all <code>ToDoTask</code> of the current week.</p>
 </div>
@@ -248,7 +300,7 @@ e.g. <code>go 2</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="clear-all-data-code-clear-code"><a class="link" href="#clear-all-data-code-clear-code">3.2.8. Clear all data: <code>clear</code></a></h4>
+<h4 id="clear-all-data-code-clear-code"><a class="link" href="#clear-all-data-code-clear-code">3.2.10. Clear all data: <code>clear</code></a></h4>
 <div class="paragraph">
 <p>Delete all all <code>ToDoTask</code> and <code>ModuleTask</code> from all weeks.</p>
 </div>
@@ -832,4 +884,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 04:57:04 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 12:39:06 UTC</div></div></div></body></html>

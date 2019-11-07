@@ -24,7 +24,7 @@
 <ul class="sectlevel2">
 <li><a href="#logging">3.1. Logging</a></li>
 <li><a href="#configuration">3.2. Configuration</a></li>
-<li><a href="#calendar-week-change">3.3. Calendar week change</a></li>
+<li><a href="#calendar">3.3. Calendar</a></li>
 <li><a href="#quiz-feature">3.4. Quiz feature</a></li>
 </ul>
 </li>
@@ -361,18 +361,26 @@ The lifeline for <code>SortCommandParser</code> should end at the destroy marker
 </div>
 </div>
 <div class="sect2">
-<h3 id="calendar-week-change"><a class="link" href="#calendar-week-change">3.3. Calendar week change</a></h3>
+<h3 id="calendar"><a class="link" href="#calendar">3.3. Calendar</a></h3>
 <div class="sect3">
-<h4 id="implementation"><a class="link" href="#implementation">3.3.1. Implementation</a></h4>
+<h4 id="calendar-week-change"><a class="link" href="#calendar-week-change">3.3.1. Calendar week change</a></h4>
+<div class="sect4">
+<h5 id="implementation"><a class="link" href="#implementation">Implementation</a></h5>
+<div class="imageblock">
+<div class="content">
+<img src="images/CalendarActivityDiagram.png" alt="CalendarActivityDiagram">
+</div>
+<div class="title">Figure 10. Activity diagram on calendar week change</div>
+</div>
 <div class="paragraph">
 <p>Calendar week change is done by removing all tasks from the calendar and adding all the tasks that either have the new
 corresponding week number or is an instance of <code>ModuleTask</code>.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-code-go-week_number-code-executes"><a class="link" href="#aspect-how-code-go-week_number-code-executes">Aspect: How <code>go WEEK_NUMBER</code> executes</a></h5>
+<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-how-code-go-week_number-code-executes"><a class="link" href="#aspect-how-code-go-week_number-code-executes">Aspect: How <code>go WEEK_NUMBER</code> executes</a></h6>
 <div class="ulist">
 <ul>
 <li>
@@ -406,12 +414,110 @@ corresponding week number or is an instance of <code>ModuleTask</code>.</p>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="persistent-code-moduletask-code"><a class="link" href="#persistent-code-moduletask-code">3.3.2. Persistent <code>ModuleTask</code></a></h4>
+<div class="sect4">
+<h5 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h5>
+<div class="imageblock">
+<div class="content">
+<img src="images/CalendarModelClassDiagram.png" alt="CalendarModelClassDiagram">
+</div>
+<div class="title">Figure 11. Structure of the Model Component for the feature Calendar</div>
+</div>
+<div class="paragraph">
+<p>The abstract class <code>Task</code> has two subclasses: <code>ToDoTask</code> and <code>ModuleTask</code>. <code>ToDoTask</code> only exists in its corresponding
+week while <code>ModuleTask</code> is persistent. When a <code>ModuleTask</code> is added to any arbitrary week, it would be automatically
+added to all of the other weeks and when a certain week is cleared using the <code>clearweek</code> command, it would not affect
+the <code>ModuleTask</code>. Hence, <code>ModuleTask</code> can only be deleted by using the command <code>clear</code> or deleting each <code>ModuleTask</code>
+manually using <code>delete</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-consideration"><a class="link" href="#design-consideration">Design consideration</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice): </strong> Create separate classes for <code>ToDoTask</code> and <code>ModuleTask</code> that both inherits from
+the abstract class <code>Task</code>. User use different command <code>add</code> and <code>addmod</code> to create the corresponding subclass.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Code looks cleaner. Easier to implement a different UI for each subclass.</p>
+</li>
+<li>
+<p>Cons: More code.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: </strong> Use a non-abstract class <code>Task</code> for both ToDos and Modules and add a boolean field <code>isPersistent</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No need to add new classes.</p>
+</li>
+<li>
+<p>Cons: User needs to input an extra field <code>&lt;persist&gt; [TRUE/FALSE]</code>. It is more difficult to differentiate the
+type of <code>Task</code> when reading the code.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sorting"><a class="link" href="#sorting">3.3.3. Sorting</a></h4>
+<div class="sect4">
+<h5 id="implementation-3"><a class="link" href="#implementation-3">Implementation</a></h5>
+<div class="paragraph">
+<p><code>Task</code> can be sorted according to <code>TaskTitle</code>, <code>TaskDeadline</code>, or <code>TaskTime</code>. Each type of sorting has its own
+comparator implemented in a method that would return a sorted <code>FilteredList&lt;Task&gt;</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-consideration-2"><a class="link" href="#design-consideration-2">Design consideration</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice): </strong>Use an external comparator.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to switch between different sort type.</p>
+</li>
+<li>
+<p>Cons: Need to call the sort method each time the calendar is updated.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: </strong>Set the <code>Task</code> class to implement the <code>Comparable</code> interface.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Need to switch the <code>compareTo()</code> method of each <code>Task</code> each time <code>sort</code> is called.</p>
+</li>
+<li>
+<p>Cons: New/edited task would be automatically placed at the correct order.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="quiz-feature"><a class="link" href="#quiz-feature">3.4. Quiz feature</a></h3>
 <div class="sect3">
 <h4 id="create-question-feature"><a class="link" href="#create-question-feature">3.4.1. Create question feature</a></h4>
 <div class="sect4">
-<h5 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h5>
+<h5 id="implementation-4"><a class="link" href="#implementation-4">Implementation</a></h5>
 <div class="paragraph">
 <p>To use this feature, the user will need to switch to the quiz mode and add the question they want with
 several requirements on the syntax stated in the UserGuide.</p>
@@ -480,7 +586,7 @@ Users can also utilize the undo/redo command when they realize that they have ex
 <div class="sect3">
 <h4 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.4.2. Undo/Redo feature</a></h4>
 <div class="sect4">
-<h5 id="implementation-3"><a class="link" href="#implementation-3">Implementation</a></h5>
+<h5 id="implementation-5"><a class="link" href="#implementation-5">Implementation</a></h5>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedQuizBook</code>.
 It extends <code>QuizBook</code> with an undo/redo history, stored internally as an <code>quizBookStateList</code> and <code>currentStatePointer</code>.
@@ -1050,4 +1156,4 @@ Expected: Closes the app and GUI</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 04:57:04 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 12:39:06 UTC</div></div></div></body></html>
