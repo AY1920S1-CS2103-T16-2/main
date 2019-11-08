@@ -219,8 +219,44 @@ Users can also utilize the undo/redo command when they realize that they have ex
 <img src="../images/QuizCreationActivityDiagram.png" alt="QuizCreationActivityDiagram">
 </div>
 </div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-how-to-add-question"><a class="link" href="#aspect-how-to-add-question">Aspect: How to add question</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Users add question to the last of the list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and fast (Insertion O(1)).</p>
+</li>
+<li>
+<p>Cons: User may not be able to position the question from the list of questions.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Users insert the question to the desired position.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User can order the list as they desired and remember things better.</p>
+</li>
+<li>
+<p>Cons: Not as fast as the insertion at the back of the list from alternative 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p><br></p>
+</div>
 </div>
 </div>
 </div>
@@ -253,7 +289,7 @@ Additionally, it implements the following operations:</p>
 <p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedQuizBook</code> will be initialized with the initial quiz book state, and the <code>currentStatePointer</code> pointing to that single quiz book state.</p>
+<p><strong>Step 1.</strong> The user launches the application for the first time. The <code>VersionedQuizBook</code> will be initialized with the initial quiz book state, and the <code>currentStatePointer</code> pointing to that single quiz book state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -261,7 +297,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the quiz book. The <code>delete</code> command calls <code>Model#commitQuizBook()</code>, causing the modified state of the quiz book after the <code>delete 5</code> command executes to be saved in the <code>quizBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted quiz book state.</p>
+<p><strong>Step 2.</strong> The user executes <code>delete 5</code> command to delete the 5th person in the quiz book. The <code>delete</code> command calls <code>Model#commitQuizBook()</code>, causing the modified state of the quiz book after the <code>delete 5</code> command executes to be saved in the <code>quizBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted quiz book state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -269,7 +305,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>comment 1 &lt;val&gt; NewComment</code> to add a new person. The <code>add</code> command also calls <code>Model#commitQuizBook()</code>, causing another modified quiz book state to be saved into the <code>quizBookStateList</code>.</p>
+<p><strong>Step 3.</strong> The user executes <code>comment 1 &lt;val&gt; NewComment</code> to add a new person. The <code>add</code> command also calls <code>Model#commitQuizBook()</code>, causing another modified quiz book state to be saved into the <code>quizBookStateList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -289,7 +325,7 @@ If a command fails its execution, it will not call <code>Model#commitQuizBook()<
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoQuizBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous quiz book state, and restores the quiz book to that state.</p>
+<p><strong>Step 4.</strong> The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoQuizBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous quiz book state, and restores the quiz book to that state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -344,7 +380,7 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the quiz book, such as <code>list</code>, will usually not call <code>Model#commitQuizBook()</code>, <code>Model#undoQuizBook()</code> or <code>Model#redoQuizBook()</code>. Thus, the <code>quizBookStateList</code> remains unchanged.</p>
+<p><strong>Step 5.</strong> The user then decides to execute the command <code>list</code>. Commands that do not modify the quiz book, such as <code>list</code>, will usually not call <code>Model#commitQuizBook()</code>, <code>Model#undoQuizBook()</code> or <code>Model#redoQuizBook()</code>. Thus, the <code>quizBookStateList</code> remains unchanged.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -352,7 +388,7 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 </div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitQuizBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>quizBookStateList</code>, all quiz book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+<p><strong>Step 6.</strong> The user executes <code>clear</code>, which calls <code>Model#commitQuizBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>quizBookStateList</code>, all quiz book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -369,7 +405,7 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 </div>
 </div>
 <div class="sect4">
-<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+<h5 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h5>
 <div class="sect5">
 <h6 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h6>
 <div class="ulist">
@@ -449,4 +485,4 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 07:07:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 08:35:50 UTC</div></div></div></body></html>

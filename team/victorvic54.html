@@ -33,8 +33,8 @@ the user interacts with it using a CLI, and it has a GUI created with JavaFX.</p
 </li>
 <li>
 <p>Highlights: This enhancement can be extended further if the next developer decides to add a big feature to Modulo.
-It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-Furthermore it will also reduce coupling in our code.</p>
+It required an in-depth analysis of design alternatives. The implementation too was challenging as it required a depth understanding on how to make sure each feature
+care for their own implementation without others interfering it. Furthermore it will also reduce coupling in our code.</p>
 </li>
 </ul>
 </div>
@@ -96,30 +96,7 @@ It required an in-depth analysis of design alternatives. The implementation too 
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Managed releases <code>v1.1</code> - <code>v1.2.1</code> (3 releases) on GitHub</p>
 </li>
 </ul>
 </div>
@@ -129,16 +106,10 @@ It required an in-depth analysis of design alternatives. The implementation too 
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/104">#104</a></p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>Parts of the switch feature I added was adopted by several other class mates (<a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/63/files">63</a>)</p>
 </li>
 </ul>
 </div>
@@ -148,10 +119,13 @@ It required an in-depth analysis of design alternatives. The implementation too 
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
+<p>Setting up the GitHub, Travis, Coveralls.</p>
 </li>
 <li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Integrated a new Github plugin (Travis and Coveralls) to the team repo</p>
+</li>
+<li>
+<p>Maintaining the issue tracker every week</p>
 </li>
 </ul>
 </div>
@@ -160,9 +134,6 @@ It required an in-depth analysis of design alternatives. The implementation too 
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -179,6 +150,268 @@ It required an in-depth analysis of design alternatives. The implementation too 
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="quiz"><a class="link" href="#quiz">Quiz</a></h3>
+<div class="paragraph">
+<p>To enter the Quiz section please enter the command: <code>switch quiz</code><br></p>
+</div>
+<div class="paragraph">
+<p><strong>Note on pre-populated data:</strong> The pre-populated data are used to help you to get the picture of how
+quiz show the data. You can use the command <code>clear</code> or go to <code>3.4.12</code> section to clear the given data.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note on UI:</strong> You can adjust the size of the split pane by sliding the window separator
+between the two windows to fully see the whole question. Go to <code>3.4.6</code> section to fully see the
+question properly.</p>
+</div>
+<div class="sect3">
+<h4 id="add-the-details-of-the-quiz-question"><a class="link" href="#add-the-details-of-the-quiz-question">Add the details of the quiz question:</a></h4>
+<div class="paragraph">
+<p>Users can add new quiz questions with the details in it. The details of the question should
+be added with the following requirements.</p>
+</div>
+<div class="paragraph">
+<p>The keyword instructions of the question include:<br>
+- <code>&lt;qns&gt;</code> Indicate that the next several phrases will be the name of the question.<br>
+- <code>&lt;ans&gt;</code> Indicate that the next several phrases will be the answer to the question.<br>
+- <code>&lt;cat&gt;</code> Indicate that the next several phrases will be the category of the question.<br>
+- <code>&lt;type&gt;</code> Indicate that the next several phrases will be the priority/importance level of the question.<br>
+- <code>&lt;tag&gt;</code> Indicate that the next several phrases will be the customized tag of the question.</p>
+</div>
+<div class="paragraph">
+<p><strong>The details instructions after the keyword of the question:</strong><br>
+- <strong><code>&lt;qns&gt;</code> are required. The word limit is 200 and minimum 3 letters.</strong><br>
+- <strong><code>&lt;ans&gt;</code> are required. The word limit is 125.</strong><br>
+- <strong><code>&lt;cat&gt;</code> are required. The word limit is 50.</strong><br>
+- <strong><code>&lt;type&gt;</code> are required. The format after this command should only be: <code>high</code>, <code>normal</code>, <code>low</code>.</strong><br>
+- <strong><code>&lt;tag&gt;</code> are optional. To add numerous tags, please prepend &lt;tag&gt; keyword to differentiate one tag from another.</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Note: Two questions are the same if they have the same <strong>&lt;qns&gt;</strong>, <strong>&lt;ans&gt;</strong> and <strong>&lt;cat&gt;</strong><br>
+Format: <code>add <strong>&lt;qns&gt;</strong> <em>your_question</em> <strong>&lt;ans&gt;</strong> <em>your_answer</em> <strong>&lt;cat&gt;</strong> <em>your_category</em> <strong>&lt;type&gt;</strong> <em>your_priority</em>
+<strong>&lt;tag&gt;</strong> <em>your_tag</em></code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example 1</strong>:<br>
+<strong>add &lt;qns&gt;</strong> <em>What is always coming, but never arrives?</em> <strong>&lt;ans&gt;</strong> <em>Tomorrow</em> <strong>&lt;cat&gt;</strong> <em>CS2131</em> <strong>&lt;type&gt;</strong> <em>high</em> <strong>&lt;tag&gt;</strong> <em>lecture</em> <strong>&lt;tag&gt;</strong> <em>tutorial</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example 2</strong>:<br>
+<strong>add &lt;qns&gt;</strong> <em>What can one catch that is not thrown?</em> <strong>&lt;type&gt;</strong> <em>normal</em> <strong>&lt;ans&gt;</strong> <em>A cold</em> <strong>&lt;cat&gt;</strong> CS2131</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Remark (please avoid this):</strong><br>
+<strong>add &lt;qns&gt;</strong> <em>What is &lt;qns&gt;always comi&lt;qns&gt;ng, but never arrives?</em> <strong>&lt;ans&gt;</strong> <em>Tom&lt;ans&gt;orrow</em><br>
+<br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-question-from-record"><a class="link" href="#delete-question-from-record">Delete question from record:</a></h4>
+<div class="paragraph">
+<p>Delete a specific quiz question from the group questions.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete <strong>[NUMBER]</strong></code><br>
+Usage: <strong>[NUMBER]</strong> is the index/row from that category that you want to delete.<br></p>
+</div>
+<div class="paragraph">
+<p>Example 1:<br>
+<strong>delete</strong> 1<br>
+<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-details-of-a-question-code-edit-code"><a class="link" href="#edit-details-of-a-question-code-edit-code">Edit details of a question : <code>edit</code></a></h4>
+<div class="paragraph">
+<p>Specify which question you want to edit and modify it from the question list.</p>
+</div>
+<div class="paragraph">
+<p>The details/instructions of the new questions include:<br>
+- <code>&lt;qns&gt;</code> Indicate that the next several phrases will be the name of the question.<br>
+- <code>&lt;ans&gt;</code> Indicate that the next several phrases will be the answer to the question.<br>
+- <code>&lt;cat&gt;</code> Indicate that the next several phrases will be the category of the question.<br>
+- <code>&lt;type&gt;</code> Indicate that the next several phrases will be the priority/importance level of the question.<br>
+- <code>&lt;tag&gt;</code> Indicate that the next several phrases will be the customized tag of the question.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note that at least one of the following must be modified and replaced:</strong><br>
+- <strong><code>&lt;qns&gt;</code> word limit is 200. No minimum letter.</strong><br>
+- <strong><code>&lt;ans&gt;</code> word limit is 125. No minimum letter.</strong><br>
+- <strong><code>&lt;cat&gt;</code> word limit is 50.</strong><br>
+- <strong><code>&lt;type&gt;</code> format after this command should only be: <code>high</code>, <code>normal</code>, <code>low</code>.</strong><br>
+- <strong><code>&lt;tag&gt;</code> are optional. To add numerous tags, please prepend &lt;tag&gt; keyword to differentiate one tag from another.</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>edit [NUMBER] &lt;qns&gt;</strong> <em>your_new_question</em> <strong>&lt;ans&gt;</strong> <em>your_new_answer</em> <strong>&lt;cat&gt;</strong> <em>your_new_category</em>
+<strong>&lt;type&gt;</strong> <em>your_new_priority</em> <strong>&lt;tag&gt;</strong> <em>your_tag</em></code><br></p>
+</div>
+<div class="paragraph">
+<p>Usage: <strong>[NUMBER]</strong> is the index/row from that category that you want to edit.<br></p>
+</div>
+<div class="paragraph">
+<p>Example 1:<br>
+<strong>edit 1 &lt;qns&gt;</strong> <em>How many mammals are there in the universe?</em> <strong>&lt;type&gt;</strong> low<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Remark (Please avoid this):<br>
+<strong>edit 1 &lt;qns&gt;</strong> <em>What is &lt;qns&gt;always comi&lt;qns&gt;ng, but never arrives?</em> <strong>&lt;ans&gt;</strong> <em>Tom&lt;ans&gt;orrow</em><br>
+<br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="list-all-the-questions"><a class="link" href="#list-all-the-questions">List all the questions</a></h4>
+<div class="paragraph">
+<p>To list all the questions.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>list</code><br>
+<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-the-quiz-questions-with-keyword"><a class="link" href="#find-the-quiz-questions-with-keyword">Find the quiz questions with keyword:</a></h4>
+<div class="paragraph">
+<p>Find the quiz questions from the list of questions.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>find [INSTRUCTION] &lt;key&gt;[KEYWORDS]</code><br></p>
+</div>
+<div class="paragraph">
+<p>The [KEYWORDS] is the list of keywords that I want to search.</p>
+</div>
+<div class="paragraph">
+<p>The expected details/instructions for [INSTRUCTION] keyword are: <br>
+- <code>question</code> Indicate that I want to include the name of the question in my search.<br>
+- <code>answer</code> Indicate that I want to include the answer to the question in my search.<br>
+- <code>category</code> Indicate that I want to include the category of the question in my search.<br>
+- <code>type</code> Indicate that I want to include the priority/importance level of the question in my search.<br>
+- <code>tag</code> Indicate that I want to include the customized tag of the question in my search.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To search for everything, leave the [INSTRUCTION] field blank.</p>
+</li>
+<li>
+<p>To include multiple instructions to be searchable or to search for multiple keywords, you can split it with a comma <code>,</code></p>
+</li>
+<li>
+<p>To enable friendlier syntax [KEYWORDS] when searching your desired questions, add <code>-i</code> after your find command.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example 1: find &lt;key&gt; CS2131, lecture<br>
+Explanation: search for <em>CS2131</em> and <em>lecture</em> keyword from the whole question</p>
+</div>
+<div class="paragraph">
+<p>Example 2: find category, answer &lt;key&gt; Tomorrow<br>
+Explanation: search from the category and answer portion of each question that matches keyword <em>Tomorrow</em></p>
+</div>
+<div class="paragraph">
+<p>Example 3: find -i answer &lt;key&gt; Tomrrow<br>
+Explanation: search from the answer portion of each question that matches keyword that is similar to <em>Tomrrow</em>
+<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="details-of-a-selected-question"><a class="link" href="#details-of-a-selected-question">Details of a selected question:</a></h4>
+<div class="paragraph">
+<p>Show the details of a selected question. This details will show the whole questions that is truncated from the preview window
+and reveal the comment/explanation from the selected question.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>detail [INDEX]</code><br>
+Usage: <strong>[INDEX]</strong> is the index/row from the question that you want to see.<br>
+Example: detail 1<br>
+<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-comment-of-a-question"><a class="link" href="#add-comment-of-a-question">Add Comment of a question:</a></h4>
+<div class="paragraph">
+<p>Users can add a comment/explanation of a particular questions.</p>
+</div>
+<div class="paragraph">
+<p>Format: `comment [INDEX] &lt;val&gt; <em>your_comment</em><br>
+Usage: <strong>[INDEX]</strong> is the index/row from the question that you want to comment.<br>
+Example: comment 1 &lt;val&gt; The explanation is in pg 194 textbook.<br>
+<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="hide-answer-of-a-question"><a class="link" href="#hide-answer-of-a-question">Hide answer of a question:</a></h4>
+<div class="paragraph">
+<p>Users can hide all question answers when they want to revise or for other purposes. It also
+provide the user the hint of the answer. By default the answer is shown.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>showAnswer [yes/no]</code><br>
+Example: showAnswer no<br>
+<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undo"><a class="link" href="#undo">Undo:</a></h4>
+<div class="paragraph">
+<p>Undo some of the previous action.<br>
+Action that is undoable include: <code>add</code>, <code>edit</code>, <code>delete</code>, <code>clear</code>, <code>comment</code></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>undo</code><br>
+<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="redo"><a class="link" href="#redo">Redo:</a></h4>
+<div class="paragraph">
+<p>Redo some of the previous action.
+Action that is redo-able include: <code>add</code>, <code>edit</code>, <code>delete</code>, <code>clear</code>, <code>comment</code></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>redo</code><br>
+<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="help"><a class="link" href="#help">Help:</a></h4>
+<div class="paragraph">
+<p>Format : <code>help</code><br>
+<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clear-all-data"><a class="link" href="#clear-all-data">Clear all data:</a></h4>
+<div class="paragraph">
+<p>To remove all of the current data in quiz book.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>clear</code><br>
+<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exit-application"><a class="link" href="#exit-application">Exit application:</a></h4>
+<div class="paragraph">
+<p>To exit application (Modulo).</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>exit</code><br>
+<br></p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -260,8 +493,44 @@ Users can also utilize the undo/redo command when they realize that they have ex
 <img src="../images/QuizCreationActivityDiagram.png" alt="QuizCreationActivityDiagram">
 </div>
 </div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-how-to-add-question"><a class="link" href="#aspect-how-to-add-question">Aspect: How to add question</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Users add question to the last of the list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and fast (Insertion O(1)).</p>
+</li>
+<li>
+<p>Cons: User may not be able to position the question from the list of questions.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Users insert the question to the desired position.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User can order the list as they desired and remember things better.</p>
+</li>
+<li>
+<p>Cons: Not as fast as the insertion at the back of the list from alternative 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p><br></p>
+</div>
 </div>
 </div>
 </div>
@@ -294,7 +563,7 @@ Additionally, it implements the following operations:</p>
 <p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedQuizBook</code> will be initialized with the initial quiz book state, and the <code>currentStatePointer</code> pointing to that single quiz book state.</p>
+<p><strong>Step 1.</strong> The user launches the application for the first time. The <code>VersionedQuizBook</code> will be initialized with the initial quiz book state, and the <code>currentStatePointer</code> pointing to that single quiz book state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -302,7 +571,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the quiz book. The <code>delete</code> command calls <code>Model#commitQuizBook()</code>, causing the modified state of the quiz book after the <code>delete 5</code> command executes to be saved in the <code>quizBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted quiz book state.</p>
+<p><strong>Step 2.</strong> The user executes <code>delete 5</code> command to delete the 5th person in the quiz book. The <code>delete</code> command calls <code>Model#commitQuizBook()</code>, causing the modified state of the quiz book after the <code>delete 5</code> command executes to be saved in the <code>quizBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted quiz book state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -310,7 +579,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>comment 1 &lt;val&gt; NewComment</code> to add a new person. The <code>add</code> command also calls <code>Model#commitQuizBook()</code>, causing another modified quiz book state to be saved into the <code>quizBookStateList</code>.</p>
+<p><strong>Step 3.</strong> The user executes <code>comment 1 &lt;val&gt; NewComment</code> to add a new person. The <code>add</code> command also calls <code>Model#commitQuizBook()</code>, causing another modified quiz book state to be saved into the <code>quizBookStateList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -330,7 +599,7 @@ If a command fails its execution, it will not call <code>Model#commitQuizBook()<
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoQuizBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous quiz book state, and restores the quiz book to that state.</p>
+<p><strong>Step 4.</strong> The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoQuizBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous quiz book state, and restores the quiz book to that state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -385,7 +654,7 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the quiz book, such as <code>list</code>, will usually not call <code>Model#commitQuizBook()</code>, <code>Model#undoQuizBook()</code> or <code>Model#redoQuizBook()</code>. Thus, the <code>quizBookStateList</code> remains unchanged.</p>
+<p><strong>Step 5.</strong> The user then decides to execute the command <code>list</code>. Commands that do not modify the quiz book, such as <code>list</code>, will usually not call <code>Model#commitQuizBook()</code>, <code>Model#undoQuizBook()</code> or <code>Model#redoQuizBook()</code>. Thus, the <code>quizBookStateList</code> remains unchanged.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -393,7 +662,7 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 </div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitQuizBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>quizBookStateList</code>, all quiz book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+<p><strong>Step 6.</strong> The user executes <code>clear</code>, which calls <code>Model#commitQuizBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>quizBookStateList</code>, all quiz book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -410,7 +679,7 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 </div>
 </div>
 <div class="sect4">
-<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+<h5 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h5>
 <div class="sect5">
 <h6 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h6>
 <div class="ulist">
@@ -481,13 +750,4 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 07:07:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 08:35:50 UTC</div></div></div></body></html>
