@@ -8,8 +8,11 @@
 by enabling them to create modules, plans, quizzes and managing their finances. The code is written in Java and
 the user interacts with it using a CLI, and it has a GUI created with JavaFX.</p>
 </div>
-<div class="sect2">
-<h3 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -122,7 +125,6 @@ Managed releases <code>v1.1</code> - <code>v1.2.1</code> (3 releases) on GitHub<
 </div>
 </div>
 </div>
-</div>
 <div class="sect1">
 <h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
 <div class="sectionbody">
@@ -130,6 +132,10 @@ Managed releases <code>v1.1</code> - <code>v1.2.1</code> (3 releases) on GitHub<
 <h3 id="quiz"><a class="link" href="#quiz">Quiz</a></h3>
 <div class="paragraph">
 <p>To enter the Quiz section please enter the command: <code>switch quiz</code><br></p>
+</div>
+<div class="paragraph">
+<p><strong>Note on pre-populated data:</strong> The pre-populated data are used to help you to get the picture of how
+quiz show the data. You can use the command <code>clear</code> or go to <code>3.4.12</code> section to clear the given data.</p>
 </div>
 <div class="paragraph">
 <p><strong>Note on UI:</strong> You can adjust the size of the split pane by sliding the window separator
@@ -143,7 +149,7 @@ question properly.</p>
 be added with the following requirements.</p>
 </div>
 <div class="paragraph">
-<p>The keyword instructions of the question include:<br>
+<p><strong>The keyword instructions of the question include:</strong><br>
 - <code>&lt;qns&gt;</code> Indicate that the next several phrases will be the name of the question.<br>
 - <code>&lt;ans&gt;</code> Indicate that the next several phrases will be the answer to the question.<br>
 - <code>&lt;cat&gt;</code> Indicate that the next several phrases will be the category of the question.<br>
@@ -152,11 +158,11 @@ be added with the following requirements.</p>
 </div>
 <div class="paragraph">
 <p><strong>The details instructions after the keyword of the question:</strong><br>
-- <strong><code>&lt;qns&gt;</code> are required. The word limit is 200 and minimum 3 letters.</strong><br>
-- <strong><code>&lt;ans&gt;</code> are required. The word limit is 125.</strong><br>
-- <strong><code>&lt;cat&gt;</code> are required. The word limit is 50.</strong><br>
-- <strong><code>&lt;type&gt;</code> are required. The format after this command should only be: <code>high</code>, <code>normal</code>, <code>low</code>.</strong><br>
-- <strong><code>&lt;tag&gt;</code> are optional. To add numerous tags, please prepend &lt;tag&gt; keyword to differentiate one tag from another.</strong><br></p>
+- <code>&lt;qns&gt;</code> are required. The word limit is 200 and minimum 3 letters.<br>
+- <code>&lt;ans&gt;</code> are required. The word limit is 125.<br>
+- <code>&lt;cat&gt;</code> are required. The word limit is 50.<br>
+- <code>&lt;type&gt;</code> are required. The format after this command should only be: <code>high</code>, <code>normal</code>, <code>low</code>.<br>
+- <code>&lt;tag&gt;</code> are optional. To add numerous tags, please prepend &lt;tag&gt; keyword to differentiate one tag from another.<br></p>
 </div>
 <div class="paragraph">
 <p>Note: Two questions are the same if they have the same <strong>&lt;qns&gt;</strong>, <strong>&lt;ans&gt;</strong> and <strong>&lt;cat&gt;</strong><br>
@@ -202,7 +208,7 @@ Usage: <strong>[NUMBER]</strong> is the index/row from that category that you wa
 <p>Specify which question you want to edit and modify it from the question list.</p>
 </div>
 <div class="paragraph">
-<p>The details/instructions of the new questions include:<br>
+<p><strong>The details/instructions of the new questions include:</strong><br>
 - <code>&lt;qns&gt;</code> Indicate that the next several phrases will be the name of the question.<br>
 - <code>&lt;ans&gt;</code> Indicate that the next several phrases will be the answer to the question.<br>
 - <code>&lt;cat&gt;</code> Indicate that the next several phrases will be the category of the question.<br>
@@ -211,11 +217,11 @@ Usage: <strong>[NUMBER]</strong> is the index/row from that category that you wa
 </div>
 <div class="paragraph">
 <p><strong>Note that at least one of the following must be modified and replaced:</strong><br>
-- <strong><code>&lt;qns&gt;</code> word limit is 200. No minimum letter.</strong><br>
-- <strong><code>&lt;ans&gt;</code> word limit is 125. No minimum letter.</strong><br>
-- <strong><code>&lt;cat&gt;</code> word limit is 50.</strong><br>
-- <strong><code>&lt;type&gt;</code> format after this command should only be: <code>high</code>, <code>normal</code>, <code>low</code>.</strong><br>
-- <strong><code>&lt;tag&gt;</code> are optional. To add numerous tags, please prepend &lt;tag&gt; keyword to differentiate one tag from another.</strong><br></p>
+- <code>&lt;qns&gt;</code> word limit is 200. No minimum letter.<br>
+- <code>&lt;ans&gt;</code> word limit is 125. No minimum letter.<br>
+- <code>&lt;cat&gt;</code> word limit is 50.<br>
+- <code>&lt;type&gt;</code> format after this command should only be: <code>high</code>, <code>normal</code>, <code>low</code>.<br>
+- <code>&lt;tag&gt;</code> are optional. To add numerous tags, please prepend &lt;tag&gt; keyword to differentiate one tag from another.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code><strong>edit [NUMBER] &lt;qns&gt;</strong> <em>your_new_question</em> <strong>&lt;ans&gt;</strong> <em>your_new_answer</em> <strong>&lt;cat&gt;</strong> <em>your_new_category</em>
@@ -258,12 +264,12 @@ Usage: <strong>[NUMBER]</strong> is the index/row from that category that you wa
 Note: The [KEYWORDS] is the list of keywords that I want to search.</p>
 </div>
 <div class="paragraph">
-<p>The expected details/instructions for [INSTRUCTION] keyword are: <br>
-- <code>question</code> Indicate that I want to include the name of the question in my search.<br>
-- <code>answer</code> Indicate that I want to include the answer to the question in my search.<br>
-- <code>category</code> Indicate that I want to include the category of the question in my search.<br>
-- <code>type</code> Indicate that I want to include the priority/importance level of the question in my search.<br>
-- <code>tag</code> Indicate that I want to include the customized tag of the question in my search.</p>
+<p><strong>The expected details/instructions for [INSTRUCTION] keyword are:</strong> <br>
+- <code>question</code> - Indicate that I want to include the name of the question in my search.<br>
+- <code>answer</code> - Indicate that I want to include the answer to the question in my search.<br>
+- <code>category</code> - Indicate that I want to include the category of the question in my search.<br>
+- <code>type</code> - Indicate that I want to include the priority/importance level of the question in my search.<br>
+- <code>tag</code> - Indicate that I want to include the customized tag of the question in my search.</p>
 </div>
 <div class="paragraph">
 <p><strong>Note:</strong><br>
@@ -304,7 +310,7 @@ Example: detail 1<br>
 <p>Users can add a comment/explanation of a particular questions.</p>
 </div>
 <div class="paragraph">
-<p>Format: `comment [INDEX] &lt;val&gt; <em>your_comment</em><br>
+<p>Format: <code>comment [INDEX] &lt;val&gt; <em>your_comment</em></code><br>
 Usage: <strong>[INDEX]</strong> is the index/row from the question that you want to comment.<br>
 Example: comment 1 &lt;val&gt; The explanation is in pg 194 textbook.<br>
 <br></p>
@@ -337,6 +343,14 @@ Format: <code>undo</code><br>
 <p>Redo some of the previous action.<br>
 Action that is redo-able include: <code>add</code>, <code>edit</code>, <code>delete</code>, <code>clear</code>, <code>comment</code><br>
 Format: <code>redo</code><br>
+<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clear-all-data"><a class="link" href="#clear-all-data">Clear all data:</a></h4>
+<div class="paragraph">
+<p>To remove all of the current data in quiz book.<br>
+Format: <code>clear</code><br>
 <br></p>
 </div>
 </div>
@@ -379,7 +393,7 @@ represents the in-memory model of the <code>AddressQuizBook</code> data, and sho
 </div>
 <div class="paragraph">
 <p><strong>Step 2.</strong> The user executes <code><strong>add &lt;qns&gt;</strong> <em>What is always coming, but never arrives?</em> <strong>&lt;ans&gt;</strong> <em>Today</em> <strong>&lt;cat&gt;</strong> <em>CS2131</em> <strong>&lt;type&gt;</strong> <em>high</em></code>
-command to add a question with the question name: <em>What is always coming, but never arrives?</em>, answer: <em>Tomorrow</em>, category: CS2131 and type: <em>high</em> in the quiz book.
+command to add a question with the question name: <em>What is always coming, but never arrives?</em> and answer: <em>Tomorrow</em>, category: CS2131, type: <em>high</em> in the quiz book.
 The <code>add</code> command calls <code>Model#addQuestion()</code>, causing the modified state of the quiz book, after the command executes, to be saved in the <code>quizBookStateList</code> and shown in the UI.</p>
 </div>
 <div class="paragraph">
@@ -560,4 +574,4 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial q
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 12:20:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 14:11:25 UTC</div></div></div></body></html>
