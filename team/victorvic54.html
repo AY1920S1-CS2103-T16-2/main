@@ -331,7 +331,8 @@ Example: showAnswer no<br>
 <div class="paragraph">
 <p>Undo some of the previous action.<br>
 Action that is undoable include: <code>add</code>, <code>edit</code>, <code>delete</code>, <code>clear</code>, <code>comment</code><br>
-Format: <code>undo</code></p>
+Format: <code>undo</code><br>
+<br></p>
 </div>
 </div>
 <div class="sect3">
@@ -339,20 +340,23 @@ Format: <code>undo</code></p>
 <div class="paragraph">
 <p>Redo some of the previous action.<br>
 Action that is redo-able include: <code>add</code>, <code>edit</code>, <code>delete</code>, <code>clear</code>, <code>comment</code><br>
-Format: <code>redo</code></p>
+Format: <code>redo</code><br>
+<br></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="help"><a class="link" href="#help">Help:</a></h4>
 <div class="paragraph">
-<p>Format : <code>help</code></p>
+<p>Format : <code>help</code><br>
+<br></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="clear-all-data"><a class="link" href="#clear-all-data">Clear all data:</a></h4>
 <div class="paragraph">
 <p>To remove all of the current data in quiz book.<br>
-Format: <code>clear</code></p>
+Format: <code>clear</code><br>
+<br></p>
 </div>
 </div>
 <div class="sect3">
@@ -525,18 +529,6 @@ Additionally, it implements the following operations:</p>
 <img src="../images/UndoRedoState2.png" alt="UndoRedoState2">
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitQuizBook()</code>, so the quiz book state will not be saved into the <code>quizBookStateList</code>.
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p><strong>Step 4.</strong> The user now decides that adding the question was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoQuizBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous quiz book state, and restores the quiz book to that state.</p>
 </div>
@@ -565,60 +557,10 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial q
 <img src="../images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoQuizBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the quiz book to that state.</p>
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoQuizBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the quiz book to that state.
+===== Design Considerations</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size() - 1</code>, pointing to the latest quiz book state, then there are no undone quiz book states to restore. The <code>redo</code> command uses <code>Model#canRedoQuizBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p><strong>Step 5.</strong> The user then decides to execute the command <code>list</code>. Commands that do not modify the quiz book, such as <code>list</code>, will usually not call <code>Model#commitQuizBook()</code>, <code>Model#undoQuizBook()</code> or <code>Model#redoQuizBook()</code>. Thus, the <code>quizBookStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState4.png" alt="UndoRedoState4">
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Step 6.</strong> The user executes <code>clear</code>, which calls <code>Model#commitQuizBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>quizBookStateList</code>, all quiz book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState5.png" alt="UndoRedoState5">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h5>
 <div class="sect5">
 <h6 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h6>
 <div class="ulist">
@@ -652,41 +594,8 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h6>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of quiz book states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new developers to understand.</p>
-</li>
-<li>
-<p>Cons: May suffer from performance issues on the memory (When a new command is executed, we must remember to update the list from <code>VersionedQuizBook</code>).</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 11:29:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 11:48:34 UTC</div></div></div></body></html>
