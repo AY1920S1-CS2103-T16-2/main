@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Victor Varian - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Modulo</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103-T16-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Victor Varian - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-addressbook-level-3"><a class="link" href="#project-addressbook-level-3">PROJECT: AddressBook - Level 3</a></h2>
+<h2 id="project-modulo-quiz"><a class="link" href="#project-modulo-quiz">PROJECT: Modulo Quiz</a></h2>
 <div class="sectionbody">
 
 </div>
@@ -14,11 +14,8 @@
 by enabling them to create modules, plans, quizzes and managing their finances. The code is written in Java and
 the user interacts with it using a CLI, and it has a GUI created with JavaFX.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -92,14 +89,8 @@ It required an in-depth analysis of design alternatives. The implementation too 
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.1</code> - <code>v1.2.1</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
+<p>Project management:<br>
+Managed releases <code>v1.1</code> - <code>v1.2.1</code> (3 releases) on GitHub</p>
 </li>
 <li>
 <p>Community:</p>
@@ -134,6 +125,7 @@ It required an in-depth analysis of design alternatives. The implementation too 
 </div>
 </li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -296,31 +288,21 @@ Usage: <strong>[NUMBER]</strong> is the index/row from that category that you wa
 - <code>tag</code> Indicate that I want to include the customized tag of the question in my search.</p>
 </div>
 <div class="paragraph">
-<p><strong>Note:</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>To search for everything, leave the [INSTRUCTION] field blank.</p>
-</li>
-<li>
-<p>To include multiple instructions to be searchable or to search for multiple keywords, you can split it with a comma <code>,</code></p>
-</li>
-<li>
-<p>To enable friendlier syntax [KEYWORDS] when searching your desired questions, add <code>-i</code> after your find command.</p>
-</li>
-</ul>
+<p><strong>Note:</strong><br>
+• To search for everything, leave the [INSTRUCTION] field blank.<br>
+• To include multiple instructions to be searchable or to search for multiple keywords, you can split it with a comma <code>,</code><br>
+• To enable friendlier syntax [KEYWORDS] when searching your desired questions, add <code>-i</code> after your find command.</p>
 </div>
 <div class="paragraph">
-<p>Example 1: find &lt;key&gt; CS2131, lecture<br>
+<p>Example 1: <strong>find</strong> &lt;key&gt; CS2131, lecture<br>
 Explanation: search for <em>CS2131</em> and <em>lecture</em> keyword from the whole question</p>
 </div>
 <div class="paragraph">
-<p>Example 2: find category, answer &lt;key&gt; Tomorrow<br>
+<p>Example 2: <strong>find</strong> category, answer &lt;key&gt; Tomorrow<br>
 Explanation: search from the category and answer portion of each question that matches keyword <em>Tomorrow</em></p>
 </div>
 <div class="paragraph">
-<p>Example 3: find -i answer &lt;key&gt; Tomrrow<br>
+<p>Example 3: <strong>find -i</strong> answer &lt;key&gt; Tomrrow<br>
 Explanation: search from the answer portion of each question that matches keyword that is similar to <em>Tomrrow</em>
 <br></p>
 </div>
@@ -358,8 +340,7 @@ provide the user the hint of the answer. By default the answer is shown.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>showAnswer [yes/no]</code><br>
-Example: showAnswer no<br>
-<br></p>
+Example: showAnswer no</p>
 </div>
 </div>
 <div class="sect3">
@@ -369,8 +350,7 @@ Example: showAnswer no<br>
 Action that is undoable include: <code>add</code>, <code>edit</code>, <code>delete</code>, <code>clear</code>, <code>comment</code></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>undo</code><br>
-<br></p>
+<p>Format: <code>undo</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -380,15 +360,13 @@ Action that is undoable include: <code>add</code>, <code>edit</code>, <code>dele
 Action that is redo-able include: <code>add</code>, <code>edit</code>, <code>delete</code>, <code>clear</code>, <code>comment</code></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>redo</code><br>
-<br></p>
+<p>Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="help"><a class="link" href="#help">Help:</a></h4>
 <div class="paragraph">
-<p>Format : <code>help</code><br>
-<br></p>
+<p>Format : <code>help</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -397,8 +375,7 @@ Action that is redo-able include: <code>add</code>, <code>edit</code>, <code>del
 <p>To remove all of the current data in quiz book.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>clear</code><br>
-<br></p>
+<p>Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -447,7 +424,7 @@ several requirements on the syntax stated in the UserGuide.</p>
 </div>
 <div class="paragraph">
 <p>In quiz feature, a <code>Question</code> has 6 attributes namely: <code>Name</code>, <code>Answer</code>, <code>Category</code>, <code>Type</code>, <code>Comment</code>, <code>Tag</code>, with
-the first two attributes differentiate one <code>Question</code> from the others. When the users first time launch the app or the are no data yet,
+the first three attributes differentiate one <code>Question</code> from the others. When the users first time launch the app or there are no data yet,
 Modulo will automatically populate the four questions from <code>SampleDataUtil</code>. The users are able to use the <code>clear</code> command
 if they want to delete the given data entirely. UI will then pull and updates the data from the <code>ModelQuizManager</code> which
 represents the in-memory model of the <code>AddressQuizBook</code> data, and show them to the users.</p>
@@ -571,7 +548,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Step 2.</strong> The user executes <code>delete 5</code> command to delete the 5th person in the quiz book. The <code>delete</code> command calls <code>Model#commitQuizBook()</code>, causing the modified state of the quiz book after the <code>delete 5</code> command executes to be saved in the <code>quizBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted quiz book state.</p>
+<p><strong>Step 2.</strong> The user executes <code>delete 5</code> command to delete the 5th question in the quiz book. The <code>delete</code> command calls <code>Model#commitQuizBook()</code>, causing the modified state of the quiz book after the <code>delete 5</code> command executes to be saved in the <code>quizBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted quiz book state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -579,7 +556,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Step 3.</strong> The user executes <code>comment 1 &lt;val&gt; NewComment</code> to add a new person. The <code>add</code> command also calls <code>Model#commitQuizBook()</code>, causing another modified quiz book state to be saved into the <code>quizBookStateList</code>.</p>
+<p><strong>Step 3.</strong> The user executes <code>comment 1 &lt;val&gt; NewComment</code> to add a new question. The <code>add</code> command also calls <code>Model#commitQuizBook()</code>, causing another modified quiz book state to be saved into the <code>quizBookStateList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -599,7 +576,7 @@ If a command fails its execution, it will not call <code>Model#commitQuizBook()<
 </table>
 </div>
 <div class="paragraph">
-<p><strong>Step 4.</strong> The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoQuizBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous quiz book state, and restores the quiz book to that state.</p>
+<p><strong>Step 4.</strong> The user now decides that adding the question was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoQuizBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous quiz book state, and restores the quiz book to that state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -702,7 +679,7 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
+<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the question being deleted).</p>
 </li>
 <li>
 <p>Cons: We must ensure that the implementation of each individual command are correct.</p>
@@ -750,4 +727,4 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 08:35:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 10:54:29 UTC</div></div></div></body></html>

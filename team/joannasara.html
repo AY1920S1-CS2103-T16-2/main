@@ -173,7 +173,7 @@ several requirements on the syntax stated in the UserGuide.</p>
 </div>
 <div class="paragraph">
 <p>In quiz feature, a <code>Question</code> has 6 attributes namely: <code>Name</code>, <code>Answer</code>, <code>Category</code>, <code>Type</code>, <code>Comment</code>, <code>Tag</code>, with
-the first two attributes differentiate one <code>Question</code> from the others. When the users first time launch the app or the are no data yet,
+the first three attributes differentiate one <code>Question</code> from the others. When the users first time launch the app or there are no data yet,
 Modulo will automatically populate the four questions from <code>SampleDataUtil</code>. The users are able to use the <code>clear</code> command
 if they want to delete the given data entirely. UI will then pull and updates the data from the <code>ModelQuizManager</code> which
 represents the in-memory model of the <code>AddressQuizBook</code> data, and show them to the users.</p>
@@ -297,7 +297,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Step 2.</strong> The user executes <code>delete 5</code> command to delete the 5th person in the quiz book. The <code>delete</code> command calls <code>Model#commitQuizBook()</code>, causing the modified state of the quiz book after the <code>delete 5</code> command executes to be saved in the <code>quizBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted quiz book state.</p>
+<p><strong>Step 2.</strong> The user executes <code>delete 5</code> command to delete the 5th question in the quiz book. The <code>delete</code> command calls <code>Model#commitQuizBook()</code>, causing the modified state of the quiz book after the <code>delete 5</code> command executes to be saved in the <code>quizBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted quiz book state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -305,7 +305,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Step 3.</strong> The user executes <code>comment 1 &lt;val&gt; NewComment</code> to add a new person. The <code>add</code> command also calls <code>Model#commitQuizBook()</code>, causing another modified quiz book state to be saved into the <code>quizBookStateList</code>.</p>
+<p><strong>Step 3.</strong> The user executes <code>comment 1 &lt;val&gt; NewComment</code> to add a new question. The <code>add</code> command also calls <code>Model#commitQuizBook()</code>, causing another modified quiz book state to be saved into the <code>quizBookStateList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -325,7 +325,7 @@ If a command fails its execution, it will not call <code>Model#commitQuizBook()<
 </table>
 </div>
 <div class="paragraph">
-<p><strong>Step 4.</strong> The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoQuizBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous quiz book state, and restores the quiz book to that state.</p>
+<p><strong>Step 4.</strong> The user now decides that adding the question was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoQuizBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous quiz book state, and restores the quiz book to that state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -428,7 +428,7 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
+<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the question being deleted).</p>
 </li>
 <li>
 <p>Cons: We must ensure that the implementation of each individual command are correct.</p>
@@ -485,4 +485,4 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 08:35:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 10:54:29 UTC</div></div></div></body></html>
