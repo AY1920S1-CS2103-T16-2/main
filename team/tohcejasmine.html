@@ -10,7 +10,13 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 3 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>Modulo is a NUS student life application specially designed for busy and motivated NUS students.</p>
+</div>
+<div class="paragraph">
+<p>As busy students in NUS, we understand that it can be daunting to keep track of various tasks and concurrently do well for exams. Modulo features a one-stop application to keep track of one&#8217;s timetable, finances and academic progress. It also includes a quiz feature that facilitates students with actively recalling their study concepts to improve their study outcomes.</p>
+</div>
+<div class="paragraph">
+<p>The user interacts with Modulo using a CLI, and it features an outstanding user-friendly GUI created with JavaFX. It is written in Java, and has about 35 kLoC.</p>
 </div>
 </div>
 </div>
@@ -20,7 +26,14 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>finance</strong> feature</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Allow 4 different types of entries (<strong>spend</strong>, <strong>income</strong>, <strong>borrow</strong>, <strong>lend</strong>)</p>
+</li>
+<li>
+<p>Added <strong>budget</strong> component</p>
 <div class="ulist">
 <ul>
 <li>
@@ -39,10 +52,16 @@
 </div>
 </li>
 <li>
+<p><strong>Enhancement</strong>: added <strong>stats</strong> component</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
 <p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=tohcejasmine">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=tohcejasmine">Functional code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -139,6 +158,14 @@
 </div>
 </div>
 <div class="sect1">
+<h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Modulo is a desktop application helping National University of Singapore (NUS) students to audit their academics, finances and schedule their time as they try their best to survive yet another semester of college. Those who prefer to work with a Command Line Interface (CLI) might find using Modulo to be more straightforward than the usual Graphical User Interface (GUI) applications. The application has the visual benefits of a GUI but stands strongly rooted in command line usage. Modulo does not require an internet connection to run so there’s no worry when the school wifi goes MIA yet again. The only time you need to be connected is at the start, when downloading the application. Look to <a href="#Quick Start">[Quick Start]</a> to find out how to get started on Modulo!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
@@ -151,51 +178,112 @@
 </tr>
 </tbody>
 </table>
+<h4 id="rationale-for-having-multiple-code-ui-code-code-logic-code-code-model-code-code-storage-code-classes-in-em-modulo-em" class="discrete">Rationale for having multiple <code>UI</code>, <code>Logic</code>, <code>Model</code>, <code>Storage</code> classes in <em>Modulo</em></h4>
+<div class="paragraph">
+<p>The features in <em>Modulo</em> are quite distinct and having minimal overlaps, each feature has its own data file to read and modify. The logic to execute commands are also handled differently in each feature. As such, our decision to have 4 components for each feature was to reduce coupling and allow flexibility in our implementations. This means that the same <code>add</code> command is now able to trigger a different sequence of actions depending on the feature the user is currently in. This architecture style allows each feature to be developed independently, free from the constraints set by other features. Each time a user switches to another feature, the <code>Ui</code>, <code>Logic</code>, <code>Model</code> and <code>Storage</code> classes will be replaced by that of the new feature.</p>
+</div>
 <div class="sect2">
-<h3 id="quiz-feature"><a class="link" href="#quiz-feature">Quiz feature</a></h3>
+<h3 id="class-diagrams"><a class="link" href="#class-diagrams">Class diagrams</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FinanceModelClassDiagram.png" alt="FinanceModelClassDiagram">
+</div>
+<div class="title">Figure 1. Structure of the Model Component for the feature Finance</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FinanceStorageClassDiagram.png" alt="FinanceStorageClassDiagram">
+</div>
+<div class="title">Figure 2. Structure of the Storage Component for the feature <em>Finance</em></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="implementation"><a class="link" href="#implementation">Implementation</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="budgets-in-finances"><a class="link" href="#budgets-in-finances">Budgets in finances</a></h3>
 <div class="sect3">
-<h4 id="create-question-feature"><a class="link" href="#create-question-feature">Create question feature</a></h4>
-<div class="sect4">
-<h5 id="implementation"><a class="link" href="#implementation">Implementation</a></h5>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
 <div class="paragraph">
-<p>To use this feature, the user will need to switch to the quiz mode and add the question they want with
-several requirements on the syntax stated in the UserGuide.</p>
+<p>A budget is an estimate or threshold of spending set for a specified period of time. In <em>Modulo</em>, a budget can be set to only include spendings of a particular characteristic (i.e. transaction method, place of spending or category). For example, budgets of spendings at a particular place can be set. <em>Modulo</em> will only take into account spendings recorded to be associated with this place and falling within the specified period of time.</p>
 </div>
 <div class="paragraph">
-<p>Below are the quiz model class diagram:</p>
+<p>To compute the current total amount spent so far and see whether this total amount still falls within the budget, amounts associated with entries are summed together.</p>
+</div>
+<div class="paragraph">
+<p>These entries have to fulfill the following requirements set by the budget to be considered in the tabulation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Has to be a log entry of type <code>Spend</code></p>
+</li>
+<li>
+<p>Transaction date has to fall within budget period (i.e. between the start and end dates)</p>
+</li>
+<li>
+<p>(If addition field of transaction method, place of spending or categorys specified) Has to either have the same transaction method, place of spending or be tagged with the same category</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are some classes in the <code>Model</code> component necessary for the computation of budgets:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Budget</code> - Contains the basic information about a budget (amount, start and end dates, additional characteristic <code>Spend</code> entry has to fall under (if any))</p>
+</li>
+<li>
+<p><code>BudgetData</code> - The <code>Budget</code> object associated to it, the limit set by the budget and the current total amount tabulated from the <code>Spend</code> entries matching the budget requirements</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In <code>ModelFinanceManager</code> which implements the <code>Model</code> interface, <code>Model#getFilteredBudgetDataList()</code> will return the list of <code>BudgetData</code> objects mapped from the list of <code>Budget</code> objects stored in the <em>Modulo</em>. These <code>BudgetData</code> are instantiated using information from the list of entries stored in <em>Modulo</em>. They filter out entries which do not match the requirements of the budget they are associated with, and then add up all the amounts of the entries to obtain the current total amount spent.</p>
+</div>
+<div class="paragraph">
+<p>If the total amount of spending is close to exceeding the budget (more than or equals to 80% of budget spent), an orange label at the menu bar will be shown to notify the user that a budget is near to reaching its limit.</p>
+</div>
+<div class="paragraph">
+<p>And if the total amount of spending has exceeding the limit set by the budget, the menu bar will have a red label indicating that the budget has been exceeded. The amount of money spend has gone over the estimate set and is now in deficit.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario for what happens when a budget is set, and how <em>Modulo</em> behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>This assumes that the user has not set any budget in the application before but has some entries recorded in the finance log. These entries are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>(Income) Amount: 800, Item: Internship Pay, From: ABCompany,  Transaction Method: Bank Transfer, Day:  7-11-2019</p>
+</li>
+<li>
+<p>(Spend) Amount: 50, Item: EzLink TopUp, Transaction Method: NETS, Place: Caldecott MRT, Day:  4-11-2019</p>
+</li>
+<li>
+<p>(Spend) Amount: 107.70, Item: Bicycle, Transaction Method: Cash, Day:  5-11-2019, Place: Toa Payoh Lor 4, Categories: bike</p>
+</li>
+<li>
+<p>(Spend) Amount: 1.10, Item: KopiO, Transaction Method: Cash, Day:  2-11-2019, Categories: drink, kopitiam</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Step 1.</strong> The user launches the application and switch to the <strong>finance</strong> mode by executing <code>switch finance</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2.</strong> The user wants to set a budget of 300 dollars for November for spendings done using cash. He executes the <code>budget &lt;amt&gt; 300 &lt;month&gt; 11-2019 &lt;met&gt; Cash</code> command to set this budget. The <code>budget</code> command calls <code>Model#addBudget(b)</code>, where upon the finance log will add <code>Budget</code> object <code>b</code> to <code>budgetList</code>, the list of budgets.</p>
+</div>
+<div class="paragraph">
+<p>The interactions inside the Logic Component for <code>budget &lt;amt&gt; 300 &lt;month&gt; 11-2019 &lt;met&gt; cash</code> Command are shown in the sequence diagram below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ModelQuizClassDiagram.png" alt="ModelQuizClassDiagram">
+<img src="../images/BudgetLogicSequenceDiagram.png" alt="BudgetLogicSequenceDiagram">
 </div>
-</div>
-<div class="paragraph">
-<p>In quiz feature, a <code>Question</code> has 6 attributes namely: <code>Name</code>, <code>Answer</code>, <code>Category</code>, <code>Type</code>, <code>Comment</code>, <code>Tag</code>, with
-the first two attributes differentiate one <code>Question</code> from the others. When the users first time launch the app or the are no data yet,
-Modulo will automatically populate the four questions from <code>SampleDataUtil</code>. The users are able to use the <code>clear</code> command
-if they want to delete the given data entirely. UI will then pull and updates the data from the <code>ModelQuizManager</code> which
-represents the in-memory model of the <code>AddressQuizBook</code> data, and show them to the users.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario on how to add a question properly and the mechanism that behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p><strong>Step 1.</strong> The user launches the application and switch to the <strong>quiz</strong> mode by executing <code>switch quiz</code>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Step 2.</strong> The user executes <code><strong>add &lt;qns&gt;</strong> <em>What is always coming, but never arrives?</em> <strong>&lt;ans&gt;</strong> <em>Today</em> <strong>&lt;cat&gt;</strong> <em>CS2131</em> <strong>&lt;type&gt;</strong> <em>high</em></code>
-command to add a question with the question name: <em>What is always coming, but never arrives?</em>, answer: <em>Tomorrow</em>, category: CS2131 and type: <em>high</em> in the quiz book.
-The <code>add</code> command calls <code>Model#addQuestion()</code>, causing the modified state of the quiz book, after the command executes, to be saved in the <code>quizBookStateList</code> and shown in the UI.</p>
-</div>
-<div class="paragraph">
-<p><strong>Step 3.</strong> If the user realized that they have typed the wrong answer for a particular question, then the user can executes
-<code><strong>edit 1 &lt;ans&gt;</strong> <em>Tomorrow</em></code> command to replace the previous answer with the new answer with the given index prepend behind. The <code>edit</code> command calls <code>Model#setQuestion()</code>,
-causing the modified state of the quiz book, after the command executes, to be saved in the <code>quizBookStateList</code> and updated in the UI.</p>
-</div>
-<div class="paragraph">
-<p><strong>Step 4.</strong> <em>[Addtional]</em> The user can execute <code><strong>comment 1 &lt;val&gt;</strong> <em>The explanation is in pg 194 textbook</em></code> if he/she now decide to add a comment or explanation of a quiz question at index 1.
-The <code>comment</code> command calls <code>Model#setQuestion()</code> to parse in an additional parameter of comment into the entity of the question. It will then be saved in the
-<code>quizBookStateList</code> and shown in the UI.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -204,247 +292,488 @@ The <code>comment</code> command calls <code>Model#setQuestion()</code> to parse
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Users can also utilize the undo/redo command when they realize that they have execute a command that they shouldn&#8217;t do (Will be explained in [3.5.2]).
+The lifelines for <code>BudgetCommandParser</code> and <code>BudgetCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifelines reaches the end of diagram.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes the basic question creation process:</p>
+<p>The interactions in the Model Component for the same command are shown in the sequence diagram below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/QuizCreationActivityDiagram.png" alt="QuizCreationActivityDiagram">
+<img src="../images/BudgetModelSequenceDiagram.png" alt="BudgetModelSequenceDiagram">
 </div>
 </div>
 <div class="paragraph">
-<p><br></p>
+<p>The budget is added to the list of budgets (this being the first budget in the list). The list of budgets will update with the status of each budget.</p>
+</div>
+<div class="paragraph">
+<p>Modulo will change the view after a <code>budget</code> command to show the list of budgets stored in Modulo.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the exact same budget already exists in the budget list, it will not call <code>Model#addBudget(b)</code>, and this budget will not be added to the list of budgets. Modulo will show an error message that this budget already exists.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Step 3.</strong> The user now decides to add another entry of spending. This time the user has recently spent 400 dollars on a Nintendo Switch and paid for it using cash. He enters this record with the <code>spend &lt;amt&gt; 400 &lt;item&gt; Nintendo Switch &lt;met&gt; Cash &lt;day&gt; 7-11-2019</code> command. This entry is added to the list of entries.</p>
+</div>
+<div class="paragraph">
+<p>Since this entry is paid using cash, transaction date was in November 2019 it is included in the tabulation of the budget. It causes the total amount spent to exceed the budget of 300 dollars, and a red label in the menu bar appears to notify the user that a budget has exceeded.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4.</strong> The user views the list of budgets (in this example, there is only one budget) using the <code>listb</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The window changes to a view of the budget, with information about its status shown.</p>
+</div>
+<div class="paragraph">
+<p>These information include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type of budget (for all <code>Spend</code> entries, for entries done using a specific transaction method, conducted at a specific place or tagged with a specific category)</p>
+</li>
+<li>
+<p>Start and end date of budget</p>
+</li>
+<li>
+<p>Progress bar of how much money has been spent (for entries fulfilling budget requirements)</p>
+</li>
+<li>
+<p>Whether the budget is active (current date falls between start and end dates) or not (end date of budget has passed or start date has yet to come)</p>
+</li>
+<li>
+<p>Total amount spend so far</p>
+</li>
+<li>
+<p>Limit set by budget</p>
+</li>
+<li>
+<p>Amount of money left to limit or how much has the budget been exceeded by</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The flow on how what happens when the user enters a new entry is shown in the activity diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddNewEntryActivityDiagram.png" alt="AddNewEntryActivityDiagram" width="60%">
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h5>
-<div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedQuizBook</code>.
-It extends <code>QuizBook</code> with an undo/redo history, stored internally as an <code>quizBookStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
-</div>
+<h5 id="aspect-data-structure-to-support-tabulation-of-spendings"><a class="link" href="#aspect-data-structure-to-support-tabulation-of-spendings">Aspect: Data structure to support tabulation of spendings</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedQuizBook#commit()</code>&#8201;&#8212;&#8201;Saves the current quiz book state in its history.</p>
+<p><strong>Alternative 1 (current choice):</strong> Save just the basic details related to the budget - amount (limit to amount to be spent), start and end date, optional requirements <code>Spend</code> entries should fufill (transaction method, place of spending or category).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less information to store, flexible to changes such as updates to entries during edits (e.g. changes in amounts etc). Budgets can be retrospective (even if dates have past, budgets can still be set to see spending was kept within limits).</p>
 </li>
 <li>
-<p><code>VersionedQuizBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous quiz book state from its history.</p>
-</li>
-<li>
-<p><code>VersionedQuizBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone quiz book state from its history.</p>
+<p>Cons: Additional step of filtering to obtain entries matching budget requirements before tabulating the total amount - may have performance issues when number of entries is large in terms of time complexity.</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Budget stores the same information as above, and also the list of entries that fulfill the budget requirements.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Removes the need for filtering entries before tabulation, simply calculate total amount from list of entries stored under the budget.</p>
+</li>
+<li>
+<p>Cons: Will use more memory (now storing the list of entries). Difficult when an entry is delete or modified, have to delete and modify entry accordingly in the list of entries stored under the budget.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="user-stories"><a class="link" href="#user-stories">User Stories</a></h3>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitQuizBook()</code>, <code>Model#undoQuizBook()</code> and <code>Model#redoQuizBook()</code> respectively.</p>
+<p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
 </div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedQuizBook</code> will be initialized with the initial quiz book state, and the <code>currentStatePointer</code> pointing to that single quiz book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState0.png" alt="UndoRedoState0">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the quiz book. The <code>delete</code> command calls <code>Model#commitQuizBook()</code>, causing the modified state of the quiz book after the <code>delete 5</code> command executes to be saved in the <code>quizBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted quiz book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState1.png" alt="UndoRedoState1">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>comment 1 &lt;val&gt; NewComment</code> to add a new person. The <code>add</code> command also calls <code>Model#commitQuizBook()</code>, causing another modified quiz book state to be saved into the <code>quizBookStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState2.png" alt="UndoRedoState2">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
+<table class="tableblock frame-all grid-all" style="width: 59%;">
+<colgroup>
+<col style="width: 22%;">
+<col style="width: 23%;">
+<col style="width: 25%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
 <tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitQuizBook()</code>, so the quiz book state will not be saved into the <code>quizBookStateList</code>.
-</td>
+<th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
 </tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student with basic finance literacy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep a record of my finances</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">understand my spending habits</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cash-strapped student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set a budget for the month</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">limit my spending</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student who often lends money to people</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of the people who have not returned my money</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">chase after them for their unpaid debt or refuse to lend to people who consistently borrow but don&#8217;t return</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student who prefers graphical representation to numbers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see plots and charts summarising my finances over time and in different categories</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">understand the overall status of my finances at a glance and see the trends and changes in my spending habit</p></td>
+</tr>
+</tbody>
 </table>
 </div>
+<div class="sect2">
+<h3 id="use-cases"><a class="link" href="#use-cases">Use Cases</a></h3>
+<h3 id="use-case-record-down-an-entry-of-borrowing-to-finance-log" class="discrete">Use case: Record down an entry of borrowing to finance log</h3>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoQuizBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous quiz book state, and restores the quiz book to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState3.png" alt="UndoRedoState3">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial quiz book state, then there are no previous quiz book states to restore. The <code>undo</code> command uses <code>Model#canUndoQuizBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
+<p>Preconditions: User has switched to the <em>finance</em> feature</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
+<p><strong>MSS</strong></p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoQuizBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the quiz book to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size() - 1</code>, pointing to the latest quiz book state, then there are no undone quiz book states to restore. The <code>redo</code> command uses <code>Model#canRedoQuizBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the quiz book, such as <code>list</code>, will usually not call <code>Model#commitQuizBook()</code>, <code>Model#undoQuizBook()</code> or <code>Model#redoQuizBook()</code>. Thus, the <code>quizBookStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState4.png" alt="UndoRedoState4">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitQuizBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>quizBookStateList</code>, all quiz book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState5.png" alt="UndoRedoState5">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
-<div class="sect5">
-<h6 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h6>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire quiz book.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
+<p>User enters details of money borrowed.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>User requests to add a Borrow entry.</p>
+</li>
+<li>
+<p>Modulo adds Borrow entry and displays it in list of log entries.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Modulo detects an error in command/details entered.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. Modulo shows an error message.</p>
+</li>
+<li>
+<p>2a2. Modulo requests for command to be entered in the correct format.</p>
+</li>
+<li>
+<p>2a3. User enters new line of command with new details.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
+<p>Steps 2a1-2a3 are repeated until the command and details entered are in the correct format.</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+<p>Use case resumes from step 3.</p>
 </li>
 </ul>
 </div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect5">
-<h6 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h6>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of quiz book states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new developers to understand.</p>
-</li>
-<li>
-<p>Cons: May suffer from performance issues on the memory (When a new command is executed, we must remember to update the list from <code>VersionedQuizBook</code>).</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
+<h3 id="use-case-set-a-budget" class="discrete">Use case: Set a budget</h3>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p>Preconditions: User has switched to the <em>finance</em> feature</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters details of budget.</p>
+</li>
+<li>
+<p>User requests to add a budget to finance log.</p>
+</li>
+<li>
+<p>Modulo adds the budget and displays it in list of budgets.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Modulo detects an error in command/details entered.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. Modulo shows an error message.</p>
+</li>
+<li>
+<p>2a2. Modulo requests for command to be entered in the correct format.</p>
+</li>
+<li>
+<p>2a3. User enters new line of command with new details.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Steps 2a1-2a3 are repeated until the command and details entered are in the correct format.</p>
+</li>
+<li>
+<p>Use case resumes from step 3.</p>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. Modulo detects that budget already exists in finance log (with all details exactly the same).</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. Modulo shows an error message.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+<h3 id="use-case-record-down-an-entry-of-borrowing-to-finance-log-2" class="discrete">Use case: Record down an entry of borrowing to finance log</h3>
+<div class="paragraph">
+<p>Preconditions: User has switched to the <em>finance</em> feature, a budget exists in finance log</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters details of money spend.</p>
+</li>
+<li>
+<p>User requests to add a Spend entry.</p>
+</li>
+<li>
+<p>Modulo adds Spend entry and displays it in list of log entries.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Modulo detects an error in command/details entered.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. Modulo shows an error message.</p>
+</li>
+<li>
+<p>2a2. Modulo requests for command to be entered in the correct format.</p>
+</li>
+<li>
+<p>2a3. User enters new line of command with new details.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Steps 2a1-2a3 are repeated until the command and details entered are in the correct format.</p>
+</li>
+<li>
+<p>Use case resumes from step 3.</p>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. Spend entry is included under budget and budget is exceeded (i.e. limit set by budget is crossed).</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. Modulo notifies that budget has been exceeded.</p>
+</li>
+<li>
+<p>3a2. Exceeded budget is marked as so.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3b. Spend entry is included under budget and budget is close to being exceeded.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3b1. Modulo notifies that budget is close to exceeding.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+<h3 id="use-case-mark-an-entry-of-money-lent-as-repaid" class="discrete">Use case: Mark an entry of money lent as repaid</h3>
+<div class="paragraph">
+<p>Preconditions: User has switched to the <em>finance</em> feature</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to mark Lend entry as repaid.</p>
+</li>
+<li>
+<p>Modulo marks the entry as repaid and record downs the date of repayment.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User requests to mark Lend entry as repaid with date of repayment specified.</p>
+</li>
+<li>
+<p>Use case resumes from step 2.</p>
+</li>
+<li>
+<p>2a. Modulo checks that entry was already repaid and notifies user of it.</p>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+<h3 id="use-case-view-statistical-summary-of-finance-log" class="discrete">Use case: View statistical summary of finance log</h3>
+<div class="paragraph">
+<p>Preconditions: User has switched to the <em>finance</em> feature</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to view statistical summary with type of summary specified.</p>
+</li>
+<li>
+<p>Modulo shows graphs summarising the flow of money in the finance log.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Modulo detects an error in command/details entered.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. Modulo shows an error message.</p>
+</li>
+<li>
+<p>1a2. Modulo requests for command to be entered in the correct format.</p>
+</li>
+<li>
+<p>1a3. User enters new line of command with new details.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Steps 1a1-1a3 are repeated until the command and details entered are in the correct format.</p>
+</li>
+<li>
+<p>Use case resumes from step 2.</p>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Modulo detects that no entries have been entered in the finance log.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. Modulo shows an empty page.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 12:39:06 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 07:07:50 UTC</div></div></div></body></html>

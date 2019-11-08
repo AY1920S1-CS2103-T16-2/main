@@ -26,6 +26,7 @@
 <li><a href="#configuration">3.2. Configuration</a></li>
 <li><a href="#calendar">3.3. Calendar</a></li>
 <li><a href="#quiz-feature">3.4. Quiz feature</a></li>
+<li><a href="#budgets-in-finances">3.5. Budgets in finances</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -130,7 +131,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <h4 id="rationale-for-having-multiple-code-ui-code-code-logic-code-code-model-code-code-storage-code-classes-in-em-modulo-em" class="discrete">Rationale for having multiple <code>UI</code>, <code>Logic</code>, <code>Model</code>, <code>Storage</code> classes in <em>Modulo</em></h4>
 <div class="paragraph">
-<p>The features in <em>Modulo</em> are quite distinct, and essentially do not share the commands and dalexibility of implementing each feature. The same command word <code>add</code> is now able to be executete the features to form <em>Modulo</em> with less overlaps when coding. Each time the user switches tover the previous feature&#8217;s classes.</p>
+<p>The features in <em>Modulo</em> are quite distinct and having minimal overlaps, each feature has its own data file to read and modify. The logic to execute commands are also handled differently in each feature. As such, our decision to have 4 components for each feature was to reduce coupling and allow flexibility in our implementations. This means that the same <code>add</code> command is now able to trigger a different sequence of actions depending on the feature the user is currently in. This architecture style allows each feature to be developed independently, free from the constraints set by other features. Each time a user switches to another feature, the <code>Ui</code>, <code>Logic</code>, <code>Model</code> and <code>Storage</code> classes will be replaced by that of the new feature.</p>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
@@ -798,6 +799,214 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="budgets-in-finances"><a class="link" href="#budgets-in-finances">3.5. Budgets in finances</a></h3>
+<div class="sect3">
+<h4 id="implementation-6"><a class="link" href="#implementation-6">3.5.1. Implementation</a></h4>
+<div class="paragraph">
+<p>A budget is an estimate or threshold of spending set for a specified period of time. In <em>Modulo</em>, a budget can be set to only include spendings of a particular characteristic (i.e. transaction method, place of spending or category). For example, budgets of spendings at a particular place can be set. <em>Modulo</em> will only take into account spendings recorded to be associated with this place and falling within the specified period of time.</p>
+</div>
+<div class="paragraph">
+<p>To compute the current total amount spent so far and see whether this total amount still falls within the budget, amounts associated with entries are summed together.</p>
+</div>
+<div class="paragraph">
+<p>These entries have to fulfill the following requirements set by the budget to be considered in the tabulation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Has to be a log entry of type <code>Spend</code></p>
+</li>
+<li>
+<p>Transaction date has to fall within budget period (i.e. between the start and end dates)</p>
+</li>
+<li>
+<p>(If addition field of transaction method, place of spending or categorys specified) Has to either have the same transaction method, place of spending or be tagged with the same category</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are some classes in the <code>Model</code> component necessary for the computation of budgets:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Budget</code> - Contains the basic information about a budget (amount, start and end dates, additional characteristic <code>Spend</code> entry has to fall under (if any))</p>
+</li>
+<li>
+<p><code>BudgetData</code> - The <code>Budget</code> object associated to it, the limit set by the budget and the current total amount tabulated from the <code>Spend</code> entries matching the budget requirements</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In <code>ModelFinanceManager</code> which implements the <code>Model</code> interface, <code>Model#getFilteredBudgetDataList()</code> will return the list of <code>BudgetData</code> objects mapped from the list of <code>Budget</code> objects stored in the <em>Modulo</em>. These <code>BudgetData</code> are instantiated using information from the list of entries stored in <em>Modulo</em>. They filter out entries which do not match the requirements of the budget they are associated with, and then add up all the amounts of the entries to obtain the current total amount spent.</p>
+</div>
+<div class="paragraph">
+<p>If the total amount of spending is close to exceeding the budget (more than or equals to 80% of budget spent), an orange label at the menu bar will be shown to notify the user that a budget is near to reaching its limit.</p>
+</div>
+<div class="paragraph">
+<p>And if the total amount of spending has exceeding the limit set by the budget, the menu bar will have a red label indicating that the budget has been exceeded. The amount of money spend has gone over the estimate set and is now in deficit.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario for what happens when a budget is set, and how <em>Modulo</em> behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>This assumes that the user has not set any budget in the application before but has some entries recorded in the finance log. These entries are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>(Income) Amount: 800, Item: Internship Pay, From: ABCompany,  Transaction Method: Bank Transfer, Day:  7-11-2019</p>
+</li>
+<li>
+<p>(Spend) Amount: 50, Item: EzLink TopUp, Transaction Method: NETS, Place: Caldecott MRT, Day:  4-11-2019</p>
+</li>
+<li>
+<p>(Spend) Amount: 107.70, Item: Bicycle, Transaction Method: Cash, Day:  5-11-2019, Place: Toa Payoh Lor 4, Categories: bike</p>
+</li>
+<li>
+<p>(Spend) Amount: 1.10, Item: KopiO, Transaction Method: Cash, Day:  2-11-2019, Categories: drink, kopitiam</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Step 1.</strong> The user launches the application and switch to the <strong>finance</strong> mode by executing <code>switch finance</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2.</strong> The user wants to set a budget of 300 dollars for November for spendings done using cash. He executes the <code>budget &lt;amt&gt; 300 &lt;month&gt; 11-2019 &lt;met&gt; Cash</code> command to set this budget. The <code>budget</code> command calls <code>Model#addBudget(b)</code>, where upon the finance log will add <code>Budget</code> object <code>b</code> to <code>budgetList</code>, the list of budgets.</p>
+</div>
+<div class="paragraph">
+<p>The interactions inside the Logic Component for <code>budget &lt;amt&gt; 300 &lt;month&gt; 11-2019 &lt;met&gt; cash</code> Command are shown in the sequence diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BudgetLogicSequenceDiagram.png" alt="BudgetLogicSequenceDiagram">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifelines for <code>BudgetCommandParser</code> and <code>BudgetCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifelines reaches the end of diagram.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The interactions in the Model Component for the same command are shown in the sequence diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BudgetModelSequenceDiagram.png" alt="BudgetModelSequenceDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>The budget is added to the list of budgets (this being the first budget in the list). The list of budgets will update with the status of each budget.</p>
+</div>
+<div class="paragraph">
+<p>Modulo will change the view after a <code>budget</code> command to show the list of budgets stored in Modulo.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the exact same budget already exists in the budget list, it will not call <code>Model#addBudget(b)</code>, and this budget will not be added to the list of budgets. Modulo will show an error message that this budget already exists.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Step 3.</strong> The user now decides to add another entry of spending. This time the user has recently spent 400 dollars on a Nintendo Switch and paid for it using cash. He enters this record with the <code>spend &lt;amt&gt; 400 &lt;item&gt; Nintendo Switch &lt;met&gt; Cash &lt;day&gt; 7-11-2019</code> command. This entry is added to the list of entries.</p>
+</div>
+<div class="paragraph">
+<p>Since this entry is paid using cash, transaction date was in November 2019 it is included in the tabulation of the budget. It causes the total amount spent to exceed the budget of 300 dollars, and a red label in the menu bar appears to notify the user that a budget has exceeded.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4.</strong> The user views the list of budgets (in this example, there is only one budget) using the <code>listb</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The window changes to a view of the budget, with information about its status shown.</p>
+</div>
+<div class="paragraph">
+<p>These information include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type of budget (for all <code>Spend</code> entries, for entries done using a specific transaction method, conducted at a specific place or tagged with a specific category)</p>
+</li>
+<li>
+<p>Start and end date of budget</p>
+</li>
+<li>
+<p>Progress bar of how much money has been spent (for entries fulfilling budget requirements)</p>
+</li>
+<li>
+<p>Whether the budget is active (current date falls between start and end dates) or not (end date of budget has passed or start date has yet to come)</p>
+</li>
+<li>
+<p>Total amount spend so far</p>
+</li>
+<li>
+<p>Limit set by budget</p>
+</li>
+<li>
+<p>Amount of money left to limit or how much has the budget been exceeded by</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The flow on how what happens when the user enters a new entry is shown in the activity diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddNewEntryActivityDiagram.png" alt="AddNewEntryActivityDiagram" width="60%">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-tabulation-of-spendings"><a class="link" href="#aspect-data-structure-to-support-tabulation-of-spendings">Aspect: Data structure to support tabulation of spendings</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Save just the basic details related to the budget - amount (limit to amount to be spent), start and end date, optional requirements <code>Spend</code> entries should fufill (transaction method, place of spending or category).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less information to store, flexible to changes such as updates to entries during edits (e.g. changes in amounts etc). Budgets can be retrospective (even if dates have past, budgets can still be set to see spending was kept within limits).</p>
+</li>
+<li>
+<p>Cons: Additional step of filtering to obtain entries matching budget requirements before tabulating the total amount - may have performance issues when number of entries is large in terms of time complexity.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Budget stores the same information as above, and also the list of entries that fulfill the budget requirements.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Removes the need for filtering entries before tabulation, simply calculate total amount from list of entries stored under the budget.</p>
+</li>
+<li>
+<p>Cons: Will use more memory (now storing the list of entries). Difficult when an entry is delete or modified, have to delete and modify entry accordingly in the list of entries stored under the budget.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1076,6 +1285,321 @@ If the <code>currentStatePointer</code> is at index <code>quizBookStateList.size
 </li>
 </ul>
 </div>
+<h3 id="use-case-record-down-an-entry-of-borrowing-to-finance-log" class="discrete">Use case: Record down an entry of borrowing to finance log</h3>
+<div class="paragraph">
+<p>Preconditions: User has switched to the <em>finance</em> feature</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters details of money borrowed.</p>
+</li>
+<li>
+<p>User requests to add a Borrow entry.</p>
+</li>
+<li>
+<p>Modulo adds Borrow entry and displays it in list of log entries.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Modulo detects an error in command/details entered.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. Modulo shows an error message.</p>
+</li>
+<li>
+<p>2a2. Modulo requests for command to be entered in the correct format.</p>
+</li>
+<li>
+<p>2a3. User enters new line of command with new details.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Steps 2a1-2a3 are repeated until the command and details entered are in the correct format.</p>
+</li>
+<li>
+<p>Use case resumes from step 3.</p>
+</li>
+</ul>
+</div>
+<h3 id="use-case-set-a-budget" class="discrete">Use case: Set a budget</h3>
+<div class="paragraph">
+<p>Preconditions: User has switched to the <em>finance</em> feature</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters details of budget.</p>
+</li>
+<li>
+<p>User requests to add a budget to finance log.</p>
+</li>
+<li>
+<p>Modulo adds the budget and displays it in list of budgets.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Modulo detects an error in command/details entered.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. Modulo shows an error message.</p>
+</li>
+<li>
+<p>2a2. Modulo requests for command to be entered in the correct format.</p>
+</li>
+<li>
+<p>2a3. User enters new line of command with new details.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Steps 2a1-2a3 are repeated until the command and details entered are in the correct format.</p>
+</li>
+<li>
+<p>Use case resumes from step 3.</p>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. Modulo detects that budget already exists in finance log (with all details exactly the same).</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. Modulo shows an error message.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+<h3 id="use-case-record-down-an-entry-of-borrowing-to-finance-log-2" class="discrete">Use case: Record down an entry of borrowing to finance log</h3>
+<div class="paragraph">
+<p>Preconditions: User has switched to the <em>finance</em> feature, a budget exists in finance log</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters details of money spend.</p>
+</li>
+<li>
+<p>User requests to add a Spend entry.</p>
+</li>
+<li>
+<p>Modulo adds Spend entry and displays it in list of log entries.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Modulo detects an error in command/details entered.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. Modulo shows an error message.</p>
+</li>
+<li>
+<p>2a2. Modulo requests for command to be entered in the correct format.</p>
+</li>
+<li>
+<p>2a3. User enters new line of command with new details.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Steps 2a1-2a3 are repeated until the command and details entered are in the correct format.</p>
+</li>
+<li>
+<p>Use case resumes from step 3.</p>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. Spend entry is included under budget and budget is exceeded (i.e. limit set by budget is crossed).</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. Modulo notifies that budget has been exceeded.</p>
+</li>
+<li>
+<p>3a2. Exceeded budget is marked as so.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3b. Spend entry is included under budget and budget is close to being exceeded.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3b1. Modulo notifies that budget is close to exceeding.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+<h3 id="use-case-mark-an-entry-of-money-lent-as-repaid" class="discrete">Use case: Mark an entry of money lent as repaid</h3>
+<div class="paragraph">
+<p>Preconditions: User has switched to the <em>finance</em> feature</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to mark Lend entry as repaid.</p>
+</li>
+<li>
+<p>Modulo marks the entry as repaid and record downs the date of repayment.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User requests to mark Lend entry as repaid with date of repayment specified.</p>
+</li>
+<li>
+<p>Use case resumes from step 2.</p>
+</li>
+<li>
+<p>2a. Modulo checks that entry was already repaid and notifies user of it.</p>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+<h3 id="use-case-view-statistical-summary-of-finance-log" class="discrete">Use case: View statistical summary of finance log</h3>
+<div class="paragraph">
+<p>Preconditions: User has switched to the <em>finance</em> feature</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to view statistical summary with type of summary specified.</p>
+</li>
+<li>
+<p>Modulo shows graphs summarising the flow of money in the finance log.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Modulo detects an error in command/details entered.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. Modulo shows an error message.</p>
+</li>
+<li>
+<p>1a2. Modulo requests for command to be entered in the correct format.</p>
+</li>
+<li>
+<p>1a3. User enters new line of command with new details.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Steps 1a1-1a3 are repeated until the command and details entered are in the correct format.</p>
+</li>
+<li>
+<p>Use case resumes from step 2.</p>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Modulo detects that no entries have been entered in the finance log.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. Modulo shows an empty page.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1156,4 +1680,4 @@ Expected: Closes the app and GUI</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 12:39:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 07:07:50 UTC</div></div></div></body></html>
