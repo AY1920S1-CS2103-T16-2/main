@@ -15,7 +15,7 @@
 <ul class="sectlevel2">
 <li><a href="#common-commands">3.1. Common commands</a></li>
 <li><a href="#calendar">3.2. Calendar</a></li>
-<li><a href="#modules">3.3. Modules</a></li>
+<li><a href="#grades-tracker">3.3. Grades Tracker</a></li>
 <li><a href="#quiz">3.4. Quiz</a></li>
 <li><a href="#finances">3.5. Finances</a></li>
 <li><a href="#saving-the-data">3.6. Saving the data</a></li>
@@ -305,32 +305,167 @@ e.g. <code>go 2</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="modules"><a class="link" href="#modules">3.3. Modules</a></h3>
+<h3 id="grades-tracker"><a class="link" href="#grades-tracker">3.3. Grades Tracker</a></h3>
 <div class="paragraph">
 <p>To enter the Module section please enter the command: <code>switch cap</code></p>
 </div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 1. Quick Reference sheet</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 13.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Available Commands</th>
+<th class="tableblock halign-center valign-top">Prefixes / Input  required</th>
+<th class="tableblock halign-left valign-top">Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">add</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt;m&gt; MODULE_CODE, &lt;t&gt;TITLE, &lt;s&gt; SEMESTER, &lt;c&gt; CREDIT &lt;g&gt; GRADE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds a new module.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">delete</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">MODULE_CODE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes a specific module.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">list</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List all the modules, often required after the find command.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">find</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">KEYWORD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find a specific keyword within module code and/or module description.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">sort</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the modules in order of their semesters and academic years taken.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">clear</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clear all existing modules.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="sect3">
 <h4 id="manually-add-module-to-record-code-add-code"><a class="link" href="#manually-add-module-to-record-code-add-code">3.3.1. Manually add module to record : <code>add</code></a></h4>
 <div class="paragraph">
 <p>The user can add new modules into the grade tracker.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add MODULE_CODE MODULE_TITLE MODULE_YEAR_AND_SEMESTER MODULE_FACULTY MODULAR_CREDIT GRADE</code>
-e.g. <code>add &lt;m&gt;CS2103 &lt;t&gt;Software Engineering &lt;s&gt;1920S1 &lt;f&gt;Computing &lt;c&gt;4 &lt;g&gt;A</code>, <code>add &lt;m&gt;ACC1002 &lt;t&gt;Financial Accounting &lt;s&gt;1920S1 &lt;f&gt;NUS Business School &lt;c&gt;4 &lt;g&gt;A</code></p>
+<p>The fields of a module consist of:<br>
+- <code>MODULE_CODE</code> The module code of the module. The student is provided with the liberty to input any module code in consideration that new modules may be created in the future. Prefix: <code>&lt;m&gt;</code><br>
+- <code>TITLE</code> The title of the module. The student is provided with the liberty to input any module code in consideration that new modules may be created in the future. Prefix: <code>&lt;t&gt;</code>.<br>
+- <code>SEMESTER</code> Semester includes 2 components i.e. the academic year and semester period. The academic year and semester that the module was taken in / provided. Modulo only takes in +/- 5 years for academic year, assuming that students are able to graduate within 5 years. The semester period field takes in 1, 2, 3, 4. Semesters 3 and 4 indicates special term 1 and 2 respectively. Prefix: <code>&lt;s&gt;</code>.<br>
+- <code>CREDIT</code> Modular credit for the module. Module credit only accepts 2 to 23 credits. Prefix: <code>&lt;c&gt;</code>.<br>
+- <code>GRADE</code> Grades for the attained for the module. Only permitted <a href="http://www.nus.edu.sg/nusbulletin/yong-siew-toh-conservatory-of-music/undergraduate-education/degree-requirements/grading-system-and-regulations/">grades</a> are accepted. SU is currently not supported. Prefix: <code>&lt;g&gt;</code>.</p>
 </div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 2. Semester Period Classifications</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Input</th>
+<th class="tableblock halign-center valign-top">Semester Period</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Semester 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Semester 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Special Term 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Special Term 2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Format: <code>add MODULE_CODE MODULE_TITLE MODULE_YEAR_AND_SEMESTER MODULAR_CREDIT GRADE</code>
+e.g. <code>add &lt;m&gt;CS2103 &lt;t&gt;Software Engineering &lt;s&gt;1920S1 &lt;c&gt;4 &lt;g&gt;A</code>, <code>add &lt;m&gt;ACC1002 &lt;t&gt;Financial Accounting &lt;s&gt;1920S1 &lt;c&gt;4 &lt;g&gt;A</code></p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 3. List of sample commands</caption>
+<colgroup>
+<col style="width: 23.0769%;">
+<col style="width: 76.9231%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Module</th>
+<th class="tableblock halign-left valign-top">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CS2103</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add &lt;m&gt;CS2103 &lt;t&gt;Software Engineering &lt;s&gt;1920S1 &lt;c&gt;4 &lt;g&gt;A</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">EC3343</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add &lt;m&gt;CS3343 &lt;t&gt;International Finance I &lt;s&gt;2021S1 &lt;c&gt;4 &lt;g&gt;A</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CS3202</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add &lt;m&gt;CS3202 &lt;t&gt;Software Engineering Project II &lt;s&gt;2021S2 &lt;c&gt;4 &lt;g&gt;B+</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CS3211</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add &lt;m&gt;CS3211 &lt;t&gt;Parallel and Concurrent Programming &lt;s&gt;2021S2 &lt;c&gt;4 &lt;g&gt;A-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CS3218</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add &lt;m&gt;CS3218 &lt;t&gt;Multimodal Processing in Mobile Platforms &lt;s&gt;2122S1 &lt;c&gt;4 &lt;g&gt;B</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="delete-module-from-record-code-delete-code"><a class="link" href="#delete-module-from-record-code-delete-code">3.3.2. Delete module from record : <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Delete a specific module from the list of modules.</p>
+<p>Delete a specific module from the list of modules by specifying the module code. The command is very strict on matching the module code given to the existing modules in modulo.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete INDEX</code>
-e.g. <code>delete 1</code></p>
+<p>Format: <code>delete MODULE CODE</code>
+e.g. <code>delete CS2103</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="locating-module-by-module-code-or-title-code-find-code"><a class="link" href="#locating-module-by-module-code-or-title-code-find-code">3.3.3. Locating module by module code or title : <code>find</code></a></h4>
+<h4 id="listing-all-tasks-code-list-code-2"><a class="link" href="#listing-all-tasks-code-list-code-2">3.3.3. Listing all tasks : <code>list</code></a></h4>
+<div class="paragraph">
+<p>Shows the list of all modules in the grades tracker.<br>
+Format: <code>list</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-tasks-code-sort-code"><a class="link" href="#listing-all-tasks-code-sort-code">3.3.4. Listing all tasks : <code>sort</code></a></h4>
+<div class="paragraph">
+<p>Sorts the list of modules in chronological order, the modules taken earlier to the modules taken later. The determination is based on the academic year then the semesters.<br>
+Format: <code>sort</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="locating-module-by-module-code-or-title-code-find-code"><a class="link" href="#locating-module-by-module-code-or-title-code-find-code">3.3.5. Locating module by module code or title : <code>find</code></a></h4>
 <div class="paragraph">
 <p>Finds the module with the matching module code or module description.</p>
 </div>
@@ -342,12 +477,12 @@ e.g. <code>delete 1</code></p>
 e.g. searching for <code>metho</code> will return <code>Programming Methodology I</code>, <code>Programming Methodology II</code>, <code>Web Programming and Applications</code>.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>find MODULE_CODE [MORE_KEYWORDS]</code>
-e.g. <code>find CS1010S</code>, <code>find Programming Methodology I</code></p>
+<p>Format: <code>find MODULE_CODE [OTHER_KEYWORDS]</code>
+e.g. <code>find CS1010S</code>, <code>find Programming</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="clear-all-modules-in-a-specific-semester-or-clean-slate-all-records-code-clear-code"><a class="link" href="#clear-all-modules-in-a-specific-semester-or-clean-slate-all-records-code-clear-code">3.3.4. Clear all modules in a specific semester or clean-slate all records : <code>clear</code></a></h4>
+<h4 id="clear-all-modules-in-a-specific-semester-or-clean-slate-all-records-code-clear-code"><a class="link" href="#clear-all-modules-in-a-specific-semester-or-clean-slate-all-records-code-clear-code">3.3.6. Clear all modules in a specific semester or clean-slate all records : <code>clear</code></a></h4>
 <div class="paragraph">
 <p>Deletes all modules in the record. The user can avoid clearing modules one-by-one when large number of modules have to be cleared.
 When the only single keyword <code>clear</code> is entered, Modulo would recognise it as a command to clear all the modules. The action is irreversible.</p>
@@ -358,7 +493,7 @@ e.g. <code>clear</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="categorisation-coming-in-v2-0"><a class="link" href="#categorisation-coming-in-v2-0">3.3.5. Categorisation [Coming in V2.0]</a></h4>
+<h4 id="categorisation-coming-in-v2-0"><a class="link" href="#categorisation-coming-in-v2-0">3.3.7. Categorisation [Coming in V2.0]</a></h4>
 <div class="paragraph">
 <p>Categorisation of the modules in their respective semesters.</p>
 </div>
@@ -835,4 +970,4 @@ There is no need to save manually.</p>
 <strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous <em>Modulo</em> folder.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 12:30:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 16:47:05 UTC</div></div></div></body></html>
