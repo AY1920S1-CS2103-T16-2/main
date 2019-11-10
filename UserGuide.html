@@ -619,7 +619,7 @@ Format: <code>exit</code><br>
 <p>All amounts are taken to be in SGD and recorded as if with dollar signs and numerals. For example, 110 cents should be written as <code>1.10</code> or <code>1.1</code>.</p>
 </div>
 <div class="paragraph">
-<p>If dates are to be specified, only dates of format <code>DD-MM-YYYY</code> will be recognised. If dates are not specified, the default day will be set to the current day when the entry was entered.</p>
+<p>If dates are to be specified, only dates of format <code>DD-MM-YYYY</code> will be recognised. If dates are not specified, the default day will be set to the current day when the entry was entered. Dates should not be in the future.</p>
 </div>
 <div class="paragraph">
 <p>Note that category names should be without whitespaces (e.g. <code>catFood</code>, <strong>not</strong> <code>cat food</code>).</p>
@@ -663,7 +663,7 @@ e.g. <code>income &lt;amt&gt;300 &lt;day&gt;09-08-2019 &lt;item&gt;GST Voucher &
 </div>
 <div class="paragraph">
 <p>Format: <code><strong>lend</strong> &lt;amt&gt;AMOUNT &lt;item&gt;DESCRIPTION &lt;met&gt;TRANSACTION_METHOD &lt;to&gt;PERSON_LENT_TO [&lt;day&gt;DATE_LENT] [&lt;cat&gt;CATEGORY]&#8230;&#8203;</code><br>
-e.g. `lend &lt;amt&gt;1 &lt;day&gt;08-08-2019 &lt;item&gt;HL Choco milk &lt;met&gt;Cash &lt;to&gt;Brother `</p>
+e.g. <code>lend &lt;amt&gt;1 &lt;day&gt;08-08-2019 &lt;item&gt;HL Choco milk &lt;met&gt;Cash &lt;to&gt;Brother</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -673,20 +673,20 @@ e.g. `lend &lt;amt&gt;1 &lt;day&gt;08-08-2019 &lt;item&gt;HL Choco milk &lt;met&
 Once the log entry has been marked as repaid, it cannot be undone and it is no longer editable.</p>
 </div>
 <div class="paragraph">
-<p>If no day is specified, date repaid will be recorded as the day the entry was entered into the system.</p>
+<p>The recorded day of when the entry was repaid is the day the entry was marked as so.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>repaid</strong> INDEX [&lt;day&gt; DAY_REPAID]</code><br>
-e.g. <code>repaid 3</code></p>
+<p>Format: <code><strong>repaid</strong> INDEX</code><br>
+e.g. <code>repaid 4</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="clone-a-log-entry-code-clone-code"><a class="link" href="#clone-a-log-entry-code-clone-code">3.5.6. Clone a log entry: <code>clone</code></a></h4>
 <div class="paragraph">
-<p>Duplicate a log entry, with the same information except for the date of transaction. If date is not specified, it will be recorded as the day the entry was entered into the system.</p>
+<p>Duplicate a log entry, with the same information except for the date of transaction. The date of transaction will be the day the entry was cloned.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code><strong>clone</strong> INDEX [&lt;day&gt; TRANSACTION_DATE]</code><br>
+<p>Format: <code><strong>clone</strong> INDEX</code><br>
 e.g. <code>clone 3</code></p>
 </div>
 </div>
@@ -744,7 +744,7 @@ e.g. <code>delete 5</code></p>
 </div>
 <div class="paragraph">
 <p>Format: <code><strong>find</strong> [&lt;type&gt; spend/income/borrow/lend] [&lt;keyword&gt; KEYWORD [MORE_KEYWORDS]&#8230;&#8203;] [&lt;cat&gt; CATEGORY_NAME [MORE_CATEGORY_NAMES]&#8230;&#8203;]</code><br>
-E.g. <code>find &lt;type&gt;lend</code></p>
+E.g. <code>find &lt;type&gt;spend</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -759,7 +759,7 @@ E.g. <code>find &lt;type&gt;lend</code></p>
 <p>Format: <code><strong>stats</strong> &lt;gb&gt;ATTRIBUTE &lt;sum&gt;STAT</code><br>
 * Possible <code>ATTRIBUTE</code> values for <code>&lt;gb&gt;</code> are: <code>month</code>, <code>entrytype</code>, <code>met</code>, <code>cat</code>, <code>place</code> (only shows <code>Spend</code> entries)<br>
 * Possible <code>STAT</code> values for <code>&lt;sum&gt;</code> are: <code>freq</code> and <code>amt</code><br>
-E.g. <code>stats &lt;gb&gt; entrytype &lt;sum&gt; freq</code></p>
+E.g. <code>stats &lt;gb&gt; met &lt;sum&gt; freq</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -787,6 +787,9 @@ E.g. <code>stats &lt;gb&gt; entrytype &lt;sum&gt; freq</code></p>
 </ol>
 </div>
 <div class="paragraph">
+<p>Note that these fields are case-sensitive (e.g. <code>Spend</code> entries with category <code>food</code> will not match if budget field is specified as <code>&lt;cat&gt; FOOD</code>).</p>
+</div>
+<div class="paragraph">
 <p>There are 3 ways to specify the duration (start, end) of a budget:</p>
 </div>
 <div class="olist arabic">
@@ -812,7 +815,7 @@ e.g. <code>budget &lt;amt&gt; 300 &lt;month&gt;11-2019 &lt;met&gt;cash</code></p
 <div class="sect3">
 <h4 id="list-out-all-budgets-code-listb-code"><a class="link" href="#list-out-all-budgets-code-listb-code">3.5.13. List out all budgets: <code>listb</code></a></h4>
 <div class="paragraph">
-<p>List out all budgets in recorded down.</p>
+<p>List out all budgets which have been recorded down.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code><strong>listb</strong></code></p>
@@ -836,4 +839,4 @@ There is no need to save manually.</p>
 <strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous <em>Modulo</em> folder.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 08:35:03 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:25:10 UTC</div></div></div></body></html>

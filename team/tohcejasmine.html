@@ -37,28 +37,38 @@
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p><em>What it does:</em> allows the user to set budgets (with option of making it more specific to a type of spending). Budgets can be set retrospectively, or in the future, in addition to those that are ongoing in present time.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p><em>Justification:</em> This feature adds an additional dimension to the feature aside from the passive recording of financial activities. User can now set goals (in the form of budgets) and the application will tabulate the total amount spent so far for the user.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p><em>Highlights:</em> The portion of budget spent is depicted through a progress bar. When the user&#8217;s spending is close to exceeding or has exceeded a budget, the feature will notify the user instantaneously. To provide usual feedback to the user, the colour of text, numbers and progress bar will change accordingly, reflecting the status of the budget.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Enhancement</strong>: added <strong>stats</strong> component</p>
+<p>Added <strong>stats</strong> component</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>What it does:</em> Display pie and bar charts summarising the numbers in the finance log. Pie charts depict the total amount associated with various groups. Entries can be grouped by their entry type (spend, income, borrow, lend), their transaction method, their place of spending or the categories they were tagged with. Bar charts show the total number of entries in the various groups.</p>
+</li>
+<li>
+<p><em>Justification:</em> With the addition of more entries over time, it can be overwhelming for the user to look through those entries to determine his pattern of spending. A graph that summarises these numbers will make it easier to judge what kind of expenses should be reduced.</p>
+</li>
+<li>
+<p><em>Highlights:</em> This command has 8 possible combination of inputs possible, which is all supported. The number of log entries and total amounts are sorted in descending order, with the largest value first.</p>
+</li>
+</ul>
+</div>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement</strong>: find command that allows the filtering of entries by their type, in addition to searching by keywords (partial keyword match is also enabled for item descriptions).</p>
 </li>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=tohcejasmine">Functional code</a>]</p>
@@ -72,20 +82,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Set deadlines for milestones <code>v1.0</code> - <code>v1.4</code> on GitHub</p>
 </li>
 </ul>
 </div>
@@ -95,7 +92,16 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Wrote introduction to the <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/docs/UserGuide.adoc#introduction">User Guide</a></p>
+</li>
+<li>
+<p>Added command usage for <em>Finance</em> feature in the <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/docs/UserGuide.adoc#finances">User Guide</a></p>
+</li>
+<li>
+<p>Wrote detailed process and implementation of the Budget command in the <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/docs/DeveloperGuide.adoc#budgets-in-finances">Developer Guide</a></p>
+</li>
+<li>
+<p>Added some <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/docs/DeveloperGuide.adoc#user-stories">user stories</a> and <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/docs/DeveloperGuide.adoc#appendix-c-use-cases">use cases</a> in the Developer Guide</p>
 </li>
 </ul>
 </div>
@@ -105,29 +111,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/146">#146</a>, <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/pull/46">#46</a></p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Reported bugs and suggestions for other teams in the class (example:  <a href="https://github.com/tohcejasmine/ped/issues">PE Dry Run</a>)</p>
 </li>
 </ul>
 </div>
@@ -136,52 +123,156 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>Modulo is a desktop application helping National University of Singapore (NUS) students to audit their academics, finances and schedule their time as they try their best to survive yet another semester of college. Those who prefer to work with a Command Line Interface (CLI) might find using Modulo to be more straightforward than the usual Graphical User Interface (GUI) applications. The application has the visual benefits of a GUI but stands strongly rooted in command line usage. Modulo does not require an internet connection to run so there’s no worry when the school wifi goes MIA yet again. The only time you need to be connected is at the start, when downloading the application. Look to <a href="#Quick Start">[Quick Start]</a> to find out how to get started on Modulo!</p>
+<p>This is a subset of the <em>Finance</em> section, for the full version, please refer to the <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/docs/UserGuide.adoc#finances">User Guide</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="finances"><a class="link" href="#finances">Finances</a></h3>
+<div class="paragraph">
+<p>To enter the Finances section, please enter the command: <code>switch finance</code></p>
+</div>
+<div class="paragraph">
+<p>All amounts are taken to be in SGD and recorded as if with dollar signs and numerals. For example, 110 cents should be written as <code>1.10</code> or <code>1.1</code>.</p>
+</div>
+<div class="paragraph">
+<p>If dates are to be specified, only dates of format <code>DD-MM-YYYY</code> will be recognised. If dates are not specified, the default day will be set to the current day when the entry was entered. Dates should not be in the future.</p>
+</div>
+<div class="paragraph">
+<p>Note that category names should be without whitespaces (e.g. <code>catFood</code>, <strong>not</strong> <code>cat food</code>).</p>
+</div>
+<div class="sect3">
+<h4 id="add-an-entry-of-expenditure-code-spend-code"><a class="link" href="#add-an-entry-of-expenditure-code-spend-code">Add an entry of expenditure: <code>spend</code></a></h4>
+<div class="paragraph">
+<p>Record down an entry of spending with relevant information associated with it. If place of spending is not specified, it will default to <code>-</code>.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>spend</strong> &lt;amt&gt;AMOUNT &lt;item&gt;DESCRIPTION &lt;met&gt;TRANSACTION_METHOD [&lt;place&gt;PLACE] [&lt;day&gt;TRANSACTION_DATE] [&lt;cat&gt;CATEGORY]&#8230;&#8203;</code><br>
+e.g. <code>spend &lt;amt&gt;2.80 &lt;day&gt;15-10-2019 &lt;item&gt;Yong Tau Foo &lt;met&gt;Cash &lt;place&gt;Frontier</code>
+==== Edit an entry: <code>edit</code></p>
+</div>
+<div class="paragraph">
+<p>Edit an entry previously entered by index of entry in listed listed out by <code>list</code>. Index provided should be valid, within range of the list and positive. There is not need to re-enter all details of the log entry to edit it - just specify the field to be edited. Any irrelevant fields to the log entry (e.g. 'Borrow' entries do not have a <code>&lt;place&gt;</code> field) will be ignored.<br></p>
+</div>
+<div class="paragraph">
+<p>Note that the newly-entered information will overwrite the details at the attribute. For example, if there were categories <code>food</code> and <code>hobby</code> linked to the entry at index 5 of the list, command <code>edit 5 &lt;cat&gt;pet</code> will delete the previous two categories and replace them with a single category <code>pet.</code><br></p>
+</div>
+<div class="paragraph">
+<p>Repaid 'Borrow' and 'Lend' entries cannot be edited.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>edit</strong> INDEX [&lt;amt&gt;AMOUNT] [&lt;day&gt;DAY] [&lt;item&gt;DESCRIPTION] [&lt;met&gt;TRANSACTION_METHOD] [&lt;cat&gt;CATEGORY ]</code><br>
+* Additional field available for 'Spend' entries: <code>[&lt;place&gt;PLACE]</code><br>
+* Additional field available for 'Income' and 'Borrow' entries: <code>[&lt;from&gt;SOURCE/PERSON_BORROWED_FROM]</code><br>
+* Additonal field available for 'Lend' entries: <code>[&lt;to&gt;PERSON_LENT_TO]</code><br>
+e.g. <code>edit 1 &lt;day&gt;12-02-2019 &lt;cat&gt;Gift</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-entry-entries-code-delete-code"><a class="link" href="#delete-entry-entries-code-delete-code">Delete entry/entries: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Delete an entry by its index in the list.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>delete</strong> INDEX</code><br>
+e.g. <code>delete 5</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="search-and-filter-list-of-log-entries-code-find-code"><a class="link" href="#search-and-filter-list-of-log-entries-code-find-code">Search and filter list of log entries: <code>find</code></a></h4>
+<div class="paragraph">
+<p>Search through the list of log entries by keyword. This will search through every entry&#8217;s item description, place (for 'Spend' entries), transaction method, source of income (for 'Income' entries), person borrowed from (for 'Borrow' entries) and person lent to (for 'Lend' entries). Note that only item description will allow for partial word matching (i.e. <code>cook</code> in <code>cookie</code> is valid), the rest will search for a full word match. This search is case-insensitive.</p>
+</div>
+<div class="paragraph">
+<p>Filter the list of log entries by their log entry type (i.e. spend, income, borrow, lend).</p>
+</div>
+<div class="paragraph">
+<p>At least one field has to be specified.</p>
+</div>
+<div class="paragraph">
+<p>To return to the default full list of log entries, use the <code>list</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>find</strong> [&lt;type&gt; spend/income/borrow/lend] [&lt;keyword&gt; KEYWORD [MORE_KEYWORDS]&#8230;&#8203;] [&lt;cat&gt; CATEGORY_NAME [MORE_CATEGORY_NAMES]&#8230;&#8203;]</code><br>
+E.g. <code>find &lt;type&gt;spend</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-statistical-summaries-of-finances-code-stats-code"><a class="link" href="#show-statistical-summaries-of-finances-code-stats-code">Show statistical summaries of finances: <code>stats</code></a></h4>
+<div class="paragraph">
+<p>Shows an overview of the state of expenses and incomes. Log entries can be grouped by (<code>&lt;gb&gt;</code>) a specified attribute with either the frequency or total amount of each group summarised (<code>&lt;sum&gt;</code>) in a graphical display. These attributes include log entries of the same month, type, transaction method, category or place.</p>
+</div>
+<div class="paragraph">
+<p>Both <code>&lt;gb&gt;</code> and <code>&lt;sum&gt;</code> have to be present, with combination of <code>ATTRIBUTE</code> and <code>STAT</code> specified.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code><strong>stats</strong> &lt;gb&gt;ATTRIBUTE &lt;sum&gt;STAT</code><br>
+* Possible <code>ATTRIBUTE</code> values for <code>&lt;gb&gt;</code> are: <code>month</code>, <code>entrytype</code>, <code>met</code>, <code>cat</code>, <code>place</code> (only shows <code>Spend</code> entries)<br>
+* Possible <code>STAT</code> values for <code>&lt;sum&gt;</code> are: <code>freq</code> and <code>amt</code><br>
+E.g. <code>stats &lt;gb&gt; met &lt;sum&gt; freq</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-a-budget-code-budget-code"><a class="link" href="#add-a-budget-code-budget-code">Add a budget: <code>budget</code></a></h4>
+<div class="paragraph">
+<p>Specify a budget. Budgets will only take into account the amount spent (i.e. <code>Spend</code> entries) and are generally characterised by a starting date, an ending date and a limit (maximum threshold). When total amount associated with spending crosses this limit, the budget is considered to be exceeded.</p>
+</div>
+<div class="paragraph">
+<p>Budgets for a specific place, category or transaction method can also be set (optional). Only at most one field out of these 3 optional fields - <code>&lt;met&gt;</code>, <code>&lt;cat&gt;</code>, <code>&lt;place&gt;</code> - can be included to make the budget more specific. If a spend entry matches the specified field and also falls within the budget duration, it will be included in the budget tabulation. If none of these fields are indicated, the budget will sum up the amounts of <strong>all</strong> <code>Spend</code> entries which fall between the budget duration.</p>
+</div>
+<div class="paragraph">
+<p>In essence, there are 3 optional fields (only at most one can be used at any time):</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>[&lt;met&gt;TRANSACTION_METHOD]</code></p>
+</li>
+<li>
+<p><code>[&lt;cat&gt;CATEGORY_NAME]</code></p>
+</li>
+<li>
+<p><code>[&lt;place&gt;PLACE_OF_SPENDING]</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Note that these fields are case-sensitive (e.g. <code>Spend</code> entries with category <code>food</code> will not match if budget field is specified as <code>&lt;cat&gt; FOOD</code>).</p>
+</div>
+<div class="paragraph">
+<p>There are 3 ways to specify the duration (start, end) of a budget:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>&lt;start&gt;START_DATE &lt;end&gt;END_DATE</p>
+</li>
+<li>
+<p>&lt;start&gt;START_DATE &lt;dur&gt;DURATION_IN_DAYS</p>
+</li>
+<li>
+<p>&lt;month&gt;MM-YYYY</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Example Format 1: <code><strong>budget</strong> &lt;amt&gt;AMOUNT &lt;start&gt;START_DATE &lt;end&gt;END_DATE [&lt;met&gt;TRANSACTION_METHOD]</code><br>
+Example Format 2: <code><strong>budget</strong> &lt;amt&gt;AMOUNT &lt;start&gt;START_DATE &lt;dur&gt;DURATION_IN_DAYS [&lt;cat&gt;CATEGORY_NAME]</code><br>
+Example Format 3: <code><strong>budget</strong> &lt;amt&gt;AMOUNT &lt;month&gt;MM-YYYY [&lt;place&gt;PLACE_OF_SPENDING]</code><br>
+e.g. <code>budget &lt;amt&gt; 300 &lt;month&gt;11-2019 &lt;met&gt;cash</code></p>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
-</tr>
-</tbody>
-</table>
-<h4 id="rationale-for-having-multiple-code-ui-code-code-logic-code-code-model-code-code-storage-code-classes-in-em-modulo-em" class="discrete">Rationale for having multiple <code>UI</code>, <code>Logic</code>, <code>Model</code>, <code>Storage</code> classes in <em>Modulo</em></h4>
-<div class="paragraph">
-<p>The features in <em>Modulo</em> are quite distinct and having minimal overlaps, each feature has its own data file to read and modify. The logic to execute commands are also handled differently in each feature. As such, our decision to have 4 components for each feature was to reduce coupling and allow flexibility in our implementations. This means that the same <code>add</code> command is now able to trigger a different sequence of actions depending on the feature the user is currently in. This architecture style allows each feature to be developed independently, free from the constraints set by other features. Each time a user switches to another feature, the <code>Ui</code>, <code>Logic</code>, <code>Model</code> and <code>Storage</code> classes will be replaced by that of the new feature.</p>
-</div>
 <div class="sect2">
 <h3 id="class-diagrams"><a class="link" href="#class-diagrams">Class diagrams</a></h3>
 <div class="imageblock">
@@ -198,13 +289,9 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="implementation"><a class="link" href="#implementation">Implementation</a></h3>
-
-</div>
-<div class="sect2">
 <h3 id="budgets-in-finances"><a class="link" href="#budgets-in-finances">Budgets in finances</a></h3>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <div class="paragraph">
 <p>A budget is an estimate or threshold of spending set for a specified period of time. In <em>Modulo</em>, a budget can be set to only include spendings of a particular characteristic (i.e. transaction method, place of spending or category). For example, budgets of spendings at a particular place can be set. <em>Modulo</em> will only take into account spendings recorded to be associated with this place and falling within the specified period of time.</p>
 </div>
@@ -280,22 +367,8 @@
 <div class="paragraph">
 <p>The interactions inside the Logic Component for <code>budget &lt;amt&gt; 300 &lt;month&gt; 11-2019 &lt;met&gt; cash</code> Command are shown in the sequence diagram below.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/BudgetLogicSequenceDiagram.png" alt="BudgetLogicSequenceDiagram">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifelines for <code>BudgetCommandParser</code> and <code>BudgetCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifelines reaches the end of diagram.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p><em>{Please refer to sequence diagram <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/docs/images/BudgetLogicSequenceDiagram.png">here</a>.}</em></p>
 </div>
 <div class="paragraph">
 <p>The interactions in the Model Component for the same command are shown in the sequence diagram below.</p>
@@ -366,10 +439,8 @@ If the exact same budget already exists in the budget list, it will not call <co
 <div class="paragraph">
 <p>The flow on how what happens when the user enters a new entry is shown in the activity diagram below.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/AddNewEntryActivityDiagram.png" alt="AddNewEntryActivityDiagram" width="60%">
-</div>
+<div class="paragraph">
+<p><em>{Please refer to activity diagram <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/docs/images/AddNewEntryActivityDiagram.png">here</a>.}</em></p>
 </div>
 </div>
 <div class="sect3">
@@ -412,6 +483,9 @@ If the exact same budget already exists in the budget list, it will not call <co
 <div class="sect2">
 <h3 id="user-stories"><a class="link" href="#user-stories">User Stories</a></h3>
 <div class="paragraph">
+<p>For more user stories related to financial management, please refer to the <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/docs/DeveloperGuide.adoc#user-stories">Developer Guide</a>.</p>
+</div>
+<div class="paragraph">
 <p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 59%;">
@@ -442,23 +516,14 @@ If the exact same budget already exists in the budget list, it will not call <co
 <td class="tableblock halign-left valign-top"><p class="tableblock">set a budget for the month</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">limit my spending</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">student who often lends money to people</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of the people who have not returned my money</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">chase after them for their unpaid debt or refuse to lend to people who consistently borrow but don&#8217;t return</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">student who prefers graphical representation to numbers</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see plots and charts summarising my finances over time and in different categories</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">understand the overall status of my finances at a glance and see the trends and changes in my spending habit</p></td>
-</tr>
 </tbody>
 </table>
 </div>
 <div class="sect2">
 <h3 id="use-cases"><a class="link" href="#use-cases">Use Cases</a></h3>
+<div class="paragraph">
+<p>For more use cases, please refer to the <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/docs/DeveloperGuide.adoc#use-cases">Developer Guide</a>.</p>
+</div>
 <h3 id="use-case-record-down-an-entry-of-borrowing-to-finance-log" class="discrete">Use case: Record down an entry of borrowing to finance log</h3>
 <div class="paragraph">
 <p>Preconditions: User has switched to the <em>finance</em> feature</p>
@@ -508,75 +573,6 @@ If the exact same budget already exists in the budget list, it will not call <co
 </li>
 <li>
 <p>Use case resumes from step 3.</p>
-</li>
-</ul>
-</div>
-<h3 id="use-case-set-a-budget" class="discrete">Use case: Set a budget</h3>
-<div class="paragraph">
-<p>Preconditions: User has switched to the <em>finance</em> feature</p>
-</div>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User enters details of budget.</p>
-</li>
-<li>
-<p>User requests to add a budget to finance log.</p>
-</li>
-<li>
-<p>Modulo adds the budget and displays it in list of budgets.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. Modulo detects an error in command/details entered.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. Modulo shows an error message.</p>
-</li>
-<li>
-<p>2a2. Modulo requests for command to be entered in the correct format.</p>
-</li>
-<li>
-<p>2a3. User enters new line of command with new details.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Steps 2a1-2a3 are repeated until the command and details entered are in the correct format.</p>
-</li>
-<li>
-<p>Use case resumes from step 3.</p>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2b. Modulo detects that budget already exists in finance log (with all details exactly the same).</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2b1. Modulo shows an error message.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Use case ends.</p>
 </li>
 </ul>
 </div>
@@ -669,111 +665,6 @@ If the exact same budget already exists in the budget list, it will not call <co
 </li>
 </ul>
 </div>
-<h3 id="use-case-mark-an-entry-of-money-lent-as-repaid" class="discrete">Use case: Mark an entry of money lent as repaid</h3>
-<div class="paragraph">
-<p>Preconditions: User has switched to the <em>finance</em> feature</p>
-</div>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to mark Lend entry as repaid.</p>
-</li>
-<li>
-<p>Modulo marks the entry as repaid and record downs the date of repayment.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. User requests to mark Lend entry as repaid with date of repayment specified.</p>
-</li>
-<li>
-<p>Use case resumes from step 2.</p>
-</li>
-<li>
-<p>2a. Modulo checks that entry was already repaid and notifies user of it.</p>
-</li>
-<li>
-<p>Use case ends.</p>
-</li>
-</ul>
-</div>
-<h3 id="use-case-view-statistical-summary-of-finance-log" class="discrete">Use case: View statistical summary of finance log</h3>
-<div class="paragraph">
-<p>Preconditions: User has switched to the <em>finance</em> feature</p>
-</div>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to view statistical summary with type of summary specified.</p>
-</li>
-<li>
-<p>Modulo shows graphs summarising the flow of money in the finance log.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. Modulo detects an error in command/details entered.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. Modulo shows an error message.</p>
-</li>
-<li>
-<p>1a2. Modulo requests for command to be entered in the correct format.</p>
-</li>
-<li>
-<p>1a3. User enters new line of command with new details.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Steps 1a1-1a3 are repeated until the command and details entered are in the correct format.</p>
-</li>
-<li>
-<p>Use case resumes from step 2.</p>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. Modulo detects that no entries have been entered in the finance log.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. Modulo shows an empty page.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Use case ends.</p>
-</li>
-</ul>
 </div>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 08:35:03 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:25:10 UTC</div></div></div></body></html>
