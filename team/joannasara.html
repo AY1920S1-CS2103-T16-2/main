@@ -16,35 +16,35 @@
 <p>As busy students in NUS, we understand that it can be daunting to keep track of various tasks and concurrently do well for exams. Modulo features a one-stop application to keep track of one&#8217;s timetable, finances and academic progress. It also includes a quiz feature that facilitates students with actively recalling their study concepts to improve their study outcomes.</p>
 </div>
 <div class="paragraph">
-<p>The user interacts with Modulo using a CLI, and it features an outstanding user-friendly GUI created with JavaFX. It is written in Java, and has about 35 kLoC.
-== Summary of contributions</p>
+<p>The user interacts with Modulo using a CLI, and it features an outstanding user-friendly GUI created with JavaFX. It is written in Java, and has about 35 kLoC.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: create <strong>weekly calendar</strong></p>
+<p><strong>Major enhancement</strong>: create <strong>calendar</strong> feature</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to manage their schedule in a weekly calendar view.</p>
+<p>What it does: allows the user to manage their tasks and classes in a weekly calendar view.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This feature improves the product significantly because our targeted user, which are NUS students, needed a
+fast and convenient way to manage all of their tasks.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: This enhancement affects existing commands and needs to be supported by change of the graphical user interface.
+The implementation too was challenging as it required changes to existing commands.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=joannasara&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">Functional and test code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -55,7 +55,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed release <code>v1.3</code> on GitHub</p>
 </li>
 </ul>
 </div>
@@ -65,20 +65,15 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Updated the GUI color scheme (Pull requests <a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/101">#101</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
-</li>
-</ul>
-</div>
+<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/89">#89</a>,
+<a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/101">#101</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/145">#145</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/148">#148</a>)</p>
 </li>
 <li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Wrote additional tests for existing features to increase coverage by 13.09% (Pull requests <a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/89">#89</a>,
+<a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/101">#101</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/145">#145</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/148">#148</a>)</p>
 </li>
 </ul>
 </div>
@@ -88,29 +83,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/pull/167">#167</a></p>
 </li>
 </ul>
 </div>
@@ -119,9 +92,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -138,6 +108,176 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="calendar"><a class="link" href="#calendar">Calendar</a></h3>
+<div class="paragraph">
+<p>Calendar displays a weekly list of tasks and modules which the user has added. To enter the Calendar section
+please enter the command: <code>switch calendar</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="add-a-new-todo-task-code-add-code"><a class="link" href="#add-a-new-todo-task-code-add-code">Add a new ToDo Task: <code>add</code></a></h4>
+<div class="paragraph">
+<p>Adds a new <code>ToDoTask</code> to the calendar. This <code>ToDoTask</code> only exist in the week that is currently displayed.
+All fields except for <code>TAG</code> are compulsory fields. You could not add a new task if in the current week there already
+exists another task with the same title, day, and deadline.</p>
+</div>
+<div class="paragraph">
+<p>The fields of <code>ToDoTask</code> consist of:<br>
+- <code>TaskTitle</code> The name of the task. Prefix: <code>&lt;title&gt;</code><br>
+- <code>TaskDay</code> The time when the user plan to do the task. Prefix: <code>&lt;day&gt;</code>.<br>
+- <code>TaskDescription</code> Additional description of the <code>Task</code>. Prefix: <code>&lt;desc&gt;</code>.<br>
+- <code>TaskDeadline</code> The date when the task is due in dd-mm-yyyy format. Only valid dates are accepted
+(e.g. the date 31-02-2019 does not exist and hence is not accepted). Prefix: <code>&lt;deadline&gt;</code>.<br>
+- <code>TaskTime</code> Where time when the task occurs, in HH:mm 24-hour format from 00:00 to 23:59. Prefix: <code>&lt;time&gt;</code>.<br>
+- <code>TAG</code> Tag that can be used to sort the tasks. Prefix: <code>&lt;tag&gt;</code>.
+More than one <code>TAG</code> can be added to each task, e.g. <code>&lt;tag&gt; High-Priority &lt;tag&gt;Math</code></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add &lt;title&gt;TITLE &lt;day&gt;DAY &lt;desc&gt;DESCRIPTION &lt;deadline&gt;DEADLINE &lt;time&gt;TIME [&lt;tag&gt;TAG]</code><br>
+e.g. <code>add &lt;title&gt;CS2109 Assignment &lt;day&gt;tuesday &lt;desc&gt;Submit code through LumiNUS &lt;deadline&gt;21-10-2019
+&lt;time&gt;13:00 &lt;tag&gt;IMPORTANT</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the calendar list gets too long, you can scroll individual days to see the tasks that are not currently on screen.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-a-new-module-task-code-addmod-code"><a class="link" href="#add-a-new-module-task-code-addmod-code">Add a new Module Task: <code>addmod</code></a></h4>
+<div class="paragraph">
+<p>Adds a new <code>ModuleTask</code> to the calendar. <code>ModuleTask</code> are the same as <code>ToDoTask</code> except it doesn&#8217;t need a
+deadline and it would be automatically added to each week. <code>ModuleTask</code> is not affected by the command <code>clearweek</code>.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addmod &lt;title&gt;TITLE &lt;day&gt;DAY &lt;desc&gt;DESCRIPTION &lt;time&gt;TIME [&lt;tag&gt;TAG]</code><br>
+e.g. <code>addmod &lt;title&gt;CS2109 Lecture &lt;day&gt;tuesday &lt;desc&gt;Submit code through LumiNUS &lt;time&gt;13:00</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-existing-task-code-edit-code"><a class="link" href="#edit-existing-task-code-edit-code">Edit existing task: <code>edit</code></a></h4>
+<div class="paragraph">
+<p>Edit one or multiple fields of an existing task. <code>INDEX</code> should be a positive integer and a task with the number <code>INDEX</code>
+should already exist on the current week&#8217;s calendar. Editing the deadline is only available for <code>ToDoTask</code>.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit  INDEX &lt;title&gt;TITLE &lt;day&gt;DAY &lt;desc&gt;DESCRIPTION &lt;deadline&gt;DEADLINE &lt;time&gt;TIME &lt;tag&gt;TAG</code><br>
+e.g. <code>edit 1 &lt;title&gt;CS2108 Assignment &lt;day&gt;friday</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-existing-task-code-delete-code"><a class="link" href="#delete-existing-task-code-delete-code">Delete existing task: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Delete an existing task. <code>INDEX</code> should be a positive integer and a task with the number <code>INDEX</code>
+should already exist on the current week&#8217;s calendar.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete INDEX</code><br>
+e.g.   <code>delete 1</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-tasks-using-keyword-code-find-code"><a class="link" href="#find-tasks-using-keyword-code-find-code">Find tasks using keyword: <code>find</code></a></h4>
+<div class="paragraph">
+<p>Finds tasks which titles contain any of the given keywords.<br>
+Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>cs2100</code> will match <code>CS2100</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>CS2100 Lab</code> will match <code>Lab CS2100</code></p>
+</li>
+<li>
+<p>Only the title is searched.</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>CS210</code> will not match <code>CS2100</code></p>
+</li>
+<li>
+<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>CS2100 Lab</code> will return <code>CS2100 Tutorial</code>, <code>CS2105 Lab</code></p>
+</li>
+<li>
+<p>If the user switch to another feature or enter another command, the calendar would be reset to list all tasks.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:
+* <code>find CS2100</code><br>
+Returns <code>cs2100</code> and <code>CS2100 Lab</code>
+* <code>find lab ger tutorial</code><br>
+Returns any tasks having titles <code>ger</code>, <code>lab</code>, or <code>tutorial</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-tasks-code-list-code"><a class="link" href="#listing-all-tasks-code-list-code">Listing all tasks : <code>list</code></a></h4>
+<div class="paragraph">
+<p>Shows a list of all task in the calendar.<br>
+Format: <code>list</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sort-tasks-code-sort-code"><a class="link" href="#sort-tasks-code-sort-code">Sort tasks: <code>sort</code></a></h4>
+<div class="paragraph">
+<p>Sort the tasks according to the specified <code>SORT_TYPE</code>.
+There are three <code>SORT_TYPE</code>:<br>
+- <code>sort time</code> will sort the tasks according to the their time in ascending order<br>
+- <code>sort deadline</code> will sort the tasks according to their deadline in ascending order<br>
+- <code>sort title</code> will sort the tasks according to their title in ascending alphabetical order<br></p>
+</div>
+<div class="paragraph">
+<p>When the application is launched for the first time, the tasks are sorted according to <code>time</code>. Subsequently, it will
+use the sorting type that is last used in the previous session.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>sort  SORT_TYPE</code><br>
+e.g. <code>sort deadline</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="change-week-code-go-code"><a class="link" href="#change-week-code-go-code">Change week: <code>go</code></a></h4>
+<div class="paragraph">
+<p>Go to the specified week <code>WEEK_NUMBER</code>. The <code>WEEK_NUMBER</code> must between 0 to 14 inclusive. The default week is week 0 and
+would be shown every time the application is launched.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>go WEEK_NUMBER</code>
+e.g. <code>go 2</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clear-week-data-code-clearweek-code"><a class="link" href="#clear-week-data-code-clearweek-code">Clear week data: <code>clearweek</code></a></h4>
+<div class="paragraph">
+<p>Delete all <code>ToDoTask</code> of the current week.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>clearweek</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clear-all-data-code-clear-code"><a class="link" href="#clear-all-data-code-clear-code">Clear all data: <code>clear</code></a></h4>
+<div class="paragraph">
+<p>Delete all all <code>ToDoTask</code> and <code>ModuleTask</code> from all weeks.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>clear</code></p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -153,14 +293,178 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="calendar-2"><a class="link" href="#calendar-2">Calendar</a></h3>
+<div class="sect3">
+<h4 id="calendar-week-change"><a class="link" href="#calendar-week-change">Calendar week change</a></h4>
+<div class="sect4">
+<h5 id="implementation"><a class="link" href="#implementation">Implementation</a></h5>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CalendarActivityDiagram.png" alt="CalendarActivityDiagram">
 </div>
+<div class="title">Figure 1. Activity diagram on calendar week change</div>
 </div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p>Calendar week change is done by removing all tasks from the calendar and adding all the tasks that either have the new
+corresponding week number or is an instance of <code>ModuleTask</code>.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:25:10 UTC</div></div></div></body></html>
+<div class="sect4">
+<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-how-code-go-week_number-code-executes"><a class="link" href="#aspect-how-code-go-week_number-code-executes">Aspect: How <code>go WEEK_NUMBER</code> executes</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Save all data in a single json file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No need to switch storage file.</p>
+</li>
+<li>
+<p>Cons: Unnecessary reading of data from other weeks. Need to add filter to get only the relevant data.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Read and load for each week from separate json storage file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to clear data from a certain week.</p>
+</li>
+<li>
+<p>Cons: Need to switch storage file each time the user go to the next/previous week.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="persistent-code-moduletask-code"><a class="link" href="#persistent-code-moduletask-code">Persistent <code>ModuleTask</code></a></h4>
+<div class="sect4">
+<h5 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h5>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CalendarModelClassDiagram.png" alt="CalendarModelClassDiagram">
+</div>
+<div class="title">Figure 2. Structure of the Model Component for the feature Calendar</div>
+</div>
+<div class="paragraph">
+<p>The abstract class <code>Task</code> has two subclasses: <code>ToDoTask</code> and <code>ModuleTask</code>. <code>ToDoTask</code> only exists in its corresponding
+week while <code>ModuleTask</code> is persistent. When a <code>ModuleTask</code> is added to any arbitrary week, it would be automatically
+added to all of the other weeks and when a certain week is cleared using the <code>clearweek</code> command, it would not affect
+the <code>ModuleTask</code>. Hence, <code>ModuleTask</code> can only be deleted by using the command <code>clear</code> or deleting each <code>ModuleTask</code>
+manually using <code>delete</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-consideration"><a class="link" href="#design-consideration">Design consideration</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice): </strong> Create separate classes for <code>ToDoTask</code> and <code>ModuleTask</code> that both inherits from
+the abstract class <code>Task</code>. User use different command <code>add</code> and <code>addmod</code> to create the corresponding subclass.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Code looks cleaner. Easier to implement a different UI for each subclass.</p>
+</li>
+<li>
+<p>Cons: More code.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: </strong> Use a non-abstract class <code>Task</code> for both ToDos and Modules and add a boolean field <code>isPersistent</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No need to add new classes.</p>
+</li>
+<li>
+<p>Cons: User needs to input an extra field <code>&lt;persist&gt; [TRUE/FALSE]</code>. It is more difficult to differentiate the
+type of <code>Task</code> when reading the code.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sorting"><a class="link" href="#sorting">Sorting</a></h4>
+<div class="sect4">
+<h5 id="implementation-3"><a class="link" href="#implementation-3">Implementation</a></h5>
+<div class="paragraph">
+<p><code>Task</code> can be sorted according to <code>TaskTitle</code>, <code>TaskDeadline</code>, or <code>TaskTime</code>. Each type of sorting has its own
+comparator implemented in a method that would return a sorted <code>FilteredList&lt;Task&gt;</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-consideration-2"><a class="link" href="#design-consideration-2">Design consideration</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice): </strong>Use an external comparator.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to switch between different sort type.</p>
+</li>
+<li>
+<p>Cons: Need to call the sort method each time the calendar is updated.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: </strong>Set the <code>Task</code> class to implement the <code>Comparable</code> interface.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Need to switch the <code>compareTo()</code> method of each <code>Task</code> each time <code>sort</code> is called.</p>
+</li>
+<li>
+<p>Cons: New/edited task would be automatically placed at the correct order.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="class-diagrams"><a class="link" href="#class-diagrams">Class diagrams</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CalendarActivityDiagram.png" alt="CalendarActivityDiagram">
+</div>
+<div class="title">Figure 3. Activity diagram on calendar week change</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CalendarModelClassDiagram.png" alt="CalendarModelClassDiagram">
+</div>
+<div class="title">Figure 4. Structure of the Model Component for the feature Calendar</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CalendarSequenceDiagram.png" alt="CalendarSequenceDiagram">
+</div>
+<div class="title">Figure 5. Interactions Inside the Logic Component for the <code>sort title</code> Command for the feature Calendar</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 12:17:47 UTC</div></div></div></body></html>
