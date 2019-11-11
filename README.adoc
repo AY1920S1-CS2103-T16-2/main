@@ -12,11 +12,10 @@ ifndef::env-github[]
 image::images/Ui.png[width="800"]
 endif::[]
 
-* _Modulo_ is a desktop application developed to help National University of Singapore (NUS) students manage their studies and expenditures.
+* _Modulo_ Modulo is an all-in-one, lifestyle, desktop application to  help National University of Singapore (NUS) students to audit their academics, track their finances, track their grades and schedule their time as they try their best to survive yet another semester of college. 
 * With _Modulo_, you no longer need to use multiple different applications to organise your student life.
-Things like scheduling your timetable, recording down the tasks and events you need to do and attend, reviewing your academic progress,
-creating your own question bank and keeping track of your expenses; _Modulo_ will handle it all.
-* The application has a GUI (Graphical User Interface) but most user interactions happen using a CLI (Command Line Interface).
+Things like scheduling your timetable, recording down the tasks and events you need to do and attend, reviewing your academic progress, creating your own question bank and keeping track of your expenses; _Modulo_ will handle it all.
+* The application features a modern and streamlined GUI (Graphical User Interface) but most user interactions happen using a CLI (Command Line Interface).
 
 == Site Map
 
