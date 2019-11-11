@@ -1,128 +1,134 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Tuan Ding Wei - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Modulo</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103-T16-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Tuan Ding Wei - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-modulo"><a class="link" href="#project-modulo">PROJECT: Modulo</a></h2>
+<h2 id="project-modulo-span-class-image-img-src-images-modulo-png-alt-modulo-width-50-span"><a class="link" href="#project-modulo-span-class-image-img-src-images-modulo-png-alt-modulo-width-50-span">PROJECT: Modulo <span class="image"><img src="../images/modulo.png" alt="modulo" width="50"></span></a></h2>
 <div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../images/modulo.png" alt="modulo">
+<div class="paragraph">
+<p>For the passionate.</p>
 </div>
+<div class="paragraph">
+<p>I am excited to introduce you to Modulo in this document. I have enjoyed building it despite the many
+challenges and sleepless nights. I hope you will enjoy Modulo as much as I do!</p>
 </div>
-<hr>
 </div>
 </div>
 <div class="sect1">
-<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<h2 id="overview-what-exactly-is-modulo"><a class="link" href="#overview-what-exactly-is-modulo">Overview (What exactly is Modulo?)</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Modulo (Level 3) is a NUS student life application specially designed for busy and motivated NUS students.</p>
+<p>Modulo is a NUS student life application specially designed for busy and motivated NUS students.</p>
 </div>
 <div class="paragraph">
-<p>As busy students in NUS, we understand that it can be daunting to keep track of various
-tasks and concurrently do well for exams. Modulo features a one-stop app to keep track of one&#8217;s timetable, finances and academic progress. It also includes a quiz feature that facilitates students with actively recalling their study concepts to improve their study outcomes.</p>
+<p>As busy student developers in NUS, we understand that it can be daunting to keep track of various
+tasks and concurrently do well for exams. Modulo features a one-stop app to keep track of one&#8217;s timetable, finances and academic progress. It also includes a quiz feature that facilitates students with actively recalling their study concepts to improve their study outcomes. We are strong believers of passion and we believe that students with passion in their fields of studies can leverage on Modulo to be more productive and successful.</p>
 </div>
 <div class="paragraph">
-<p>The user interacts with it using a CLI, and it features an outstanding user-friendly GUI created with JavaFX. It is written in Java, and has about 40 kLoC.</p>
+<p>The user interacts with it using a CLI, and it features an outstanding, modern, user-friendly GUI created with JavaFX. It is written in Java, and has about 40 kLoC.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Major enhancement</strong>: greatly enhanced the grades tracking feature and developed the person class into module class</p>
+<div class="paragraph">
+<p>The Dashboard in Modulo Grades Tracker provides an overview of the list of modules to be taken with their accompany grades attained. It is also coupled with a statistical pie chart, degree classification, Cumulative Average Point (CAP) and Modular Credit (MC) displayed for student users.</p>
+</div>
+<div class="sect2">
+<h3 id="major-enhancement-code-add-code-command-and-the-primary-features-of-grades-tracker"><a class="link" href="#major-enhancement-code-add-code-command-and-the-primary-features-of-grades-tracker">Major Enhancement: <code>Add</code> Command and the primary features of Grades Tracker</a></h3>
+<div class="paragraph">
+<p>The <code>Add</code> was greatly enhanced to allow the student user to add new modules to Grades Tracker. The single command executes the codes to generate the pie chart, information display and degree classification. The person class had to be developed into module class. Whenever, a new add command is executed the 3 aforementioned components will refresh to show the updated information.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
 <p>What it does: The CAP tracker allows our user to keep track of his/her grades, overall Cumulative Average Point (CAP), MC taken and the degree classification (also known as "class") the user is in.</p>
 </li>
 <li>
-<p>Justification: This feature complements the function of Modulo as an all-in-one application for NUS students to manage their life in NUS. For students in NUS who are well-concerned and motivated, the CAP Tracker allows students to keep track of their CAP and grades with ease.</p>
+<p>Justification: This feature complements the function of Modulo and is a highly cohesive fit for the product as an all-in-one application for NUS students to manage their life in NUS. Being able to track grades is crucial as motivated NUS students have to know their progress and the modules that have taken so far. For students in NUS who are well-concerned and motivated. The CAP Tracker allows students to keep track of their CAP and grades with ease. Moreover, there are no existing applications that facilitate such a need.</p>
 </li>
 <li>
-<p>Highlights: The implementation of the CAP feature was challenging but satisfying. It requires in-depth design considerations around the students. The implementation also required an overhaul of existing commands. The single 'add' command initiates a series of major operations that generates the CAP, displays the right degree classifications and generates the pie chart. The implementation requires knowledge in object-oriented programming, data structure and algorithms. Many classes are interlinked hence increased the complexity of the modification and implementation.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Minor enhancement</strong>: Enhanced the find command to search for keywords in module code and title. The enhanced search returns any module that contains the keyword in the module code and/or module title.</p>
-</li>
-<li>
-<p><strong>Minor enhancement</strong>: Added a filter command that allows the student to filter his/her grades.</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
-</li>
-<li>
-<p><strong>Other contributions</strong>:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.4</code> (3 releases) on GitHub</p>
+<p>Highlights: The implementation of the CAP feature was challenging but satisfying. It required in-depth design considerations around the students and a good knowledge of the grading system in NUS. I had to sought for advice from the academic department on various guidelines such as the range of approved modular credit. Defensive programming means that constraint requirements have to be well-thought of. Moreover, the implementation also required an overhaul of existing commands and codes. The structure remains intact but the code required heavy refractoring along with new implementations for the new feature. The single 'add' command initiates a series of major operations that generates the CAP, displays the right degree classifications and generates the pie chart. The implementation requires knowledge in object-oriented programming, data structure and algorithms. Many classes are interlinked hence increased the complexity of the modification and implementation.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Enhancements to existing features:</p>
+</div>
+<div class="sect2">
+<h3 id="major-enhancement-ravamped-user-interface-ui"><a class="link" href="#major-enhancement-ravamped-user-interface-ui">Major Enhancement: Ravamped User-Interface (UI)</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/images/CapUI.png" alt="CapUI" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The UI is revamped to a new design that features modern curved edges and shadow-like background panes. Borders are taken away to promote a more cohesive flow of content. The aim is to deliver a "less is more" simplicity concept. Much attention is given to the effects of having a grey-like background matching with the black fonts and white background. It is designed in a way to display the services that Modulo offers without ambiguity, in order to draw our users' attention and keep them on our site.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="minor-enhancement-code-find-code-command"><a class="link" href="#minor-enhancement-code-find-code-command">Minor Enhancement: <code>Find</code> Command</a></h3>
+<div class="paragraph">
+<p>The find command was not adequately powerful. It has a number of limitations such as not being able to work if the student user does not use very specific keywords that match the fields exactly.</p>
+</div>
+<div class="paragraph">
+<p>The find command is enhanced to search for keywords in module code and module title. The enhanced search returns any module that contains the keyword in the module code and/or module title.</p>
+</div>
+<div class="paragraph">
+<p>Special attention has to be given to the implementation as find returns only matching modules to the user but it would have caused the various pie chart, CAP, MC and degree classification information to change. Thus, the implementation requires the developer to isolate the updates from this command.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="minor-enhancement-code-list-code-command"><a class="link" href="#minor-enhancement-code-list-code-command">Minor Enhancement: <code>List</code> Command</a></h3>
+<div class="paragraph">
+<p>The <code>List</code> command became necessary as the find command returns only matching modules to the student user. Thus, the <code>List</code> command will allow the user to return to the full list of modules again.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="minor-enhancement-code-sort-code-command"><a class="link" href="#minor-enhancement-code-sort-code-command">Minor Enhancement: <code>Sort</code> Command</a></h3>
+<div class="paragraph">
+<p>The <code>Sort</code> command was created to complement the feature of Modulo Grades Tracker. The Modulo Grades tracker first order the modules by the sequence that they are added.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Sort</code> command sorts the modules in chronological order by the semesters that the modules were taken. The implementation requires knowledge of comparators and streams.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="minor-enhancement-code-delete-code-command"><a class="link" href="#minor-enhancement-code-delete-code-command">Minor Enhancement: <code>Delete</code> Command</a></h3>
+<div class="paragraph">
+<p>As the Grades Tracker feature does not have indexes the original delete command became obsolete. The <code>Delete</code> command was modified to allow the user to delete any desired modules based simply by specifying the module code. This tremendously reduces the time needed to search for a module and identify the index if an index system is applied and when the module list becomes long.</p>
+</div>
+<div class="paragraph">
+<p><strong>Code contributed</strong>: Visit this <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=tuandingwei&amp;sort=totalCommits%20dsc&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=tuandingwei&amp;tabRepo=AY1920S1-CS2103-T16-2%2Fmain%5Bmaster%5D">link</a> to view the codes that I have contributed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="project-management"><a class="link" href="#project-management">Project management:</a></h3>
 <div class="ulist">
 <ul>
+<li>
+<p>Managed releases <code>v1.3</code> - <code>v1.4</code> (3 releases) on GitHub, with a v1.3.1 pre-release after a major revamp of the UI.</p>
+</li>
 <li>
 <p>Updated the GUI color scheme and command bar design (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
-</li>
-</ul>
-</div>
+<p>Wrote additional tests for existing features to increase coverage from 46% to 49% (Pull requests <a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/166">#166</a>) Major components of the tests have to be refracted as the major classes of the addressbook have been replaced.</p>
 </li>
 <li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Documentation: Classes and methods are properly documented.</p>
 </li>
-</ul>
-</div>
-</li>
-<li>
-<p>Community:</p>
-<div class="ulist">
-<ul>
 <li>
 <p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/159#pullrequestreview-314558487">#159</a></p>
 </li>
 <li>
-<p>Contributed to forum discussions (example:  <a href="https://github.com/nus-cs2103-AY1920S1/forum/issues/167#issuecomment-552096062">1</a> <a href="https://github.com/AY1920S1-CS2103-T16-2/main/issues/161">2</a> <a href="https://github.com/nus-cs2103-AY1920S1/forum/issues/157#issuecomment-552096555">3</a>)</p>
+<p>Contributed to forum discussions (example:  <a href="https://github.com/nus-cs2103-AY1920S1/forum/issues/167#issuecomment-552096062">1</a>, <a href="https://github.com/AY1920S1-CS2103-T16-2/main/issues/161">2</a>, <a href="https://github.com/nus-cs2103-AY1920S1/forum/issues/157#issuecomment-552096555">3</a>)</p>
 </li>
 <li>
 <p>Reported bugs and suggestions for other teams in the class (examples: <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/pull/46">Mortago</a>, <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/pull/167">T.A.rence</a>)</p>
 </li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
 <li>
 <p>Integrated a third party library (<a href="https://o7planning.org/en/11057/javafx-tooltip-tutorial">Tooltip</a>) for the pie chart animation (<a href="https://github.com">#42</a>)</p>
 </li>
 </ul>
 </div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -135,10 +141,266 @@ tasks and concurrently do well for exams. Modulo features a one-stop app to keep
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users. You may visit this <a href="https://ay1920s1-cs2103-t16-2.github.io/main/UserGuide.html">link</a> to view my contributions.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users. You may visit this <a href="https://ay1920s1-cs2103-t16-2.github.io/main/UserGuide.html">link</a> to view the entire User Guide.</em></p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Following are the links to the PR:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/166">UG Contribution 1</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/171">UG Contribution 2</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/53">UG Contribution 3</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Welcome to the User Guide for Modulo!</p>
+</div>
+<div class="paragraph">
+<p>Modulo is an all-in-one student life application which is mainly targeted to NUS students. The app features four different functions which consists of weekly organizer, financial record system, quiz revision, and grades tracker.</p>
+</div>
+<div class="paragraph">
+<p>Those who prefer to work with a Command Line Interface (CLI) might find using Modulo to be more straightforward than the usual Graphical User Interface (GUI) applications. The application has the visual benefits of a GUI but stands strongly rooted in command line usage. Modulo does not require an internet connection to run so there’s no worry when the school wifi goes MIA yet again. The only time you need to be connected is at the start, when downloading the application. Look to <a href="#Quick Start">[Quick Start]</a> to find out how to get started on Modulo!</p>
+</div>
+<div class="sect2">
+<h3 id="grades-tracker"><a class="link" href="#grades-tracker">Grades Tracker</a></h3>
+<div class="paragraph">
+<p>To enter the Module section please enter the command: <code>switch cap</code></p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 90%;">
+<caption class="title">Table 1. Quick Reference sheet</caption>
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 38.0952%;">
+<col style="width: 47.6191%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Available Commands</th>
+<th class="tableblock halign-center valign-top">Prefixes / Input  required</th>
+<th class="tableblock halign-left valign-top">Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">add</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt;m&gt; MODULE_CODE, &lt;t&gt;TITLE, &lt;s&gt; SEMESTER, &lt;c&gt; CREDIT &lt;g&gt; GRADE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds a new module.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">delete</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">MODULE_CODE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes a specific module.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">list</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List all the modules, often required after the find command.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">find</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">KEYWORD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find a specific keyword within module code and/or module description.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">sort</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the modules in order of their semesters and academic years taken.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">clear</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clear all existing modules.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="manually-add-module-to-record-code-add-code"><a class="link" href="#manually-add-module-to-record-code-add-code">Manually add module to record : <code>add</code></a></h4>
+<div class="paragraph">
+<p>The user can add new modules into the grade tracker.</p>
+</div>
+<div class="paragraph">
+<p>The fields of a module consist of:<br>
+- <code>MODULE_CODE</code> The module code of the module. e.g. CS2103 Prefix: <code>&lt;m&gt;</code><br>
+- <code>TITLE</code> The title of the module. E.g. Software Engineering Prefix: <code>&lt;t&gt;</code>.<br>
+- <code>SEMESTER</code> Semester includes 2 components that are seperated by a 'S' character. i.e. the academic year and semester period. E.g. 1920S1 Prefix: <code>&lt;s&gt;</code>.<br>
+- <code>CREDIT</code> Modular credit for the module. Module credit only accepts 2 to 23 credits. E.g. 4 Prefix: <code>&lt;c&gt;</code>.<br>
+- <code>GRADE</code> Grades for the attained for the module. Only permitted <a href="http://www.nus.edu.sg/nusbulletin/yong-siew-toh-conservatory-of-music/undergraduate-education/degree-requirements/grading-system-and-regulations/">grades</a> are accepted. E.g. A Prefix: <code>&lt;g&gt;</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 2. Input constraints for Add command</caption>
+<colgroup>
+<col style="width: 23.0769%;">
+<col style="width: 76.9231%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Field</th>
+<th class="tableblock halign-center valign-top">Validity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ModuleCode</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Module code should contain a set of 4 integers and no excessive characters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Semester</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Semester should contain valid academic years and semester period. The academic year stated can only be +/-5 years than the current year. While the semester period allows input from 1 to 4.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The title of the module is left for you to define. It is valid as long as it does not have special characters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Credit</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">As stated by NUS, the range of modular credit ranges from 2 to 23.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Grade</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Only NUS approved grades are allowed i.e. A+, A, A-, B+, B, B-, C+, C, D+, D and F</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all" style="width: 60%;">
+<caption class="title">Table 3. Semester Period Classifications</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Input</th>
+<th class="tableblock halign-center valign-top">Semester Period</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Semester 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Semester 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Special Term 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Special Term 2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Format: <code>add MODULE_CODE MODULE_TITLE MODULE_YEAR_AND_SEMESTER MODULAR_CREDIT GRADE</code>
+E.g. <code>add &lt;m&gt;CS2103 &lt;t&gt;Software Engineering &lt;s&gt;1920S1 &lt;c&gt;4 &lt;g&gt;A</code>, <code>add &lt;m&gt;ACC1002 &lt;t&gt;Financial Accounting &lt;s&gt;1920S1 &lt;c&gt;4 &lt;g&gt;A</code></p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 4. List of sample commands</caption>
+<colgroup>
+<col style="width: 23.0769%;">
+<col style="width: 76.9231%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Module</th>
+<th class="tableblock halign-left valign-top">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CS2103</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add &lt;m&gt;CS2103 &lt;t&gt;Software Engineering &lt;s&gt;1920S1 &lt;c&gt;4 &lt;g&gt;A</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">EC3343</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add &lt;m&gt;CS3343 &lt;t&gt;International Finance I &lt;s&gt;2021S1 &lt;c&gt;4 &lt;g&gt;A</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CS3202</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add &lt;m&gt;CS3202 &lt;t&gt;Software Engineering Project II &lt;s&gt;2021S2 &lt;c&gt;4 &lt;g&gt;B+</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CS3211</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add &lt;m&gt;CS3211 &lt;t&gt;Parallel and Concurrent Programming &lt;s&gt;2021S2 &lt;c&gt;4 &lt;g&gt;A-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CS3218</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add &lt;m&gt;CS3218 &lt;t&gt;Multimodal Processing in Mobile Platforms &lt;s&gt;2122S1 &lt;c&gt;4 &lt;g&gt;B</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="delete-module-from-record-code-delete-code"><a class="link" href="#delete-module-from-record-code-delete-code">Delete module from record : <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Delete a specific module from the list of modules by specifying the module code. The command is very strict on matching the module code given to the existing modules in modulo.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete MODULE CODE</code>
+e.g. <code>delete CS2103</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-tasks-code-list-code"><a class="link" href="#listing-all-tasks-code-list-code">Listing all tasks : <code>list</code></a></h4>
+<div class="paragraph">
+<p>Shows the list of all modules in the Grades Tracker.<br>
+Format: <code>list</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sort-all-tasks-in-chronological-order-code-sort-code"><a class="link" href="#sort-all-tasks-in-chronological-order-code-sort-code">Sort all tasks in chronological order : <code>sort</code></a></h4>
+<div class="paragraph">
+<p>Sorts the list of modules in chronological order, the modules taken earlier to the modules taken later. The determination is based on the academic year then the semesters.<br>
+Format: <code>sort</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="locating-module-by-module-code-or-title-code-find-code"><a class="link" href="#locating-module-by-module-code-or-title-code-find-code">Locating module by module code or title : <code>find</code></a></h4>
+<div class="paragraph">
+<p>Finds the module with the matching module code or module description.</p>
+</div>
+<div class="paragraph">
+<p>The enhanced search is case insensitive and matches any keyword in the module code or description e.g. <code>cs1010s</code> matches <code>CS1010S</code></p>
+</div>
+<div class="paragraph">
+<p>The search method adopts the inclusive OR search method that returns any modules with the keyword.
+e.g. searching for <code>metho</code> will return <code>Programming Methodology I</code> and <code>Programming Methodology II</code>.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>find KEYWORD</code>
+e.g. <code>find CS1010S</code>, <code>find Programming</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clear-all-modules-the-record-code-clear-code"><a class="link" href="#clear-all-modules-the-record-code-clear-code">Clear all modules the record : <code>clear</code></a></h4>
+<div class="paragraph">
+<p>Deletes all modules in the record. The user can avoid clearing modules one-by-one when large number of modules have to be cleared.
+When the single keyword <code>clear</code> is entered, Modulo would recognise it as a command to clear all the modules. The action is irreversible!</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>clear</code>
+e.g. <code>clear</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="categorisation-coming-in-v2-0"><a class="link" href="#categorisation-coming-in-v2-0">Categorisation [Coming in V2.0]</a></h4>
+<div class="paragraph">
+<p>Categorisation of the modules in their respective semesters and predictive text.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -150,9 +412,245 @@ tasks and concurrently do well for exams. Modulo features a one-stop app to keep
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project. You may visit this <a href="https://ay1920s1-cs2103-t16-2.github.io/main/DeveloperGuide.html">link</a> to view my contributions.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project. You may visit this <a href="https://ay1920s1-cs2103-t16-2.github.io/main/DeveloperGuide.html">link</a> to the entire developer guide.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Following are the links to the PR:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/100">DG Contribution 1</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/AY1920S1-CS2103-T16-2/main/pull/53">DG Contribution 2</a></p>
+</div>
+<div class="sect2">
+<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">Architecture</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ArchitectureDiagram.png" alt="ArchitectureDiagram">
+</div>
+<div class="title">Figure 1. Architecture Diagram for a feature</div>
+</div>
+<div class="paragraph">
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S1-CS2103-T16-2/main/blob/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>At app launch: Initializes the components in the correct sequence, and connects them up with each other.</p>
+</li>
+<li>
+<p>At shut down: Shuts down the components and invokes cleanup method where necessary.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="#Design-Commons"><strong><code>Commons</code></strong></a> represents a collection of classes used by multiple other components.
+The following class plays an important role at the architecture level:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>LogsCenter</code> : Used by many classes to write log messages to the App&#8217;s log file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The rest of the App covers the four features in <em>Modulo</em> (Calendar, Cap, Quiz, Finance). All the features have the very similar structure, each consisting of four components.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#Design-Ui"><strong><code>UI</code></strong></a>: The UI of the App.</p>
+</li>
+<li>
+<p><a href="#Design-Logic"><strong><code>Logic</code></strong></a>: The command executor.</p>
+</li>
+<li>
+<p><a href="#Design-Model"><strong><code>Model</code></strong></a>: Holds the data of the App in-memory.</p>
+</li>
+<li>
+<p><a href="#Design-Storage"><strong><code>Storage</code></strong></a>: Reads data from, and writes data to, the hard disk.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each of the four components</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Defines its <em>API</em> in an <code>interface</code> with the same name as the Component.</p>
+</li>
+<li>
+<p>Exposes its functionality using a <code>{Component Name}Manager</code> class.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram">
+</div>
+<div class="title">Figure 2. Class Diagram of the Logic Component for the feature Cap</div>
+</div>
+<h4 id="rationale-for-having-multiple-code-ui-code-code-logic-code-code-model-code-code-storage-code-classes-in-em-modulo-em" class="discrete">Rationale for having multiple <code>UI</code>, <code>Logic</code>, <code>Model</code>, <code>Storage</code> classes in <em>Modulo</em></h4>
+<div class="paragraph">
+<p>The features in <em>Modulo</em> are quite distinct and having minimal overlaps, each feature has its own data file to read and modify. The logic to execute commands are also handled differently in each feature. As such, our decision to have 4 components for each feature was to reduce coupling and allow flexibility in our implementations. This means that the same <code>add</code> command is now able to trigger a different sequence of actions depending on the feature the user is currently in. This architecture style allows each feature to be developed independently, free from the constraints set by other features. Each time a user switches to another feature, the <code>Ui</code>, <code>Logic</code>, <code>Model</code> and <code>Storage</code> classes will be replaced by that of the new feature.</p>
+</div>
+<h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
+<div class="paragraph">
+<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete CS2103</code> when in the feature <em>Module</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ArchitectureSequenceDiagram.png" alt="ArchitectureSequenceDiagram">
+</div>
+<div class="title">Figure 3. Component interactions for <code>delete 1</code> command in <em>Cap</em> feature</div>
+</div>
+<div class="paragraph">
+<p>The sections below give more details of each component.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="grades-tracker-2"><a class="link" href="#grades-tracker-2">Grades Tracker</a></h3>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>The following activity diagram displays the sequence of events after the user inputs to add a new module.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CapActivityDiagram.png" alt="CapActivityDiagram">
+</div>
+<div class="title">Figure 4. Class Diagram of Module</div>
+</div>
+<div class="paragraph">
+<p>For the user to add new modules to the Modulo Grades Tracker, the <code>Module</code> has to be designed to satisfy the requirements of a module and the needs of the user.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each <code>Module</code> consists of <code>ModuleCode</code>, <code>Title</code>, <code>Semester</code>, <code>Credit</code>, <code>Grade</code>.</p>
+</li>
+<li>
+<p>All fields in <code>Module</code> are unique.</p>
+</li>
+<li>
+<p>Each class has their respective getter methods and validity-check method.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ModuleClassDiagram.png" alt="ModuleClassDiagram">
+</div>
+<div class="title">Figure 5. Class Diagram of Module</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-of-module-commands"><a class="link" href="#implementation-of-module-commands">Implementation of Module commands</a></h4>
+<div class="paragraph">
+<p>Module class supports multiple commands. They include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AddCommand</code> - Adds a module to the Grades Tracker.</p>
+</li>
+<li>
+<p><code>DeleteCommand</code> - Removes a module from the Grades Tracker by specifying the module code.</p>
+</li>
+<li>
+<p><code>FindCommand</code> - Find and returns any modules with <code>ModuleCode</code> and/or <code>Title</code> that matches the keyword specified by the user.</p>
+</li>
+<li>
+<p><code>SortCommand</code> - Sorts the modules in chronological order based on the <code>Semester</code> the module was taken.</p>
+</li>
+<li>
+<p><code>ListCommand</code> - List all the modules. Often required after the find command.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
+</div>
+<div class="title">Figure 6. Sequence Diagram of DeleteCommand</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifelines for <code>DeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifelines reaches the end of diagram.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>After a successful execution, the module with the specified module code will be deleted from Modulo Grades Tracker.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
+<div class="paragraph">
+<p>All fields should not be have special characters or left blank as the details are important to the implementation and the user experience.</p>
+</div>
+<div class="paragraph">
+<p>The class diagram below gives an overview of the Module class.</p>
+</div>
+<div class="paragraph">
+<p>The search for the matching module code is implemented with a linear search. With 70 modules in Modulo, the linear search is still responsive and there were not observable lags.</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative</strong></p>
+</div>
+<div class="paragraph">
+<p>An alternative would be to use a search algorithm that comprises a Hash set and linear search.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 5. Considerations when designing the Module class</caption>
+<colgroup>
+<col style="width: 23.0769%;">
+<col style="width: 76.9231%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Field</th>
+<th class="tableblock halign-center valign-top">Validity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ModuleCode</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Module code should contain a set of 4 integers and no excessive characters. The student is provided with the liberty to input any module code in consideration that new modules and faculties may be created in the future.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Semester</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Semester should contain valid academic years and semester period. The academic year stated can only be +/-5 years than the current year, assuming that students are able to graduate in at most five years. While the semester period allows input from 1 to 4.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The title of the module is left for the user to define. This is to take into account that there might be new modules released in teh future hence the user needs to have the ability to customise the title. It is valid as long as it does not have special characters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Credit</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">As stated by NUS, the range of modular credit ranges from 2 to 23.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Grade</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Only NUS approved grades are allowed i.e. A+, A, A-, B+, B, B-, C+, C, D+, D and F</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:15:45 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:22:22 UTC</div></div></div></body></html>

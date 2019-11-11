@@ -29,7 +29,13 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Modulo is a desktop application helping National University of Singapore (NUS) students to audit their academics, finances and schedule their time as they try their best to survive yet another semester of college. Those who prefer to work with a Command Line Interface (CLI) might find using Modulo to be more straightforward than the usual Graphical User Interface (GUI) applications. The application has the visual benefits of a GUI but stands strongly rooted in command line usage. Modulo does not require an internet connection to run so there’s no worry when the school wifi goes MIA yet again. The only time you need to be connected is at the start, when downloading the application. Look to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to find out how to get started on Modulo!</p>
+<p>Welcome to the User Guide for Modulo!</p>
+</div>
+<div class="paragraph">
+<p>Modulo is an all-in-one student life application which is mainly targeted to NUS students. The app features four different functions which consists of weekly organizer, financial record system, quiz revision, and grades tracker.</p>
+</div>
+<div class="paragraph">
+<p>Those who prefer to work with a Command Line Interface (CLI) might find using Modulo to be more straightforward than the usual Graphical User Interface (GUI) applications. The application has the visual benefits of a GUI but stands strongly rooted in command line usage. Modulo does not require an internet connection to run so there’s no worry when the school wifi goes MIA yet again. The only time you need to be connected is at the start, when downloading the application. Look to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to find out how to get started on Modulo!</p>
 </div>
 </div>
 </div>
@@ -122,8 +128,10 @@
 <p>There are 4 features in <em>Modulo</em>: Calendar, Cap (i.e. Modules), Quiz and Finance.<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>switch FEATURE_NAME</code>
-Example: <code>switch quiz</code></p>
+<p>Format: <code>switch FEATURE_NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Examples: <code>switch quiz</code>, <code>switch calandar</code>, <code>switch cap</code>, <code>switch finance</code>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -131,6 +139,13 @@ Example: <code>switch quiz</code></p>
 <div class="paragraph">
 <p>Exits the program.
 Format: <code>exit</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="to-seek-help"><a class="link" href="#to-seek-help">3.1.3. To seek help</a></h4>
+<div class="paragraph">
+<p>Brings up a link that leads to the user guide online. Thus, internet connection is required.
+Format: <code>help</code></p>
 </div>
 </div>
 </div>
@@ -269,12 +284,12 @@ e.g. <code>go 2</code></p>
 <div class="paragraph">
 <p>To enter the Module section please enter the command: <code>switch cap</code></p>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
+<table class="tableblock frame-all grid-all" style="width: 90%;">
 <caption class="title">Table 1. Quick Reference sheet</caption>
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 13.3333%;">
-<col style="width: 66.6667%;">
+<col style="width: 14.2857%;">
+<col style="width: 38.0952%;">
+<col style="width: 47.6191%;">
 </colgroup>
 <thead>
 <tr>
@@ -312,7 +327,7 @@ e.g. <code>go 2</code></p>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">clear</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clear all existing modules.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clear all existing modules.</p></td>
 </tr>
 </tbody>
 </table>
@@ -323,17 +338,52 @@ e.g. <code>go 2</code></p>
 </div>
 <div class="paragraph">
 <p>The fields of a module consist of:<br>
-- <code>MODULE_CODE</code> The module code of the module. The student is provided with the liberty to input any module code in consideration that new modules may be created in the future. Prefix: <code>&lt;m&gt;</code><br>
-- <code>TITLE</code> The title of the module. The student is provided with the liberty to input any module code in consideration that new modules may be created in the future. Prefix: <code>&lt;t&gt;</code>.<br>
-- <code>SEMESTER</code> Semester includes 2 components i.e. the academic year and semester period. The academic year and semester that the module was taken in / provided. Modulo only takes in +/- 5 years for academic year, assuming that students are able to graduate within 5 years. The semester period field takes in 1, 2, 3, 4. Semesters 3 and 4 indicates special term 1 and 2 respectively. Prefix: <code>&lt;s&gt;</code>.<br>
-- <code>CREDIT</code> Modular credit for the module. Module credit only accepts 2 to 23 credits. Prefix: <code>&lt;c&gt;</code>.<br>
-- <code>GRADE</code> Grades for the attained for the module. Only permitted <a href="http://www.nus.edu.sg/nusbulletin/yong-siew-toh-conservatory-of-music/undergraduate-education/degree-requirements/grading-system-and-regulations/">grades</a> are accepted. SU is currently not supported. Prefix: <code>&lt;g&gt;</code>.</p>
+- <code>MODULE_CODE</code> The module code of the module. e.g. CS2103 Prefix: <code>&lt;m&gt;</code><br>
+- <code>TITLE</code> The title of the module. E.g. Software Engineering Prefix: <code>&lt;t&gt;</code>.<br>
+- <code>SEMESTER</code> Semester includes 2 components that are seperated by a 'S' character. i.e. the academic year and semester period. E.g. 1920S1 Prefix: <code>&lt;s&gt;</code>.<br>
+- <code>CREDIT</code> Modular credit for the module. Module credit only accepts 2 to 23 credits. E.g. 4 Prefix: <code>&lt;c&gt;</code>.<br>
+- <code>GRADE</code> Grades for the attained for the module. Only permitted <a href="http://www.nus.edu.sg/nusbulletin/yong-siew-toh-conservatory-of-music/undergraduate-education/degree-requirements/grading-system-and-regulations/">grades</a> are accepted. E.g. A Prefix: <code>&lt;g&gt;</code>.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 2. Semester Period Classifications</caption>
+<caption class="title">Table 2. Input constraints for Add command</caption>
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 75%;">
+<col style="width: 23.0769%;">
+<col style="width: 76.9231%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Field</th>
+<th class="tableblock halign-center valign-top">Validity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ModuleCode</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Module code should contain a set of 4 integers and no excessive characters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Semester</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Semester should contain valid academic years and semester period. The academic year stated can only be +/-5 years than the current year. While the semester period allows input from 1 to 4.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The title of the module is left for you to define. It is valid as long as it does not have special characters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Credit</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">As stated by NUS, the range of modular credit ranges from 2 to 23.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Grade</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Only NUS approved grades are allowed i.e. A+, A, A-, B+, B, B-, C+, C, D+, D and F</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all" style="width: 60%;">
+<caption class="title">Table 3. Semester Period Classifications</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
 </colgroup>
 <thead>
 <tr>
@@ -362,10 +412,10 @@ e.g. <code>go 2</code></p>
 </table>
 <div class="paragraph">
 <p>Format: <code>add MODULE_CODE MODULE_TITLE MODULE_YEAR_AND_SEMESTER MODULAR_CREDIT GRADE</code>
-e.g. <code>add &lt;m&gt;CS2103 &lt;t&gt;Software Engineering &lt;s&gt;1920S1 &lt;c&gt;4 &lt;g&gt;A</code>, <code>add &lt;m&gt;ACC1002 &lt;t&gt;Financial Accounting &lt;s&gt;1920S1 &lt;c&gt;4 &lt;g&gt;A</code></p>
+E.g. <code>add &lt;m&gt;CS2103 &lt;t&gt;Software Engineering &lt;s&gt;1920S1 &lt;c&gt;4 &lt;g&gt;A</code>, <code>add &lt;m&gt;ACC1002 &lt;t&gt;Financial Accounting &lt;s&gt;1920S1 &lt;c&gt;4 &lt;g&gt;A</code></p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 3. List of sample commands</caption>
+<caption class="title">Table 4. List of sample commands</caption>
 <colgroup>
 <col style="width: 23.0769%;">
 <col style="width: 76.9231%;">
@@ -413,12 +463,12 @@ e.g. <code>delete CS2103</code></p>
 <div class="sect3">
 <h4 id="listing-all-tasks-code-list-code-2"><a class="link" href="#listing-all-tasks-code-list-code-2">3.3.3. Listing all tasks : <code>list</code></a></h4>
 <div class="paragraph">
-<p>Shows the list of all modules in the grades tracker.<br>
+<p>Shows the list of all modules in the Grades Tracker.<br>
 Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-all-tasks-code-sort-code"><a class="link" href="#listing-all-tasks-code-sort-code">3.3.4. Listing all tasks : <code>sort</code></a></h4>
+<h4 id="sort-all-tasks-in-chronological-order-code-sort-code"><a class="link" href="#sort-all-tasks-in-chronological-order-code-sort-code">3.3.4. Sort all tasks in chronological order : <code>sort</code></a></h4>
 <div class="paragraph">
 <p>Sorts the list of modules in chronological order, the modules taken earlier to the modules taken later. The determination is based on the academic year then the semesters.<br>
 Format: <code>sort</code></p>
@@ -434,18 +484,18 @@ Format: <code>sort</code></p>
 </div>
 <div class="paragraph">
 <p>The search method adopts the inclusive OR search method that returns any modules with the keyword.
-e.g. searching for <code>metho</code> will return <code>Programming Methodology I</code>, <code>Programming Methodology II</code>, <code>Web Programming and Applications</code>.</p>
+e.g. searching for <code>metho</code> will return <code>Programming Methodology I</code> and <code>Programming Methodology II</code>.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>find MODULE_CODE [OTHER_KEYWORDS]</code>
+<p>Format: <code>find KEYWORD</code>
 e.g. <code>find CS1010S</code>, <code>find Programming</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="clear-all-modules-in-a-specific-semester-or-clean-slate-all-records-code-clear-code"><a class="link" href="#clear-all-modules-in-a-specific-semester-or-clean-slate-all-records-code-clear-code">3.3.6. Clear all modules in a specific semester or clean-slate all records : <code>clear</code></a></h4>
+<h4 id="clear-all-modules-the-record-code-clear-code"><a class="link" href="#clear-all-modules-the-record-code-clear-code">3.3.6. Clear all modules the record : <code>clear</code></a></h4>
 <div class="paragraph">
 <p>Deletes all modules in the record. The user can avoid clearing modules one-by-one when large number of modules have to be cleared.
-When the only single keyword <code>clear</code> is entered, Modulo would recognise it as a command to clear all the modules. The action is irreversible.</p>
+When the single keyword <code>clear</code> is entered, Modulo would recognise it as a command to clear all the modules. The action is irreversible!</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>clear</code>
@@ -455,7 +505,7 @@ e.g. <code>clear</code></p>
 <div class="sect3">
 <h4 id="categorisation-coming-in-v2-0"><a class="link" href="#categorisation-coming-in-v2-0">3.3.7. Categorisation [Coming in V2.0]</a></h4>
 <div class="paragraph">
-<p>Categorisation of the modules in their respective semesters.</p>
+<p>Categorisation of the modules in their respective semesters and predictive text.</p>
 </div>
 </div>
 </div>
@@ -930,5 +980,8 @@ There is no need to save manually.</p>
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
 <strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous <em>Modulo</em> folder.</p>
 </div>
+<div class="paragraph">
+<p>We have enjoyed budilding Modulo and we hope you have enjoyed Modulo like we do! We look forward to seeing you again in V2.0! May  you get good grades!</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:15:45 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:22:22 UTC</div></div></div></body></html>
