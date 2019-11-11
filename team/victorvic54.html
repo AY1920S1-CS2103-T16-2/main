@@ -138,7 +138,8 @@ Managed releases <code>v1.1</code> - <code>v1.2.1</code> (3 releases) on GitHub<
 quiz show the data. You can use the command <code>clear</code> or go to <code>3.4.12</code> section to clear the given data.</p>
 </div>
 <div class="paragraph">
-<p><strong>Note on UI:</strong> You can adjust the size of the split pane by sliding the window separator
+<p><strong>Note on UI:</strong> Modulo quiz uses dark theme to prevent users from straining their eyes by staring at
+their computer window too long. You can adjust the size of the split pane by sliding the window separator
 between the two windows to fully see the whole question. Go to <code>3.4.6</code> section to fully see the
 question properly.</p>
 </div>
@@ -158,9 +159,9 @@ be added with the following requirements.</p>
 </div>
 <div class="paragraph">
 <p><strong>The details instructions after the keyword of the question:</strong><br>
-- <code>&lt;qns&gt;</code> are required. The word limit is 200 and minimum 3 letters.<br>
-- <code>&lt;ans&gt;</code> are required. The word limit is 125.<br>
-- <code>&lt;cat&gt;</code> are required. The word limit is 50.<br>
+- <code>&lt;qns&gt;</code> are required. The character limit is 200 and minimum 3 letters.<br>
+- <code>&lt;ans&gt;</code> are required. The character limit is 125.<br>
+- <code>&lt;cat&gt;</code> are required. The character limit is 50.<br>
 - <code>&lt;type&gt;</code> are required. The format after this command should only be: <code>high</code>, <code>normal</code>, <code>low</code>.<br>
 - <code>&lt;tag&gt;</code> are optional. To add numerous tags, please prepend &lt;tag&gt; keyword to differentiate one tag from another.<br></p>
 </div>
@@ -217,9 +218,9 @@ Usage: <strong>[NUMBER]</strong> is the index/row from that category that you wa
 </div>
 <div class="paragraph">
 <p><strong>Note that at least one of the following must be modified and replaced:</strong><br>
-- <code>&lt;qns&gt;</code> word limit is 200. No minimum letter.<br>
-- <code>&lt;ans&gt;</code> word limit is 125. No minimum letter.<br>
-- <code>&lt;cat&gt;</code> word limit is 50.<br>
+- <code>&lt;qns&gt;</code> character limit is 200. No minimum letter.<br>
+- <code>&lt;ans&gt;</code> character limit is 125. No minimum letter.<br>
+- <code>&lt;cat&gt;</code> character limit is 50.<br>
 - <code>&lt;type&gt;</code> format after this command should only be: <code>high</code>, <code>normal</code>, <code>low</code>.<br>
 - <code>&lt;tag&gt;</code> are optional. To add numerous tags, please prepend &lt;tag&gt; keyword to differentiate one tag from another.<br></p>
 </div>
@@ -368,7 +369,8 @@ Format: <code>clear</code><br>
 <h5 id="implementation"><a class="link" href="#implementation">Implementation</a></h5>
 <div class="paragraph">
 <p>To use this feature, the user will need to switch to the quiz mode and add the question they want with
-several requirements on the syntax stated in the UserGuide.</p>
+several requirements on the syntax stated in the UserGuide. Modulo quiz uses dark theme
+because we don’t want users to strain their eyes from staring at their computer window too long.</p>
 </div>
 <div class="paragraph">
 <p>Below are the quiz model class diagram:</p>
@@ -574,4 +576,4 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial q
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:01:18 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:19:06 UTC</div></div></div></body></html>
